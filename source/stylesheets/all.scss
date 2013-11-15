@@ -1,0 +1,568 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:200);
+@import "compass";
+
+$gutter:    percentage(20px/940px); // 20px at 960px wide container, accounting for a 1/2 gutter width padding on the left and right of the container
+$onecol:                6.3829787%; // 60px at 960px wide container
+$columnsBreakPoint:          600px; // set this to the minimum width you want the columns to take effect at
+$containerMaxWidth:          1040px; // set this to the maximum width you want .container to have
+
+// MEDIA QUERY MIXINS
+@mixin mq($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+  html.nr {
+    @content;
+  }
+}
+@mixin columns($count:1) {
+  width: ($onecol * $count) + ($gutter * ($count - 1));
+}
+@mixin font-size($sizeValue: 16) {
+  font-size: $sizeValue + px;
+  font-size: ($sizeValue / 10) + rem;
+}
+@mixin column-count($value:1) {
+   -webkit-column-count: $value;
+   -moz-column-count:    $value;
+   column-count:         $value;
+}
+@mixin column-gap($value:0px) {
+   -webkit-column-gap:   $value;
+   -moz-column-gap:      $value;
+   column-gap:           $value;
+}
+
+$red: #FF0000;
+$orange: #FF9DDD;
+$yellow: #FFDB00;
+$green: #6FEB00;
+$blue: #0DD0FF;
+$purple: #BC00BC;
+
+$text-gray: #C6C6C1;
+$dark-gray: #2F2F2F;
+$gray: #434343;
+$light-gray: #c6c6c1;
+$bottom-border: #121212;
+
+$Neon-Green: #6FFF00;
+$Neon-Pink: #FF00FF;
+$Neon-Yellow: #FFFF00;
+$Neon-Blue: #4D4DFF;
+$Neon-Red: #FE0001;
+$Neon-Orange: #FFA700;
+$Neon-Purple: #993CF3;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+
+  .back{
+    h1 {
+      @include font-size(30);
+    }
+    h2 {
+      @include font-size(26);
+    }
+    h3 {
+      @include font-size(20);
+    }
+    h4 {
+      @include font-size(16);
+    }
+    h5 {
+      @include font-size(12);
+    }
+  }
+
+  aside.links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: #f0f0f0;
+    z-index: 0;
+
+    a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #e0e0e0;
+      background: #F1F1F1;
+      @include background-image(linear-gradient(top, #f4f4f4, #e7e7e7));
+      @include text-shadow(0 1.5px #fff);
+      text-decoration: none;
+      color: #65BDDF;
+      @include font-size(20);
+
+      &:hover {
+        @include background-image(linear-gradient(top, #f0f0f0, #e3e3e3));
+      }
+    }
+    div {
+      width: 100%;
+      border-top: 1px solid #fff;
+    }
+  }
+
+  .container {
+    width: 100%;
+    box-shadow: 0 0 30px #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $gray;
+    z-index: 1;
+
+    &.loaded {
+      @include transition(margin-left 1s ease);
+    }
+
+    &.open {
+      margin-left: -300px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $light-gray;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+    p {
+      a {
+        color: $Neon-Orange;
+      }
+    }
+
+    #header {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 200;
+      background: $dark-gray;
+      border-bottom: 1px solid #555;
+      @include box-shadow(inset 0 -4px 10px rgba(20, 20, 20, 0.4));
+
+      .profile {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 500px;
+
+        .profile-link {
+          position: relative;
+          background-image: image-url('profile.png');
+          background-position: center bottom;
+          background-size: auto 550px;
+          background-repeat: no-repeat;
+          display: block;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+        }
+      }
+
+      .brian-anders {
+        position: absolute;
+        top: 30px;
+        margin: 0;
+        @include font-size(40);
+        font-weight: 100;
+        z-index: 3;
+        @include text-shadow(0 1px $dark-gray, 0 2px $dark-gray);
+        color: $Neon-Orange;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    a.nav {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: $Neon-Orange;
+      border-radius: 100%;
+      z-index: 3;
+      @include transition(top .5s ease);
+
+      &:hover {
+        @include box-shadow(0 1px $Neon-Orange, 0 -1px $Neon-Orange, -1px 0 $Neon-Orange, 1px 0 $Neon-Orange);
+        cursor: pointer;
+      }
+    }
+
+    .content {
+      width: 100%;
+      max-width: 1040px;
+      display: block;
+      overflow: hidden;
+      margin: 20px auto 0;
+      font-family: 'Raleway', sans-serif;
+      color: $text-gray;
+      padding: 0 20px;
+      @include box-sizing(border-box);
+
+      > section {
+        margin: 0 auto 20px;
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+        overflow: hidden;
+        float: left;
+
+        > h2 {
+          width: 100%;
+          display: block;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          margin: 0;
+          @include font-size(40);
+          font-family: 'Raleway', sans-serif;
+          font-weight: 100;
+          @include text-shadow(0px 1px 0px $bottom-border,
+                               0px 2px 0px $bottom-border);
+          color: #444;
+          @include box-sizing(border-box);
+        }
+
+        &.about-me {
+          > h2 {
+            color: $Neon-Orange;
+          }
+          p {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            @include font-size(20);
+            line-height: 1.5;
+            margin: 0;
+          }
+        }
+
+        &.top-albums {
+          @include columns(12);
+
+          > h2 {
+            color: $Neon-Orange;
+          }
+          .albums-container {
+            width: 100%;
+            height: 300px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            display: block;
+
+            .albums {
+              height: 300px;
+              width: 20*300px;
+
+              .album {
+                margin: 0;
+                padding: 0;
+                float: left;
+                height: 100%;
+                margin-bottom: -4px;
+                position: relative;
+                z-index: 0;
+
+                .front {
+                  position: relative;
+                  top: 0px;
+                  height: 100%;
+
+                  img {
+                    width: 300px;
+                    height: 300px;
+                    position: relative;
+                  }
+                }
+                .back {
+                  position: relative;
+                  top: -800px;
+                  left: 20px;
+                  width: 260px;
+                  height: auto;
+                  border-radius: 0 0 3px 3px;
+                  display: block;
+                  text-align: center;
+                  background: rgba(0,0,0,0.5);
+                  padding: 20px 10px;
+
+                  font-family: 'Raleway', sans-serif;
+                  font-weight: 200;
+
+                  @include transition(top 0.5s ease);
+                  @include box-sizing(border-box);
+
+                  h1, h2, h3 {
+                    padding: 0;
+                    margin: 0;
+
+                    word-break: break-all;
+
+                    -ms-word-break: break-all;
+                    word-break: break-all;
+
+                    // Non standard for webkit
+                    word-break: break-word;
+
+                    -webkit-hyphens: auto;
+                       -moz-hyphens: auto;
+                            hyphens: auto;
+                  }
+                  h1 {
+                    padding: 10px 0px;
+                  }
+                }
+              }
+
+              .album:hover {
+                cursor: pointer;
+              }
+
+              .flip {
+                .back {
+                  top: -300px;
+                }
+              }
+            }
+          }
+        }
+
+        &.top-artists {
+          @include columns(12);
+          @include box-sizing(border-box);
+
+          > h2 {
+            color: $Neon-Orange;
+          }
+          .artists-container {
+            width: 100%;
+            height: 1000px;
+            overflow-y: scroll;
+
+            .artists {
+              .artist {
+                width: 100%;
+                display: block;
+                overflow: hidden;
+                position: relative;            
+
+                .front {
+                  float: left;
+                  width: 100%;
+                  overflow: hidden;
+
+                  img {
+                    min-width: 100%;
+                    width: 100%;
+                    height: auto;
+                  }
+                }
+                .back {
+                  float: left;
+                  width: 100%;
+                  padding: 20px;
+                  @include box-sizing(border-box);
+                  position: absolute;
+                  top: 0;
+                  background: rgba(0,0,0,.5);
+                  @include transition(opacity .3s ease);
+                  opacity: 0;
+
+                  a {
+                    text-decoration: none;
+                  }
+                }
+                &.flip {
+                  .back {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.top-tracks {
+          @include columns(12);
+          @include box-sizing(border-box);
+
+          > h2 {
+            color: $Neon-Orange;
+          }
+          .tracks-container {
+            width: 100%;
+            height: 1000px;
+            overflow-y: scroll;
+
+            .tracks {
+              a:nth-child(2n+1) {
+                .track {
+                  background: rgba(0,0,0,.1);
+                }
+              }
+              .track {
+                position: relative;
+                height: 64px;
+                width: 100%;
+                display: block;
+                float: left;
+                overflow: hidden;
+                @include box-sizing(border-box);
+
+                .front, .back {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  height: 100%;
+                  width: 100%;
+                }
+
+                .back {
+                  @include box-sizing(border-box);
+                  padding-left: 80px;
+                  height: auto;
+                  padding-top: 10px;
+                  top: 0;
+
+                  @include transition(top);
+                  @include transition-duration(0.5s);
+                  @include transition-timing-function(ease-in-out);
+
+                  h2, h1, h3 {
+                    @include font-size(15);
+                    margin: 0 0 10px;
+                    white-space: nowrap;
+                  }
+                  h3 {
+                    width: 100%;
+                  }
+                }
+                &.flip .back {
+                  top: -29px;
+                }
+              }
+            }
+          }
+        }
+
+        &.movies {
+          @include columns(12);
+          > h2 {
+            color: $Neon-Orange;
+          }
+          .movie-container {
+            width: 100%;
+            display: block;
+
+            .movies {
+              width: 100%;
+              line-height: 0;
+              @include column-count(2);
+              @include column-gap(10px);
+
+              .movie {
+                width: 100%;
+                margin-bottom: 10px;
+
+                img {
+                  height: auto;
+                  width: 100%;
+                }
+
+                .back{
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      .foot {
+        height: 30px;
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        @include font-size(20);
+        font-weight: 100;
+        float: left;
+        width: 100%;
+      }
+    }
+  }
+}
+@include mq(600px) {
+  body {
+    .container {
+      #header {
+        .brian-anders {
+          left: 30px;
+          text-align: left;
+        }
+      }
+      .content {
+        > section {
+          &.top-artists {
+            @include columns(6);
+          }
+          &.top-tracks {
+            @include columns(6);
+            margin-left: $gutter;
+          }
+          &.movies {
+            .movie-container {
+              .movies {
+                @include column-count(3);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include mq(768px) {
+  body {
+    .container {
+      .content {
+        > section {
+          &.movies {
+            .movie-container {
+              .movies {
+                @include column-count(4);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include mq(900px) {
+  body {
+    .container {
+      .content {
+        > section {
+          &.movies {
+            .movie-container {
+              .movies {
+                @include column-count(5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
