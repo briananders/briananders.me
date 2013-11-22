@@ -27,7 +27,7 @@ $(document).ready(function() {
 		User: 'iBrianAnders',
 		Behavior: "hover",//hover or click
 		limit: 20, // 1 album - 50 albums
-		period: "12month" //overall|7day|1month|3month|6month|12month
+		period: "3month" //overall|7day|1month|3month|6month|12month
 	});
 
 	$('.artists').lfmTopArtists({
@@ -42,10 +42,13 @@ $(document).ready(function() {
 		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
 		User: 'iBrianAnders',
 		Behavior: "hover",//hover or click
-		limit: 50, // 1 album - 50 albums
-		period: "12month" //overall|7day|1month|3month|6month|12month
+		limit: 20, // 1 album - 50 albums
+		period: "3month" //overall|7day|1month|3month|6month|12month
 	});
 
+/*
+opens the social menu
+*/
 	$('a.nav').click(function() {
 		if ($('.container').hasClass('open')) {
 			$('.container').removeClass('open');
@@ -54,7 +57,27 @@ $(document).ready(function() {
 		}
 	});
 
-	$(window).debounce(function(){
-		$('a.nav').css('top', ($(window).scrollTop() + 20) + 'px');
+
+/*
+social icon slideshow
+*/
+    $("a.nav div:gt(0)").hide();
+
+    setInterval(function() { 
+      $('a.nav div:first')
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('a.nav');
+    },  3000);
+
+/* 
+debounce method for social icon scroll following
+*/
+	$(window).debounce(function() {
+        if($('body').width() >= 600) {
+		  $('a.nav').css('top', ($(window).scrollTop() + 20) + 'px');
+        }
 	}, 'scroll', 200);
 });

@@ -147,7 +147,7 @@
 		function isLoaded (trackElement) {
 
 			for (var i = 0; i < tracks.length; i++){
-				var markup = $("<a href=" + tracks[i].url + "><div class='track'><div class='front'><img src='" + tracks[i].art + "'><div class='alpha'></div></div><div class='back'><h2>" + tracks[i].artist + "</h2><h1>" + tracks[i].name + "</h1><h3>" + tracks[i].played + " tracks played</h3></div></div></a>");
+				var markup = $("<a href=" + tracks[i].url + "><div class='track'><div class='front'><img src='" + tracks[i].art + "'><div class='alpha'></div></div><div class='back'><h1>" + tracks[i].name + "</h1><h2>" + tracks[i].artist + "</h2><h3>" + tracks[i].played + " tracks played</h3></div></div></a>");
 				trackElement.append(markup);
 			}
 
