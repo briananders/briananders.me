@@ -105,3 +105,4 @@ DEPENDENCIES
   middleman (> 3.0.14)
   middleman-favicon-maker
   middleman-smusher
+  mini_magick (~> 3.4)

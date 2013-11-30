@@ -28,7 +28,7 @@
 		function isLoaded (albumElement) {
 
 			for (var i = 0; i < albums.length; i++){
-				var markup = $("<a href=" + albums[i].url + "><div class='album'><div class='front'><img src='" + albums[i].art + "'><div class='alpha'></div></div><div class='back'><h2>" + albums[i].artist + "</h2><h1>" + albums[i].name + "</h1><h3>" + albums[i].played + " tracks played</h3></div></div></a>");
+				var markup = $("<div class='album'><div class='front'><img src='" + albums[i].art + "'><div class='alpha'></div></div><div class='back'><h2>" + albums[i].artist + "</h2><h1>" + albums[i].name + "</h1><h3>" + albums[i].played + " tracks played</h3></div></div>");
 				albumElement.append(markup);
 			}
 
@@ -88,7 +88,7 @@
 		function isLoaded (artistElement) {
 
 			for (var i = 0; i < artists.length; i++){
-				var markup = $("<div class='artist'><div class='front'><a href=" + artists[i].url + "><img src='" + artists[i].art + "'></a><div class='alpha'></div></div><div class='back'><h1>" + artists[i].name + "</h1><h3>" + artists[i].played + " tracks played</h3></div></div>");
+				var markup = $("<div class='artist'><div class='front'><img src='" + artists[i].art + "'><div class='alpha'></div></div><div class='back'><h1>" + artists[i].name + "</h1><h3>" + artists[i].played + " tracks played</h3></div></div>");
 				artistElement.append(markup);
 			}
 
@@ -147,7 +147,7 @@
 		function isLoaded (trackElement) {
 
 			for (var i = 0; i < tracks.length; i++){
-				var markup = $("<a href=" + tracks[i].url + "><div class='track'><div class='front'><img src='" + tracks[i].art + "'><div class='alpha'></div></div><div class='back'><h1>" + tracks[i].name + "</h1><h2>" + tracks[i].artist + "</h2><h3>" + tracks[i].played + " tracks played</h3></div></div></a>");
+				var markup = $("<div class='track'><div class='front'><img src='" + tracks[i].art + "'><div class='alpha'></div></div><div class='back'><h1>" + tracks[i].name + "</h1><h2>" + tracks[i].artist + "</h2><h3>" + tracks[i].played + " tracks played</h3></div></div>");
 				trackElement.append(markup);
 			}
 

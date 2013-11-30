@@ -20,31 +20,65 @@
 })(jQuery);
 
 $(document).ready(function() {
+
+    //makes the image_tag helper retina images work.
+    if(window.devicePixelRatio >= 1.2){
+        $("[data-src-2x]").each(function(){
+            if(this.tagName == "IMG"){
+                $(this).attr("src",$(this).attr("data-src-2x"));
+            } else {
+                $(this).css({"background-image":"url("+$(this).attr("data-src-2x")+")"});
+            }
+        });
+    }
+
 	$('.container').addClass('loaded');
 
-	$('.albums').lfmTopAlbums({
-		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-		User: 'iBrianAnders',
-		Behavior: "hover",//hover or click
-		limit: 20, // 1 album - 50 albums
-		period: "3month" //overall|7day|1month|3month|6month|12month
-	});
+    $('section.top-albums').click(function(){
+        if(!$(this).hasClass('loaded')) {
+            $('.albums').lfmTopAlbums({
+                APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
+                User: 'iBrianAnders',
+                Behavior: "click",//hover or click
+                limit: 10, // 1 album - 50 albums
+                period: "3month" //overall|7day|1month|3month|6month|12month
+            });
+            $(this).addClass('loaded');
+        }
+    });
 
-	$('.artists').lfmTopArtists({
-		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-		User: 'iBrianAnders',
-		Behavior: "hover",//hover or click
-		limit: 10, // 1 album - 50 albums
-		period: "12month" //overall|7day|1month|3month|6month|12month
-	});
+    $('section.top-artists').click(function(){
+        if(!$(this).hasClass('loaded')) {
+        	$('.artists').lfmTopArtists({
+        		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
+        		User: 'iBrianAnders',
+        		Behavior: "click",//hover or click
+        		limit: 10, // 1 album - 50 albums
+        		period: "12month" //overall|7day|1month|3month|6month|12month
+        	});
+            $(this).addClass('loaded');
+            $('section.top-albums').css('width','100%');
+        }
+    });
 
-	$('.tracks').lfmTopTracks({
-		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-		User: 'iBrianAnders',
-		Behavior: "hover",//hover or click
-		limit: 20, // 1 album - 50 albums
-		period: "3month" //overall|7day|1month|3month|6month|12month
-	});
+    $('section.top-tracks').click(function(){
+        if(!$(this).hasClass('loaded')) {
+        	$('.tracks').lfmTopTracks({
+        		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
+        		User: 'iBrianAnders',
+        		Behavior: "click",//hover or click
+        		limit: 10, // 1 album - 50 albums
+        		period: "3month" //overall|7day|1month|3month|6month|12month
+        	});
+            $(this).addClass('loaded');
+        }
+    });
+
+    $('section.movies').click(function(){
+        if(!$(this).hasClass('loaded')) {
+            $(this).addClass('loaded');
+        }
+    });
 
 /*
 opens the social menu

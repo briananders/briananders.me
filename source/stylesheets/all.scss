@@ -32,6 +32,18 @@ $containerMaxWidth:          1040px; // set this to the maximum width you want .
    -moz-column-gap:      $value;
    column-gap:           $value;
 }
+@mixin image-2x($image, $image_2x) {
+  background-image: url($image);
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image_2x);
+  }
+}
 
 $text-gray: #C6C6C1;
 $darker-gray: #2C2C2C;
@@ -51,35 +63,16 @@ $Neon-Purple: #993CF3;
 
 html {
   font-size: 62.5%;
+  background: $gray;
 }
-
 body {
-
-  .back{
-    h1 {
-      @include font-size(30);
-    }
-    h2 {
-      @include font-size(26);
-    }
-    h3 {
-      @include font-size(20);
-    }
-    h4 {
-      @include font-size(16);
-    }
-    h5 {
-      @include font-size(12);
-    }
-  }
-
   aside.links {
     position: fixed;
     top: 0;
     right: 0;
     width: 250px;
     height: 100%;
-    background: $dark-gray;
+    background: $gray;
     z-index: 0;
 
     a {
@@ -116,15 +109,33 @@ body {
     left: 0;
     background: $gray;
     z-index: 1;
+    @include box-sizing(border-box);
 
     &.loaded {
       @include transition(margin-left 1s ease);
     }
-
     &.open {
       margin-left: -250px;
     }
+    nav {
+      font-size: 20px;
+      font-family: 'Raleway';
+      font-weight: 100;
+      overflow: hidden;
 
+      a {
+        width: 50%;
+        display: block;
+        float: left;
+        text-align: center;
+        padding: 13px 0;
+
+        &:hover {
+          color: $Neon-Orange;
+          background: $darker-gray;
+        }
+      }
+    }
     a {
       text-decoration: none;
       color: $Neon-Orange;
@@ -149,6 +160,7 @@ body {
       background: $dark-gray;
       border-bottom: 1px solid #555;
       @include box-shadow(inset 0 -4px 10px rgba(20, 20, 20, 0.4));
+      @include transition(height .2s ease);
 
       .profile {
         position: relative;
@@ -171,35 +183,38 @@ body {
       }
 
       .brian-anders {
-        position: absolute;
-        top: 30px;
-        margin: 0;
+        margin: 30px auto 0;
+        width: 100%;
+        max-width: 1040px;
         @include font-size(40);
         font-weight: 100;
-        z-index: 3;
         @include text-shadow(0 1px $dark-gray, 0 2px $dark-gray);
         color: $Neon-Orange;
-        width: 100%;
         text-align: center;
+        float: left;
       }
     }
 
     a.nav {
-      width: 48px;
-      height: 48px;
+      width: 73px;
+      height: 58px;
       position: absolute;
-      right: 20px;
-      border-radius: 100%;
+      right: 0px;
+      border-radius: 50px 0 0 50px;
       z-index: 3;
       @include transition(top .2s ease);
+      background: $gray;
+      margin-top: -15px;
 
       &:hover {
-        @include box-shadow(0 0 25px #000000);
+        background: $light-gray;
         cursor: pointer;
       }
 
       > div {
         position: absolute;
+        top: 5px;
+        left: 5px;
       }
     }
 
@@ -214,290 +229,19 @@ body {
       padding: 0 20px;
       @include box-sizing(border-box);
 
-      > section {
-        margin: 0 auto 20px;
-        display: block;
-        width: 100%;
-        border-radius: 3px;
-        overflow: hidden;
-        float: left;
-
-        > h2 {
-          width: 100%;
-          display: block;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          margin: 0;
-          @include font-size(40);
-          font-family: 'Raleway', sans-serif;
-          font-weight: 100;
-          @include text-shadow(0px 1px 0px $bottom-border,
-                               0px 2px 0px $bottom-border);
-          color: #444;
-          @include box-sizing(border-box);
-        }
-
-        &.about-me {
-          > h2 {
-            color: $Neon-Orange;
-          }
-          p {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            @include font-size(20);
-            line-height: 1.5;
-            margin: 0;
-          }
-        }
-
-        &.top-albums {
-          @include columns(12);
-
-          > h2 {
-            color: $Neon-Orange;
-          }
-          .albums-container {
-            width: 100%;
-            height: 300px;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            display: block;
-
-            .albums {
-              height: 300px;
-              width: 20*300px;
-
-              .album {
-                margin: 0;
-                padding: 0;
-                float: left;
-                height: 100%;
-                margin-bottom: -4px;
-                position: relative;
-                z-index: 0;
-
-                .front {
-                  position: relative;
-                  top: 0px;
-                  height: 100%;
-
-                  img {
-                    width: 300px;
-                    height: 300px;
-                    position: relative;
-                  }
-                }
-                .back {
-                  position: relative;
-                  top: -800px;
-                  left: 20px;
-                  width: 260px;
-                  height: auto;
-                  border-radius: 0 0 3px 3px;
-                  display: block;
-                  text-align: center;
-                  background: rgba(0,0,0,0.5);
-                  padding: 20px 10px;
-
-                  font-family: 'Raleway', sans-serif;
-                  font-weight: 200;
-
-                  @include transition(top 0.5s ease);
-                  @include box-sizing(border-box);
-
-                  h1, h2, h3 {
-                    padding: 0;
-                    margin: 0;
-
-                    word-break: break-all;
-
-                    -ms-word-break: break-all;
-                    word-break: break-all;
-
-                    // Non standard for webkit
-                    word-break: break-word;
-
-                    -webkit-hyphens: auto;
-                       -moz-hyphens: auto;
-                            hyphens: auto;
-                  }
-                  h1 {
-                    padding: 10px 0px;
-                  }
-                }
-              }
-
-              .album:hover {
-                cursor: pointer;
-              }
-
-              .flip {
-                .back {
-                  top: -300px;
-                }
-              }
-            }
-          }
-        }
-
-        &.top-artists {
-          @include columns(12);
-          @include box-sizing(border-box);
-
-          > h2 {
-            color: $Neon-Orange;
-          }
-          .artists-container {
-            width: 100%;
-            height: 1000px;
-            overflow-y: scroll;
-
-            .artists {
-              .artist {
-                width: 100%;
-                display: block;
-                overflow: hidden;
-                position: relative;            
-
-                .front {
-                  float: left;
-                  width: 100%;
-                  overflow: hidden;
-
-                  img {
-                    min-width: 100%;
-                    width: 100%;
-                    height: auto;
-                  }
-                }
-                .back {
-                  float: left;
-                  width: 100%;
-                  padding: 20px;
-                  @include box-sizing(border-box);
-                  position: absolute;
-                  top: 0;
-                  background: rgba(0,0,0,.5);
-                  @include transition(opacity .3s ease);
-                  opacity: 0;
-
-                  a {
-                    text-decoration: none;
-                  }
-                }
-                &.flip {
-                  .back {
-                    opacity: 1;
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        &.top-tracks {
-          @include columns(12);
-          @include box-sizing(border-box);
-
-          > h2 {
-            color: $Neon-Orange;
-          }
-          .tracks-container {
-            width: 100%;
-            height: 1000px;
-            overflow-y: scroll;
-
-            .tracks {
-              a:nth-child(2n+1) {
-                .track {
-                  background: rgba(0,0,0,.1);
-                }
-              }
-              .track {
-                position: relative;
-                height: 64px;
-                width: 100%;
-                display: block;
-                float: left;
-                overflow: hidden;
-                @include box-sizing(border-box);
-
-                .front, .back {
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  height: 100%;
-                  width: 100%;
-                }
-
-                .back {
-                  @include box-sizing(border-box);
-                  padding-left: 80px;
-                  height: auto;
-                  padding-top: 10px;
-                  top: 0;
-
-                  @include transition(top);
-                  @include transition-duration(0.5s);
-                  @include transition-timing-function(ease-in-out);
-
-                  h2, h1, h3 {
-                    @include font-size(15);
-                    margin: 0 0 10px;
-                    white-space: nowrap;
-                  }
-                  h3 {
-                    width: 100%;
-                  }
-                }
-                &.flip .back {
-                  top: -29px;
-                }
-              }
-            }
-          }
-        }
-
-        &.movies {
-          @include columns(12);
-          > h2 {
-            color: $Neon-Orange;
-          }
-          .movie-container {
-            width: 100%;
-            display: block;
-
-            .movies {
-              width: 100%;
-              line-height: 0;
-              @include column-count(2);
-              @include column-gap(10px);
-
-              .movie {
-                width: 100%;
-                margin-bottom: 10px;
-
-                img {
-                  height: auto;
-                  width: 100%;
-                }
-
-                .back{
-                  display: none;
-                }
-              }
-            }
-          }
-        }
-      }
       .foot {
-        height: 30px;
         text-align: center;
         font-family: 'Raleway', sans-serif;
         @include font-size(20);
         font-weight: 100;
         float: left;
         width: 100%;
+        padding: 5px;
+
+        a {
+          display: block;
+          @include font-size(12);
+        }
       }
     }
   }
@@ -519,27 +263,6 @@ body {
           }
         }
       }
-      a.nav {
-        top: 20px;
-      }
-      .content {
-        > section {
-          &.top-artists {
-            @include columns(6);
-          }
-          &.top-tracks {
-            @include columns(6);
-            margin-left: $gutter;
-          }
-          &.movies {
-            .movie-container {
-              .movies {
-                @include column-count(3);
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -553,34 +276,565 @@ body {
           }
         }
       }
-      .content {
-        > section {
-          &.movies {
-            .movie-container {
-              .movies {
-                @include column-count(4);
+    }
+  }
+}
+
+
+
+
+
+
+
+body.index {
+  .back{
+    h1 {
+      @include font-size(30);
+    }
+    h2 {
+      @include font-size(26);
+    }
+    h3 {
+      @include font-size(20);
+    }
+    h4 {
+      @include font-size(16);
+    }
+    h5 {
+      @include font-size(12);
+    }
+  }
+  .container {
+    nav a.index {
+      background: $dark-gray;
+      color: $Neon-Orange;
+
+      &:hover {
+        background: $dark-gray;
+        color: $Neon-Orange;
+        cursor: default;
+      }
+    }
+    section {
+      float: left;
+      @include columns(3);
+      margin-bottom: 30px;
+      @include box-sizing(border-box);
+
+      > h2 {
+        width: 100%;
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 0;
+        @include font-size(20);
+        font-family: 'Raleway', sans-serif;
+        font-weight: 100;
+        @include text-shadow(0px 1px 0px $bottom-border,
+                             0px 2px 0px $bottom-border);
+        color: $Neon-Orange;
+        @include box-sizing(border-box);
+        @include transition(font-size .5s ease);
+      }
+
+      &.about-me {
+        @include columns(12);
+        > h2 {
+          @include font-size(40);
+        }
+        p {
+          font-family: 'Raleway', sans-serif;
+          font-weight: 100;
+          @include font-size(20);
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      &.top-albums {
+        &:hover {
+          cursor: pointer;
+        }
+
+        .albums-container {
+          width: 0px;
+          height: 0px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          display: block;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .albums {
+            height: 300px;
+            width: 10*300px;
+
+            .album {
+              margin: 0;
+              padding: 0;
+              float: left;
+              height: 100%;
+              margin-bottom: -4px;
+              position: relative;
+              z-index: 0;
+
+              &:hover {
+                cursor: pointer;
+              }
+              .front {
+                position: relative;
+                top: 0px;
+                height: 100%;
+
+                img {
+                  width: 300px;
+                  height: 300px;
+                  position: relative;
+                }
+              }
+              .back {
+                position: relative;
+                top: -800px;
+                left: 20px;
+                width: 260px;
+                height: auto;
+                border-radius: 0 0 3px 3px;
+                display: block;
+                text-align: center;
+                background: rgba(0,0,0,0.5);
+                padding: 20px 10px;
+
+                font-family: 'Raleway', sans-serif;
+                font-weight: 200;
+
+                @include transition(top 0.5s ease);
+                @include box-sizing(border-box);
+
+                h1, h2, h3 {
+                  padding: 0;
+                  margin: 0;
+
+                  word-break: break-all;
+
+                  -ms-word-break: break-all;
+                  word-break: break-all;
+
+                  // Non standard for webkit
+                  word-break: break-word;
+
+                  -webkit-hyphens: auto;
+                     -moz-hyphens: auto;
+                          hyphens: auto;
+                }
+                h1 {
+                  padding: 10px 0px;
+                }
               }
             }
+
+            .album:hover {
+              cursor: pointer;
+            }
+
+            .flip {
+              .back {
+                top: -300px;
+              }
+            }
+          }
+        }
+        &.loaded {
+          @include columns(12);
+          > h2 {
+            @include font-size(40);
+          }
+          .albums-container {
+            width: 100%;
+            height: 300px;
+          }
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+
+      &.top-artists {
+        &:hover {
+          cursor: pointer;
+        }
+
+        .artists-container {
+          width: 0px;
+          height: 0px;
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .artists {
+            .artist {
+              width: 100%;
+              display: block;
+              overflow: hidden;
+              position: relative;            
+
+              .front {
+                float: left;
+                width: 100%;
+                overflow: hidden;
+
+                img {
+                  min-width: 100%;
+                  width: 100%;
+                  height: auto;
+                }
+              }
+              .back {
+                float: left;
+                width: 100%;
+                padding: 20px;
+                @include box-sizing(border-box);
+                position: absolute;
+                top: 0;
+                background: rgba(0,0,0,.5);
+                @include transition(opacity .3s ease);
+                opacity: 0;
+
+                a {
+                  text-decoration: none;
+                }
+              }
+              &.flip {
+                .back {
+                  opacity: 1;
+                }
+              }
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        &.loaded {
+          @include columns(12);
+          > h2 {
+            @include font-size(40);
+          }
+          .artists-container {
+            width: 100%;
+            height: 500px;
+          }
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+
+      &.top-tracks {
+        float: right;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        .tracks-container {
+          width: 0px;
+          height: 0px;
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .tracks {
+            .track:nth-child(2n+1) {
+              background: $grayer;
+            }
+            .track:nth-child(2n) {
+              background: $dark-gray;
+            }
+            .track {
+              position: relative;
+              height: 64px;
+              width: 100%;
+              display: block;
+              float: left;
+              overflow: hidden;
+              @include box-sizing(border-box);
+
+              .front, .back {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+              }
+
+              .back {
+                @include box-sizing(border-box);
+                padding-left: 80px;
+                height: auto;
+                padding-top: 10px;
+                top: 0;
+
+                @include transition(top);
+                @include transition-duration(0.5s);
+                @include transition-timing-function(ease-in-out);
+
+                h2, h1, h3 {
+                  @include font-size(15);
+                  margin: 0 0 10px;
+                  white-space: nowrap;
+                }
+                h3 {
+                  width: 100%;
+                }
+              }
+              &.flip .back {
+                top: -29px;
+              }
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        &.loaded {
+          @include columns(12);
+          > h2 {
+            @include font-size(40);
+          }
+          .tracks-container {
+            width: 100%;
+            height: 500px;
+          }
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+
+      &.movies {
+        &:hover {
+          cursor: pointer;
+        }
+
+        .movies-container {
+          width: 0px;
+          height: 0px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          display: block;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .movies {
+            height: 300px;
+            width: 16*200px;
+
+            .movie {
+              margin: 0;
+              padding: 0;
+              float: left;
+              height: 100%;
+              margin-bottom: -4px;
+              position: relative;
+              z-index: 0;
+              width: 200px;
+              overflow: hidden;
+
+              img {
+                width: auto;
+                height: 300px;
+                position: relative;
+              }
+            }
+          }
+        }
+        &.loaded {
+          @include columns(12);
+          > h2 {
+            @include font-size(40);
+          }
+          .movies-container {
+            width: 100%;
+            height: 300px;
+          }
+          &:hover {
+            cursor: default;
           }
         }
       }
     }
   }
 }
-@include mq(900px) {
-  body {
+@include mq(600px) {
+  body.index {
     .container {
-      .content {
-        > section {
-          &.movies {
-            .movie-container {
-              .movies {
-                @include column-count(5);
-              }
-            }
+      section {
+        &.loaded {
+          &.top-artists {
+            @include columns(6);
+          }
+          &.top-tracks {
+            @include columns(6);
+            margin-left: $gutter;
           }
         }
       }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+body.work {
+  .container {
+    width: 100%;
+    max-width: 100%;
+
+    nav a.work {
+      background: $dark-gray;
+      color: $Neon-Orange;
+
+      &:hover {
+        background: $dark-gray;
+        color: $Neon-Orange;
+        cursor: default;
+      }
+    }
+
+    section {
+      width: 100%;
+      height: 400px;
+
+      &.nest {
+        background-color: #2FC9EF;
+        background-image: url('/images/work/nest.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 90%;
+      }
+      &.principal {
+        background-color: #FFFFFF;
+        @include image-2x('/images/work/principal.jpg', '/images/work/principal_2x.jpg');
+        background-position: center center;
+        background-repeat: no-repeat; 
+        background-size: 90%;  
+      }
+      &.smith {
+        background-color: #EFEFEF;
+        background-image: url('/images/work/smith.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 90%;
+      }
+      &.graceland {
+        background-color: #FFFFFF;
+        background-image: url('/images/work/graceland.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 90%;
+      }
+      &.anders {
+        background-color: #F5B547;
+        background-image: url('/images/work/anders.png');
+        background-position: center center;
+        background-repeat: no-repeat; 
+        background-size: 90%;  
+      }
+    }
+  }
+}
+@include mq(768px) {
+  body.work {
+    .container {
+      section.nest {
+        background-size: auto;
+      }
+    }
+  }
+}
+@include mq(640px) {
+  body.work {
+    .container {
+      section.principal {
+        background-size: auto;
+      }
+    }
+  }
+}
+@include mq(320px) {
+  body.work {
+    .container {
+      section.smith {
+        background-size: auto;
+      }
+    }
+  }
+}
+@include mq(480px) {
+  body.work {
+    .container {
+      section.graceland {
+        background-size: auto;
+      }
+    }
+  }
+}
+@include mq(768px) {
+  body.work {
+    .container {
+      section {
+        &.anders {
+          background-size: auto;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+body.about {
+  section {
+    float: left;
+    padding-right: 20px;
+    width: 100%;
+    @include box-sizing(border-box);
+
+    h1 {
+      @include font-size(20);
+    }
+    ul {
+      list-style: none;
+      padding-left: 20px;
+
+      li {
+        @include font-size(16);
+      }
+    }
+  }
+}
+@include mq(600px) {
+  body.about {
+    section {
+      width: 50%;
+    }
+  }
+}
+@include mq(768px) {
+  body.about {
+    section {
+      width: 25%;
     }
   }
 }

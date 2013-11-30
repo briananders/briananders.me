@@ -33,6 +33,10 @@
       <div></div>
     </aside>
     <div class="container">
+      <nav>
+        <a class="index" href="/">Media</a>
+        <a class="work" href="/work/">Work</a>
+      </nav>
       <header id="header">
         <h1 class="brian-anders">Brian Anders</h1>
         <div class="profile">
@@ -42,31 +46,32 @@
       <div class="content">
         <a class="nav">
           <div>
-            <img src="/images/social/twitter.png" width="48" height="48">
+            <%= image_tag "/images/social/twitter.png", :alt=>'twitter image'%>
           </div>
           <div>
-            <img src="/images/social/google+.png" width="48" height="48">
+            <%= image_tag "/images/social/google+.png", :alt=>'google+ image'%>
           </div>
           <div>
-            <img src="/images/social/fb.png" width="48" height="48">
+            <%= image_tag "/images/social/fb.png", :alt=>'fb image'%>
           </div>
           <div>
-            <img src="/images/social/linkedin.png" width="48" height="48">
+            <%= image_tag "/images/social/linkedin.png", :alt=>'linkedin image'%>
           </div>
           <div>
-            <img src="/images/social/imdb.png" width="48" height="48">
+            <%= image_tag "/images/social/imdb.png", :alt=>'imdb image'%>
           </div>
           <div>
-            <img src="/images/social/github.png" width="48" height="48">
+            <%= image_tag "/images/social/github.png", :alt=>'github image'%>
           </div>
           <div>
-            <img src="/images/social/last fm.png" width="48" height="48">
+            <%= image_tag "/images/social/lastfm.png", :alt=>'lastfm image'%>
           </div>
         </a>
 
         <%= yield %>
 
         <footer class="foot">
+          <a href="/about/">See how the site works.</a>
           &#169; 2013 - Brian Anders
         </footer>
       </div>
