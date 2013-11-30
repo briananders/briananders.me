@@ -44,6 +44,9 @@ $(document).ready(function() {
                 period: "3month" //overall|7day|1month|3month|6month|12month
             });
             $(this).addClass('loaded');
+            $('html, body').animate({
+                scrollTop: $(this).offset().top
+            }, 500);
         }
     });
 
@@ -58,6 +61,9 @@ $(document).ready(function() {
         	});
             $(this).addClass('loaded');
             $('section.top-albums').css('width','100%');
+            $('html, body').animate({
+                scrollTop: $(this).offset().top
+            }, 500);
         }
     });
 
@@ -67,16 +73,22 @@ $(document).ready(function() {
         		APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
         		User: 'iBrianAnders',
         		Behavior: "click",//hover or click
-        		limit: 10, // 1 album - 50 albums
+        		limit: 20, // 1 album - 50 albums
         		period: "3month" //overall|7day|1month|3month|6month|12month
         	});
             $(this).addClass('loaded');
+            $('html, body').animate({
+                scrollTop: $(this).offset().top
+            }, 500);
         }
     });
 
     $('section.movies').click(function(){
         if(!$(this).hasClass('loaded')) {
             $(this).addClass('loaded');
+            $('html, body').animate({
+                scrollTop: $(this).offset().top
+            }, 500);
         }
     });
 

@@ -83,7 +83,7 @@ body {
       border-top: 1px solid $light-gray;
       border-bottom: 1px solid $darker-gray;
       background: #F1F1F1;
-      @include background-image(linear-gradient(top, $gray, $dark-gray));
+      background: $gray;
       @include text-shadow(0 1.5px #000000);
       text-decoration: none;
       color: $Neon-Orange;
@@ -92,7 +92,7 @@ body {
       font-weight: 200;
 
       &:hover {
-        @include background-image(linear-gradient(top, $grayer, $darker-gray));
+        background: $grayer;
       }
     }
     div {
@@ -163,13 +163,12 @@ body {
       @include transition(height .2s ease);
 
       .profile {
-        position: relative;
         display: block;
         width: 100%;
         height: 100%;
+        margin-top: -50px;
 
         .profile-link {
-          position: relative;
           background-image: image-url('profile.png');
           background-position: center bottom;
           background-size: 350px;
@@ -177,21 +176,22 @@ body {
           display: block;
           width: 100%;
           height: 100%;
-          z-index: 2;
+          position: absolute;
+          bottom: 0;
           @include transition(background-size .2s ease);
         }
       }
 
       .brian-anders {
-        margin: 30px auto 0;
+        margin: 0 auto;
+        padding: 30px 20px 0;
         width: 100%;
         max-width: 1040px;
         @include font-size(40);
         font-weight: 100;
-        @include text-shadow(0 1px $dark-gray, 0 2px $dark-gray);
         color: $Neon-Orange;
         text-align: center;
-        float: left;
+        @include box-sizing(border-box);
       }
     }
 
@@ -253,15 +253,22 @@ body {
         height: 500px;
 
         .brian-anders {
-          left: 30px;
           text-align: left;
-          width: auto;
         }
         .profile {
           .profile-link {
             background-size: 475px;
           }
         }
+      }
+    }
+  }
+}
+@include mq(600px) {
+  body {
+    .container {
+      a.nav {
+        top: 20px;
       }
     }
   }
@@ -352,6 +359,8 @@ body.index {
       }
 
       &.top-albums {
+        position: relative;
+
         &:hover {
           cursor: pointer;
         }
@@ -460,6 +469,8 @@ body.index {
       }
 
       &.top-artists {
+        position: relative;
+
         &:hover {
           cursor: pointer;
         }
@@ -533,6 +544,7 @@ body.index {
 
       &.top-tracks {
         float: right;
+        position: relative;
 
         &:hover {
           cursor: pointer;
@@ -615,10 +627,12 @@ body.index {
       }
 
       &.movies {
+        float: right;
+        position: relative;
+
         &:hover {
           cursor: pointer;
         }
-
         .movies-container {
           width: 0px;
           height: 0px;
