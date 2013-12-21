@@ -122,6 +122,7 @@ body {
       font-family: 'Raleway';
       font-weight: 100;
       overflow: hidden;
+      border-bottom: 1px solid $gray;
 
       a {
         width: 50%;
@@ -129,10 +130,14 @@ body {
         float: left;
         text-align: center;
         padding: 13px 0;
+        @include box-sizing(border-box);
 
         &:hover {
           color: $Neon-Orange;
-          background: $darker-gray;
+          background: $dark-gray;
+        }
+        &:first-child {
+          border-right: 1px solid $gray;
         }
       }
     }
@@ -236,7 +241,7 @@ body {
         font-weight: 100;
         float: left;
         width: 100%;
-        padding: 5px;
+        padding: 20px 0 5px;
 
         a {
           display: block;
@@ -291,8 +296,6 @@ body {
 
 
 
-
-
 body.index {
   .back{
     h1 {
@@ -323,18 +326,22 @@ body.index {
       }
     }
     section {
-      float: left;
-      @include columns(3);
+      @include columns(12);
       margin-bottom: 30px;
       @include box-sizing(border-box);
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+      @include transition(height 0.5s ease);
+      height: 0;
 
       > h2 {
         width: 100%;
-        display: block;
+        display: none;
         padding-top: 10px;
         padding-bottom: 10px;
         margin: 0;
-        @include font-size(20);
+        @include font-size(40);
         font-family: 'Raleway', sans-serif;
         font-weight: 100;
         @include text-shadow(0px 1px 0px $bottom-border,
@@ -346,8 +353,11 @@ body.index {
 
       &.about-me {
         @include columns(12);
+        height: auto;
+
         > h2 {
           @include font-size(40);
+          display: block;
         }
         p {
           font-family: 'Raleway', sans-serif;
@@ -360,14 +370,11 @@ body.index {
 
       &.top-albums {
         position: relative;
-
-        &:hover {
-          cursor: pointer;
-        }
+        @include columns(12);
 
         .albums-container {
-          width: 0px;
-          height: 0px;
+          width: 100%;
+          height: 300px;
           overflow-x: scroll;
           overflow-y: hidden;
           -webkit-overflow-scrolling: touch;
@@ -377,7 +384,7 @@ body.index {
 
           .albums {
             height: 300px;
-            width: 10*300px;
+            width: 20*300px;
 
             .album {
               margin: 0;
@@ -400,6 +407,7 @@ body.index {
                   width: 300px;
                   height: 300px;
                   position: relative;
+                  @include transform(scale(1.01));
                 }
               }
               .back {
@@ -442,10 +450,6 @@ body.index {
               }
             }
 
-            .album:hover {
-              cursor: pointer;
-            }
-
             .flip {
               .back {
                 top: -300px;
@@ -453,31 +457,16 @@ body.index {
             }
           }
         }
-        &.loaded {
-          @include columns(12);
-          > h2 {
-            @include font-size(40);
-          }
-          .albums-container {
-            width: 100%;
-            height: 300px;
-          }
-          &:hover {
-            cursor: default;
-          }
-        }
       }
 
       &.top-artists {
         position: relative;
-
-        &:hover {
-          cursor: pointer;
-        }
+        @include columns(12);
+        max-width: 600px;
 
         .artists-container {
-          width: 0px;
-          height: 0px;
+          width: 100%;
+          height: auto;
           overflow-y: scroll;
           -webkit-overflow-scrolling: touch;
           @include transition(height 0.5s ease);
@@ -488,7 +477,7 @@ body.index {
               width: 100%;
               display: block;
               overflow: hidden;
-              position: relative;            
+              position: relative;
 
               .front {
                 float: left;
@@ -499,6 +488,7 @@ body.index {
                   min-width: 100%;
                   width: 100%;
                   height: auto;
+                  @include transform(scale(1.03));
                 }
               }
               .back {
@@ -527,32 +517,14 @@ body.index {
             }
           }
         }
-        &.loaded {
-          @include columns(12);
-          > h2 {
-            @include font-size(40);
-          }
-          .artists-container {
-            width: 100%;
-            height: 500px;
-          }
-          &:hover {
-            cursor: default;
-          }
-        }
       }
 
       &.top-tracks {
-        float: right;
-        position: relative;
-
-        &:hover {
-          cursor: pointer;
-        }
+        max-width: 600px;
 
         .tracks-container {
-          width: 0px;
-          height: 0px;
+          width: 100%;
+          height: auto;
           overflow-y: scroll;
           -webkit-overflow-scrolling: touch;
           @include transition(height 0.5s ease);
@@ -611,31 +583,12 @@ body.index {
             }
           }
         }
-        &.loaded {
-          @include columns(12);
-          > h2 {
-            @include font-size(40);
-          }
-          .tracks-container {
-            width: 100%;
-            height: 500px;
-          }
-          &:hover {
-            cursor: default;
-          }
-        }
       }
 
       &.movies {
-        float: right;
-        position: relative;
-
-        &:hover {
-          cursor: pointer;
-        }
         .movies-container {
-          width: 0px;
-          height: 0px;
+          width: 100%;
+          height: 300px;
           overflow-x: scroll;
           overflow-y: hidden;
           -webkit-overflow-scrolling: touch;
@@ -666,17 +619,45 @@ body.index {
             }
           }
         }
-        &.loaded {
-          @include columns(12);
-          > h2 {
-            @include font-size(40);
+      }
+
+      &.loaded {
+        height: auto;
+      }
+
+      &#section-buttons {
+        overflow: hidden;
+        height: auto;
+
+        button {
+          width: 100%;
+          margin: 0;
+          border: none;
+          display: block;
+          float: left;
+          padding: 10px 0;
+          text-align: center;
+          background: none;
+
+          @include font-size(28);
+          font-family: 'Raleway', sans-serif;
+          font-weight: 100;
+          @include text-shadow(0px 1px 0px $bottom-border,
+                               0px 2px 0px $bottom-border);
+          color: $Neon-Orange;
+          @include box-sizing(border-box);
+          @include transition(border .2s ease, font-size .2s ease);
+          border-bottom-width: 2px;
+          border-bottom-style: solid;
+          border-bottom-color: rgba(0,0,0,0);
+
+          &:hover, &:active, &:focus, &.active {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            outline: -webkit-focus-ring-color none 5px;
+            border-bottom-color: $Neon-Orange;
           }
-          .movies-container {
-            width: 100%;
-            height: 300px;
-          }
-          &:hover {
-            cursor: default;
+          &.active {
+            @include font-size(34);
           }
         }
       }
@@ -687,22 +668,16 @@ body.index {
   body.index {
     .container {
       section {
-        &.loaded {
-          &.top-artists {
-            @include columns(6);
-          }
-          &.top-tracks {
-            @include columns(6);
-            margin-left: $gutter;
+        &#section-buttons {
+          button {
+            width: 25%;
+            text-align: left;
           }
         }
       }
     }
   }
 }
-
-
-
 
 
 
@@ -739,8 +714,8 @@ body.work {
         background-color: #FFFFFF;
         @include image-2x('/images/work/principal.jpg', '/images/work/principal_2x.jpg');
         background-position: center center;
-        background-repeat: no-repeat; 
-        background-size: 90%;  
+        background-repeat: no-repeat;
+        background-size: 90%;
       }
       &.smith {
         background-color: #EFEFEF;
@@ -760,8 +735,8 @@ body.work {
         background-color: #F5B547;
         background-image: url('/images/work/anders.png');
         background-position: center center;
-        background-repeat: no-repeat; 
-        background-size: 90%;  
+        background-repeat: no-repeat;
+        background-size: 90%;
       }
     }
   }
@@ -770,7 +745,7 @@ body.work {
   body.work {
     .container {
       section.nest {
-        background-size: auto;
+        background-size: auto 190px;
       }
     }
   }
@@ -779,7 +754,7 @@ body.work {
   body.work {
     .container {
       section.principal {
-        background-size: auto;
+        background-size: auto 350px;
       }
     }
   }
@@ -788,7 +763,7 @@ body.work {
   body.work {
     .container {
       section.smith {
-        background-size: auto;
+        background-size: 250px auto;
       }
     }
   }
@@ -797,7 +772,7 @@ body.work {
   body.work {
     .container {
       section.graceland {
-        background-size: auto;
+        background-size: auto 300px;
       }
     }
   }
@@ -807,7 +782,7 @@ body.work {
     .container {
       section {
         &.anders {
-          background-size: auto;
+          background-size: 655px auto;
         }
       }
     }
@@ -849,6 +824,67 @@ body.about {
   body.about {
     section {
       width: 25%;
+    }
+  }
+}
+
+
+
+
+
+body.four-oh-four {
+  section {
+    padding: 30px 0 60px;
+    overflow: hidden;
+
+    h1 {
+      @include font-size(50);
+      text-align: center;
+
+      a {
+        &:hover {
+          color: $Neon-Orange;
+          @include text-shadow(1px 1px 0 $text-gray,
+                               2px 2px 0 $text-gray,
+                               3px 3px 0 $text-gray);
+        }
+      }
+    }
+    .row {
+      clear: both;
+    }
+    h2.key {
+      @include font-size(35);
+      display: inline-block;
+      @include box-sizing(border-box);
+      float: left;
+
+      &.i {
+        font-weight: 300;
+      }
+    }
+    p.def {
+      @include font-size(25);
+      @include box-sizing(border-box);
+      float: left;
+      padding: 13px;
+    }
+    .i {
+      font-style: oblique;
+    }
+  }
+}
+@include mq(700px) {
+  body.four-oh-four {
+    section {
+      h2.key {
+        width: 25%;
+        text-align: right;
+      }
+      p.def {
+        width: 75%;
+        text-align: left;
+      }
     }
   }
 }

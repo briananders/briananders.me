@@ -53,6 +53,10 @@
 					}
 				});
 			}
+
+			if(settings.callback) {
+				settings.callback();
+			}
 		}
 
 		return this.each(function(){
@@ -113,6 +117,10 @@
 					}
 				});
 			}
+
+			if(settings.callback) {
+				settings.callback();
+			}
 		}
 
 		return this.each(function(){
@@ -172,6 +180,10 @@
 					}
 				});
 			}
+
+			if(settings.callback) {
+				settings.callback();
+			}
 		}
 
 		return this.each(function(){
@@ -191,6 +203,80 @@
 							name: this.name,
 							played: this.playcount,
 							artist: this.artist.name,
+							art: "http://cdn.last.fm/flatness/catalogue/noimage/2/default_album_medium.png",
+							url: this.url
+						})
+					}
+				});
+				isLoaded($this);
+			});
+		});
+	};
+
+	$.fn.lfmRecentTracks = function(options){
+		var settings = $.extend({
+			APIkey:		null,			// [string] required in order to retrieve content from last.fm
+			User:			null,			// [string] required username to retrieve data for
+			Behavior:	"hover",	// [string] controls detail content behavior. can be changed to 'click'
+			limit:		20,				// [integer] the number of albums you'd like to show. max of 50
+		}, options);
+
+		var url = "http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=" + settings.User + "&api_key=" + settings.APIkey + "&format=json&limit=" + settings.limit +"&callback=?";
+		//var url = "serverFixture.json"; //turn this on to try wihtout an api key or user
+		console.log(url);
+		var tracks = [];
+
+		function isLoaded (trackElement) {
+
+			for (var i = 0; i < tracks.length; i++){
+				var markup = $("<div class='recent-track'><div class='front'><img src='" + tracks[i].art + "'><div class='alpha'></div></div><div class='back'><h1>" + tracks[i].name + "</h1><h2>" + tracks[i].artist + "</h2><h3>" + tracks[i].album + "</h3></div></div>");
+				trackElement.append(markup);
+			}
+
+			if (settings.Behavior == "hover") {
+				trackElement.find('.recent-track').hover(function(){
+					$(this).addClass('flip');
+				},function(){
+					$(this).removeClass('flip');
+				});
+			} else {
+				$(document).bind('click', function (e) {
+					$('.flip').removeClass('flip');
+				});
+
+				trackElement.find('.track').click(function(e){
+					e.stopPropagation();
+					if($('.flip')[0] === this){
+						$(this).removeClass('flip');
+					} else {
+						$('.flip').removeClass('flip');
+						$(this).addClass('flip');
+					}
+				});
+			}
+
+			if(settings.callback) {
+				settings.callback();
+			}
+		}
+
+		return this.each(function(){
+			var $this = $(this);
+			$.getJSON( url, function(data){
+				$(data.recenttracks.track).each(function(){
+					if(this.image){
+						tracks.push ({
+							name:	this.name,
+							artist: this.artist["#text"],
+							album: this.album["#text"],
+							art:	this.image[3]['#text'],
+							url: this.url
+						});
+					} else {
+						tracks.push ({
+							name: this.name,
+							artist: this.artist["#text"],
+							album: this.album["#text"],
 							art: "http://cdn.last.fm/flatness/catalogue/noimage/2/default_album_medium.png",
 							url: this.url
 						})
