@@ -66,7 +66,7 @@ $(document).ready(function() {
             User: 'iBrianAnders',
             Behavior: "click",//hover or click
             limit: 10, // 1 artist - 50 artist
-            period: "3month", //overall|7day|1month|3month|6month|12month
+            period: "12month", //overall|7day|1month|3month|6month|12month
             callback: scrollToButtons
           });
         } else {
@@ -109,6 +109,11 @@ $(document).ready(function() {
     }
   });
 
+  if($('.four-oh-four').length != 0) {
+    $('html, body').animate({
+      scrollTop: $('.four-oh-four section').offset().top
+    }, 500);
+  }
 
   /*
   social icon slideshow

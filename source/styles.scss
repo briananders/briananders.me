@@ -1,0 +1,64 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:200);
+@import "compass";
+
+$gutter:    percentage(20px/940px); // 20px at 960px wide container, accounting for a 1/2 gutter width padding on the left and right of the container
+$onecol:                6.3829787%; // 60px at 960px wide container
+$columnsBreakPoint:          600px; // set this to the minimum width you want the columns to take effect at
+$containerMaxWidth:          1040px; // set this to the maximum width you want .container to have
+
+// MEDIA QUERY MIXINS
+@mixin mq($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+  html.nr {
+    @content;
+  }
+}
+@mixin columns($count:1) {
+  width: ($onecol * $count) + ($gutter * ($count - 1));
+}
+@mixin font-size($sizeValue: 16) {
+  font-size: $sizeValue + px;
+  font-size: ($sizeValue / 10) + rem;
+}
+@mixin column-count($value:1) {
+   -webkit-column-count: $value;
+   -moz-column-count:    $value;
+   column-count:         $value;
+}
+@mixin column-gap($value:0px) {
+   -webkit-column-gap:   $value;
+   -moz-column-gap:      $value;
+   column-gap:           $value;
+}
+@mixin image-2x($image, $image_2x) {
+  background-image: url($image);
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image_2x);
+  }
+}
+
+$text-gray: #C6C6C1;
+$darker-gray: #2C2C2C;
+$dark-gray: #2F2F2F;
+$grayer: #404040;
+$gray: #434343;
+$light-gray: #4A4A4A;
+$bottom-border: #121212;
+
+$Neon-Green: #6FFF00;
+$Neon-Pink: #FF00FF;
+$Neon-Yellow: #FFFF00;
+$Neon-Blue: #4D4DFF;
+$Neon-Red: #FE0001;
+$Neon-Orange: #FFA700;
+$Neon-Purple: #993CF3;
+
+$Raleway:'Raleway', Helvetica, sans-serif;

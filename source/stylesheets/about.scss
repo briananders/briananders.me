@@ -1,0 +1,36 @@
+@import "../styles";
+
+body.about {
+  section {
+    float: left;
+    padding-right: 20px;
+    width: 100%;
+    @include box-sizing(border-box);
+
+    h1 {
+      @include font-size(20);
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        @include font-size(16);
+      }
+    }
+  }
+}
+@include mq(600px) {
+  body.about {
+    section {
+      width: 50%;
+    }
+  }
+}
+@include mq(768px) {
+  body.about {
+    section {
+      width: 20%;
+    }
+  }
+}

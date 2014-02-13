@@ -1,0 +1,380 @@
+
+body.index {
+  .back{
+    h1 {
+      @include font-size(30);
+    }
+    h2 {
+      @include font-size(26);
+    }
+    h3 {
+      @include font-size(20);
+    }
+    h4 {
+      @include font-size(16);
+    }
+    h5 {
+      @include font-size(12);
+    }
+  }
+  .container {
+    nav a.index {
+      background: $dark-gray;
+      color: $Neon-Orange;
+
+      &:hover {
+        background: $dark-gray;
+        color: $Neon-Orange;
+        cursor: default;
+      }
+    }
+    section {
+      @include columns(12);
+      margin-bottom: 30px;
+      @include box-sizing(border-box);
+      position: relative;
+      margin: auto;
+      overflow: hidden;
+      @include transition(height 0.5s ease);
+      height: 0;
+
+      > h2 {
+        width: 100%;
+        display: none;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 0;
+        @include font-size(40);
+        font-family: 'Raleway', sans-serif;
+        font-weight: 100;
+        @include text-shadow(0px 1px 0px $bottom-border,
+                             0px 2px 0px $bottom-border);
+        color: $Neon-Orange;
+        @include box-sizing(border-box);
+        @include transition(font-size .5s ease);
+      }
+
+      &.about-me {
+        @include columns(12);
+        height: auto;
+
+        > h2 {
+          @include font-size(40);
+          display: block;
+        }
+        p {
+          font-family: 'Raleway', sans-serif;
+          font-weight: 100;
+          @include font-size(20);
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      &.top-albums {
+        position: relative;
+        @include columns(12);
+
+        .albums-container {
+          width: 100%;
+          height: 300px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          display: block;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .albums {
+            height: 300px;
+            width: 20*300px;
+
+            .album {
+              margin: 0;
+              padding: 0;
+              float: left;
+              height: 100%;
+              margin-bottom: -4px;
+              position: relative;
+              z-index: 0;
+
+              &:hover {
+                cursor: pointer;
+              }
+              .front {
+                position: relative;
+                top: 0px;
+                height: 100%;
+
+                img {
+                  width: 300px;
+                  height: 300px;
+                  position: relative;
+                  @include transform(scale(1.01));
+                }
+              }
+              .back {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                display: block;
+                text-align: center;
+                background: rgba(50,50,50,0.8);
+                padding: 35px 10px 20px;
+                opacity: 0;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+
+                @include transition(opacity 0.5s ease);
+                @include box-sizing(border-box);
+
+                h1, h2, h3 {
+                  padding: 0;
+                  margin: 0;
+
+                  word-break: break-all;
+
+                  -ms-word-break: break-all;
+                  word-break: break-all;
+
+                  // Non standard for webkit
+                  word-break: break-word;
+
+                  -webkit-hyphens: auto;
+                     -moz-hyphens: auto;
+                          hyphens: auto;
+                }
+                h1 {
+                  padding: 10px 0px;
+                }
+              }
+            }
+
+            .flip {
+              .back {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      &.top-artists {
+        position: relative;
+        @include columns(12);
+        max-width: 600px;
+
+        .artists-container {
+          width: 100%;
+          height: auto;
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .artists {
+            .artist {
+              width: 100%;
+              display: block;
+              overflow: hidden;
+              position: relative;
+
+              .front {
+                float: left;
+                width: 100%;
+                overflow: hidden;
+
+                img {
+                  min-width: 100%;
+                  width: 100%;
+                  height: auto;
+                  @include transform(scale(1.03));
+                }
+              }
+              .back {
+                float: left;
+                width: 100%;
+                padding: 20px;
+                @include box-sizing(border-box);
+                position: absolute;
+                top: 0;
+                background: rgba(50,50,50,.8);
+                @include transition(opacity .3s ease);
+                opacity: 0;
+
+                a {
+                  text-decoration: none;
+                }
+              }
+              &.flip {
+                .back {
+                  opacity: 1;
+                }
+              }
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      &.top-tracks {
+        max-width: 600px;
+
+        .tracks-container {
+          width: 100%;
+          height: auto;
+          overflow-y: scroll;
+          -webkit-overflow-scrolling: touch;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .tracks {
+            .track:nth-child(2n+1) {
+              background: $grayer;
+            }
+            .track:nth-child(2n) {
+              background: $dark-gray;
+            }
+            .track {
+              position: relative;
+              height: 64px;
+              width: 100%;
+              display: block;
+              float: left;
+              overflow: hidden;
+              @include box-sizing(border-box);
+
+              .front, .back {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+              }
+
+              .back {
+                @include box-sizing(border-box);
+                padding-left: 80px;
+                height: auto;
+                padding-top: 10px;
+                top: 0;
+
+                @include transition(top);
+                @include transition-duration(0.5s);
+                @include transition-timing-function(ease-in-out);
+
+                h2, h1, h3 {
+                  @include font-size(15);
+                  margin: 0 0 10px;
+                  white-space: nowrap;
+                }
+                h3 {
+                  width: 100%;
+                }
+              }
+              &.flip .back {
+                top: -29px;
+              }
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      &.movies {
+        .movies-container {
+          width: 100%;
+          height: 300px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          display: block;
+          @include transition(height 0.5s ease);
+          background: $dark-gray;
+
+          .movies {
+            height: 300px;
+            width: 16*200px;
+
+            .movie {
+              margin: 0;
+              padding: 0;
+              float: left;
+              height: 100%;
+              margin-bottom: -4px;
+              position: relative;
+              z-index: 0;
+              width: 200px;
+              overflow: hidden;
+
+              img {
+                width: auto;
+                height: 300px;
+                position: relative;
+              }
+            }
+          }
+        }
+      }
+
+      &.loaded {
+        height: auto;
+      }
+
+      &#section-buttons {
+        overflow: hidden;
+        height: auto;
+
+        button {
+          width: 100%;
+          margin: 0;
+          border: none;
+          display: block;
+          float: left;
+          padding: 10px 0;
+          text-align: center;
+          background: none;
+
+          @include font-size(28);
+          font-family: 'Raleway', sans-serif;
+          font-weight: 100;
+          @include text-shadow(0px 1px 0px $bottom-border,
+                               0px 2px 0px $bottom-border);
+          color: $Neon-Orange;
+          @include box-sizing(border-box);
+          @include transition(border .2s ease, font-size .2s ease);
+          border-bottom-width: 2px;
+          border-bottom-style: solid;
+          border-bottom-color: rgba(0,0,0,0);
+
+          &:hover, &:active, &:focus, &.active {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            outline: -webkit-focus-ring-color none 5px;
+            border-bottom-color: $Neon-Orange;
+          }
+          &.active {
+            @include font-size(34);
+          }
+        }
+      }
+    }
+  }
+}
+@include mq(600px) {
+  body.index {
+    .container {
+      section {
+        &#section-buttons {
+          button {
+            width: 25%;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
