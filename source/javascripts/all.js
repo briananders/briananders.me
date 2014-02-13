@@ -3,19 +3,19 @@
 
 (function($){
   $.fn.debounce = function(fn, action, thresh){
-  return fn ? this.bind(action, (function debounce(fn, thresh) {
-    var timeout;
-    return function debounced () {
-    var obj = this, args = arguments;
-    function delayed () {
-      fn.apply(obj, args);
-      timeout = null;
-    };
-    if (timeout)
-      clearTimeout(timeout);
-    timeout = setTimeout(delayed, thresh || 50);
-    };
-  })(fn, thresh)) : this.trigger(action);
+    return fn ? this.bind(action, (function debounce(fn, thresh) {
+      var timeout;
+      return function debounced () {
+      var obj = this, args = arguments;
+      function delayed () {
+        fn.apply(obj, args);
+        timeout = null;
+      }
+      if (timeout)
+        clearTimeout(timeout);
+      timeout = setTimeout(delayed, thresh || 50);
+      };
+    })(fn, thresh)) : this.trigger(action);
   };
 })(jQuery);
 
@@ -24,7 +24,7 @@ $(document).ready(function() {
   //makes the image_tag helper retina images work.
   if(window.devicePixelRatio >= 1.2){
     $("[data-src-2x]").each(function(){
-      if(this.tagName == "IMG"){
+      if(this.tagName === "IMG"){
         $(this).attr("src",$(this).attr("data-src-2x"));
       } else {
         $(this).css({"background-image":"url("+$(this).attr("data-src-2x")+")"});
@@ -44,7 +44,7 @@ $(document).ready(function() {
 
     switch(section) {
       case 'top-albums':
-        if($('.album').length == 0) {
+        if($('.album').length === 0) {
           $('.albums').lfmTopAlbums({
             APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
             User: 'iBrianAnders',
@@ -60,7 +60,7 @@ $(document).ready(function() {
         break;
 
       case 'top-artists':
-        if($('.artist').length == 0) {
+        if($('.artist').length === 0) {
           $('.artists').lfmTopArtists({
             APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
             User: 'iBrianAnders',
@@ -76,7 +76,7 @@ $(document).ready(function() {
         break;
 
       case 'top-tracks':
-        if($('.track').length == 0) {
+        if($('.track').length === 0) {
           $('.tracks').lfmTopTracks({
             APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
             User: 'iBrianAnders',
@@ -109,7 +109,7 @@ $(document).ready(function() {
     }
   });
 
-  if($('.four-oh-four').length != 0) {
+  if($('.four-oh-four').length !== 0) {
     $('html, body').animate({
       scrollTop: $('.four-oh-four section').offset().top
     }, 500);
@@ -122,11 +122,11 @@ $(document).ready(function() {
 
   setInterval(function() {
     $('a.nav div:first')
-    .fadeOut(1000)
-    .next()
-    .fadeIn(1000)
-    .end()
-    .appendTo('a.nav');
+      .fadeOut(1000)
+      .next()
+      .fadeIn(1000)
+      .end()
+      .appendTo('a.nav');
   },  3000);
 
   /*
@@ -134,7 +134,7 @@ $(document).ready(function() {
   */
   $(window).debounce(function() {
     if($('body').width() >= 600) {
-      $('a.nav').css('top', ($(window).scrollTop() + 20) + 'px');
+      $('a.nav').css('top', ($(window).scrollTop() + 1) + 'px');
     }
   }, 'scroll', 200);
 

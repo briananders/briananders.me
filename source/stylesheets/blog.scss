@@ -1,0 +1,18 @@
+body.blog {
+  .container {
+    nav {
+      border-bottom: 1px solid $dark-gray;
+
+      a.blog {
+        background: $dark-gray;
+        color: $Neon-Orange;
+
+        &:hover {
+          background: $dark-gray;
+          color: $Neon-Orange;
+          cursor: default;
+        }
+      }
+    }
+  }
+}
