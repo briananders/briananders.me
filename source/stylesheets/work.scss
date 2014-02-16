@@ -5,14 +5,18 @@ body.work {
     width: 100%;
     max-width: 100%;
 
-    nav a.work {
-      background: $dark-gray;
-      color: $Neon-Orange;
+    nav {
+      border-bottom: 1px solid $dark-gray;
 
-      &:hover {
+      a.work {
         background: $dark-gray;
         color: $Neon-Orange;
-        cursor: default;
+
+        &:hover {
+          background: $dark-gray;
+          color: $Neon-Orange;
+          cursor: default;
+        }
       }
     }
 

@@ -10,12 +10,20 @@ body {
   @include font-size(24);
 
   h1, h2, h3 {
-    @include font-size(40);
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
     @include text-shadow(0px 1px 0px $bottom-border,
                          0px 2px 0px $bottom-border);
     color: $Neon-Orange;
+  }
+  h1 {
+    @include font-size(40);
+  }
+  h2 {
+    @include font-size(30);
+  }
+  h3 {
+    @include font-size(24);
   }
 
   aside.links {
@@ -26,6 +34,8 @@ body {
     height: 100%;
     background: $gray;
     z-index: 0;
+    bottom: 0;
+    overflow-y: scroll;
 
     a {
       display: block;
@@ -83,8 +93,7 @@ body {
         text-align: center;
         padding: 13px 0;
         @include box-sizing(border-box);
-        border-left: 1px solid $grayer;
-        border-right: 1px solid $light-gray;
+        border-left: 1px solid $dark-gray;
 
         &:hover {
           color: $Neon-Orange;
@@ -100,9 +109,20 @@ body {
         color: inherit;
       }
     }
-    p {
+    p, blockquote {
       a {
         color: $Neon-Orange;
+
+        // &:hover {
+        //   &:before {
+        //     content: '\005B';
+        //     color: $Neon-Orange;
+        //   }
+        //   &:after {
+        //     content: '\005D';
+        //     color: $Neon-Orange;
+        //   }
+        // }
       }
     }
 
@@ -185,6 +205,7 @@ body {
       color: $text-gray;
       padding: 0 20px;
       @include box-sizing(border-box);
+      min-height: 400px;
 
       .foot {
         text-align: center;
