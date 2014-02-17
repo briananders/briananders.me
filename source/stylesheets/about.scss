@@ -1,6 +1,11 @@
 @import "../styles";
 
 body.about {
+  .container {
+    .content {
+      min-height: 300px;
+    }
+  }
   section {
     float: left;
     padding-right: 20px;
@@ -9,6 +14,7 @@ body.about {
 
     h1 {
       @include font-size(20);
+      border-bottom: 2px solid $Neon-Orange;
     }
     ul {
       list-style: none;
@@ -24,6 +30,7 @@ body.about {
   body.about {
     section {
       width: 50%;
+      min-height: 200px;
     }
   }
 }

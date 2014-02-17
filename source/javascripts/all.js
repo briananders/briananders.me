@@ -92,7 +92,7 @@ $(document).ready(function() {
         break;
 
       case 'top-movies':
-        $('section.movies').addClass('loaded');
+        $('section.top-movies').addClass('loaded');
         scrollToButtons();
         break;
     }
