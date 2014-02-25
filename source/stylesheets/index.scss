@@ -22,14 +22,18 @@ body.index {
     .content {
       min-height: 300px;
     }
-    nav a.index {
-      background: $dark-gray;
-      color: $Neon-Orange;
+    nav {
+      border-bottom: 1px solid $gray;
 
-      &:hover {
-        background: $dark-gray;
+      a.index {
         color: $Neon-Orange;
-        cursor: default;
+        background: $dark-gray;
+
+        &:hover {
+          background: $dark-gray;
+          color: $Neon-Orange;
+          cursor: default;
+        }
       }
     }
     section {

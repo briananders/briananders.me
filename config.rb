@@ -11,7 +11,7 @@ activate :blog do |blog|
   blog.permalink = "/blog/:year/:month/:day/:title.html"
   blog.sources = "/blog/:year-:month-:day-:title.html"
   blog.taglink = "/blog/tags/:tag.html"
-  blog.layout = "clear_layout"
+  blog.layout = "layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
   blog.year_link = "/blog/:year.html"
@@ -28,8 +28,8 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", :layout => false
-page "/blog/", :layout => "clear_layout"
-page "/work/", :layout => "clear_layout"
+page "/", :layout => "home_layout"
+page "/about/", :layout => "home_layout"
 
 ###
 # Compass

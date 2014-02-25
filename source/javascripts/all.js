@@ -99,7 +99,7 @@ $(document).ready(function() {
   });
 
   /*
-  opens the social menu
+    opens the social menu
   */
   $('a.nav').click(function() {
     if ($('.container').hasClass('open')) {
@@ -116,7 +116,7 @@ $(document).ready(function() {
   }
 
   /*
-  social icon slideshow
+    social icon slideshow
   */
   $("a.nav div:gt(0)").hide();
 
@@ -130,7 +130,67 @@ $(document).ready(function() {
   },  3000);
 
   /*
-  debounce method for social icon scroll following
+    animates the SVG profile image.
+  */
+  $('#animated-profile path').each(function(){
+    var length = this.getTotalLength();
+    // Clear any previous transition
+    this.style.transition = this.style.WebkitTransition =
+      'none';
+    // Set up the starting positions
+    this.style.strokeDasharray = length + ' ' + length;
+    this.style.strokeDashoffset = length;
+    // Trigger a layout so styles are calculated & the browser
+    // picks up the starting position before animating
+    this.getBoundingClientRect();
+    // Define our transition
+
+    this.style.transition = this.style.WebkitTransition =
+      'stroke-dashoffset 10s ease-in-out, fill 5s ease';
+    // Go!
+    this.style.strokeDashoffset = '0';
+
+    if(this.classList.contains('glasses')){
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 10000, [this]);
+    } else if(this.classList.contains('seven')){
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 5000, [this]);
+    } else if(this.classList.contains('one-d')){
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 5500, [this]);
+    } else if(this.classList.contains('four')){
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 7500, [this]);
+    } else if(this.classList.contains('zero')){
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 6000, [this]);
+    } else if(this.classList.contains('e-f')){
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 6500, [this]);
+    } else {
+      setTimeout(function(path){
+        $(path).attr('fill', $(path).data('fill'));
+      }, 7000, [this]);
+    }
+  });
+
+  /*
+    Detects if not Chrome/Safari and rolls back some stuff
+  */
+  if((navigator.userAgent === undefined) || !((navigator.userAgent.indexOf("Chrome") != -1) || (navigator.userAgent.indexOf("Safari") != -1))) {
+    $('.profile').css('display','block');
+    $('#animated-profile').css('display','none');
+  }
+
+  /*
+    debounce method for social icon scroll following
   */
   $(window).debounce(function() {
     if($('body').width() >= 600) {
