@@ -26,10 +26,6 @@ body.four-oh-four {
       @include box-sizing(border-box);
       float: left;
       margin: 0;
-
-      &.i {
-        font-weight: 300;
-      }
     }
     p.def {
       @include font-size(25);

@@ -49,7 +49,7 @@ body.index {
         padding-bottom: 10px;
         margin: 0;
         @include font-size(40);
-        font-family: 'Raleway', sans-serif;
+        font-family: $Raleway;
         font-weight: 100;
         @include text-shadow(0px 1px 0px $bottom-border,
                              0px 2px 0px $bottom-border);
@@ -77,7 +77,7 @@ body.index {
         background: none;
 
         @include font-size(28);
-        font-family: 'Raleway', sans-serif;
+        font-family: $Raleway;
         font-weight: 100;
         @include text-shadow(0px 1px 0px $bottom-border,
                              0px 2px 0px $bottom-border);
@@ -107,7 +107,7 @@ body.index {
         display: block;
       }
       p {
-        font-family: 'Raleway', sans-serif;
+        font-family: $Raleway;
         font-weight: 100;
         @include font-size(20);
         line-height: 1.5;
@@ -178,7 +178,7 @@ body.index .container section.top-albums {
           background: rgba(50,50,50,0.8);
           padding: 35px 10px;
           opacity: 0;
-          font-family: 'Raleway', sans-serif;
+          font-family: $Raleway;
           font-weight: 100;
 
           @include transition(opacity 0.5s ease);

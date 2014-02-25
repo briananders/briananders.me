@@ -10,7 +10,7 @@ body {
   @include font-size(24);
 
   h1, h2, h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: $Raleway;
     font-weight: 100;
     @include text-shadow(0px 1px 0px $bottom-border,
                          0px 2px 0px $bottom-border);
@@ -50,8 +50,8 @@ body {
       text-decoration: none;
       color: $Neon-Orange;
       @include font-size(20);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 200;
+      font-family: $Raleway;
+      font-weight: 100;
 
       &:hover {
         background: $grayer;
@@ -81,7 +81,7 @@ body {
     }
     nav {
       font-size: 20px;
-      font-family: 'Raleway';
+      font-family: $Raleway;
       font-weight: 100;
       overflow: hidden;
       border-bottom: 1px solid $gray;
@@ -112,17 +112,6 @@ body {
     p, blockquote {
       a {
         color: $Neon-Orange;
-
-        // &:hover {
-        //   &:before {
-        //     content: '\005B';
-        //     color: $Neon-Orange;
-        //   }
-        //   &:after {
-        //     content: '\005D';
-        //     color: $Neon-Orange;
-        //   }
-        // }
       }
     }
 
@@ -131,8 +120,8 @@ body {
       width: 100%;
       height: 400px;
       display: block;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 200;
+      font-family: $Raleway;
+      font-weight: 100;
       background: $dark-gray;
       border-bottom: 1px solid #555;
       @include box-shadow(inset 0 -4px 10px rgba(20, 20, 20, 0.4));
@@ -201,7 +190,8 @@ body {
       display: block;
       overflow: hidden;
       margin: 20px auto 0;
-      font-family: 'Raleway', sans-serif;
+      font-family: $Raleway;
+      font-weight: 100;
       color: $text-gray;
       padding: 0 20px;
       @include box-sizing(border-box);
@@ -209,7 +199,7 @@ body {
 
       .foot {
         text-align: center;
-        font-family: 'Raleway', sans-serif;
+        font-family: $Raleway;
         @include font-size(20);
         font-weight: 100;
         float: left;
