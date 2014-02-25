@@ -133,25 +133,19 @@ body {
         height: 100%;
         margin-top: -50px;
 
-        .profile-link {
-          background-image: image-url('profile.png');
-          background-position: center bottom;
-          background-size: 350px;
-          background-repeat: no-repeat;
+        #animated-profile {
           display: block;
           width: 100%;
           height: 100%;
           position: absolute;
           bottom: 0;
-          @include transition(background-size .2s ease);
+          height: 350px;
+          width: 435px;
+          left: 50%;
+          margin-left: -217.5px;
+
+          @include transition(height .2s ease);
         }
-      }
-      #animated-profile {
-        display: none;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: 0;
       }
 
       .brian-anders {
@@ -221,7 +215,7 @@ body {
     }
   }
 }
-@include mq(620px) {
+@include mq(600px) {
   body {
     .container {
       a.nav {
@@ -234,14 +228,12 @@ body {
           text-align: left;
         }
         .profile {
-          display: none;
-
-          .profile-link {
-            background-size: 475px;
+          #animated-profile {
+            left: auto;
+            margin-left: auto;
+            height: auto;
+            width: auto;
           }
-        }
-        #animated-profile {
-          display: block;
         }
       }
     }
