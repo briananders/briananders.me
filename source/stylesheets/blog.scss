@@ -15,6 +15,9 @@ body.blog {
         }
       }
     }
+    a.blog_back:hover {
+      text-decoration: underline;
+    }
     blockquote {
       border-left: 5px solid $Neon-Orange;
       margin: 0;

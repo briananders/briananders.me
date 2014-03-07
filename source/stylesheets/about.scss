@@ -5,6 +5,9 @@ body.about {
     .content {
       min-height: 300px;
     }
+    nav {
+      border-bottom: 1px solid $gray;
+    }
   }
   section {
     float: left;
