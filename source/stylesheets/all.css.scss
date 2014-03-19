@@ -134,6 +134,13 @@ body {
 
       p {
         @include font-size(20);
+        line-height: 1.5;
+        font-family: $Raleway;
+        font-weight: 100;
+
+        span {
+          font-family: Helvetica;
+        }
       }
     }
 

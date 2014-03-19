@@ -106,9 +106,6 @@ body.index {
         display: block;
       }
       p {
-        font-family: $Raleway;
-        font-weight: 100;
-        line-height: 1.5;
         margin: 0 0 10px;
       }
     }
@@ -175,7 +172,7 @@ body.index .container section.artists {
     h1 {
       position: absolute;
       left: 10px;
-      top: 10px;
+      top: 13px;
       @include font-size(20);
     }
     &:hover {
