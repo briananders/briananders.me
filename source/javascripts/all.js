@@ -2,26 +2,9 @@
 
 
 (function($){
-  $.fn.debounce = function(fn, action, thresh){
-    return fn ? this.bind(action, (function debounce(fn, thresh) {
-      var timeout;
-      return function debounced () {
-      var obj = this, args = arguments;
-      function delayed () {
-        fn.apply(obj, args);
-        timeout = null;
-      }
-      if (timeout)
-        clearTimeout(timeout);
-      timeout = setTimeout(delayed, thresh || 50);
-      };
-    })(fn, thresh)) : this.trigger(action);
-  };
-})(jQuery);
-
-$(document).ready(function() {
-
-  //makes the image_tag helper retina images work.
+  /*
+    makes the image_tag helper retina images work.
+  */
   if(window.devicePixelRatio >= 1.2){
     $("[data-src-2x]").each(function(){
       if(this.tagName === "IMG"){
@@ -32,102 +15,20 @@ $(document).ready(function() {
     });
   }
 
-  $('.container').addClass('loaded');
 
-  $('#section-buttons button').click(function(){
 
-    $(this).siblings().removeClass('active');
-    $(this).addClass('active');
-
-    var section = this.dataset['section'];
-    $('section').removeClass('loaded');
-
-    switch(section) {
-      case 'top-albums':
-        if($('.album').length === 0) {
-          $('.albums').lfmTopAlbums({
-            APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-            User: 'iBrianAnders',
-            Behavior: "click",//hover or click
-            limit: 20, // 1 album - 50 albums
-            period: "3month", //overall|7day|1month|3month|6month|12month
-            callback: scrollToButtons
-          });
-        } else {
-          scrollToButtons();
-        }
-        $('.top-albums').addClass('loaded');
-        break;
-
-      case 'top-artists':
-        if($('.artist').length === 0) {
-          $('.artists').lfmTopArtists({
-            APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-            User: 'iBrianAnders',
-            Behavior: "click",//hover or click
-            limit: 10, // 1 artist - 50 artist
-            period: "12month", //overall|7day|1month|3month|6month|12month
-            callback: scrollToButtons
-          });
-        } else {
-          scrollToButtons();
-        }
-        $('.top-artists').addClass('loaded');
-        break;
-
-      case 'top-tracks':
-        if($('.track').length === 0) {
-          $('.tracks').lfmTopTracks({
-            APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-            User: 'iBrianAnders',
-            Behavior: "click",//hover or click
-            limit: 20, // 1 track - 50 track
-            period: "3month", //overall|7day|1month|3month|6month|12month
-            callback: scrollToButtons
-          });
-        } else {
-          scrollToButtons();
-        }
-        $('.top-tracks').addClass('loaded');
-        break;
-
-      case 'top-movies':
-        $('section.top-movies').addClass('loaded');
-        scrollToButtons();
-        break;
-    }
-  });
 
   /*
-    opens the social menu
+    scroll down if on the 404 page.
   */
-  $('a.nav').click(function() {
-    if ($('.container').hasClass('open')) {
-      $('.container').removeClass('open');
-    } else {
-      $('.container').addClass('open');
-    }
-  });
-
-  if($('.four-oh-four').length !== 0) {
+  if($('.four-oh-four').length) {
     $('html, body').animate({
       scrollTop: $('.four-oh-four section').offset().top
     }, 500);
   }
 
-  /*
-    social icon slideshow
-  */
-  $("a.nav div:gt(0)").hide();
 
-  setInterval(function() {
-    $('a.nav div:first')
-      .fadeOut(1000)
-      .next()
-      .fadeIn(1000)
-      .end()
-      .appendTo('a.nav');
-  },  3000);
+
 
   /*
     animates the SVG profile image.
@@ -188,19 +89,83 @@ $(document).ready(function() {
       }
     });
   }
-
+})(jQuery);
+  
+(function($){
   /*
-    debounce method for social icon scroll following
+    LastFM api call and dom loads
   */
-  $(window).debounce(function() {
-    if($('body').width() >= 600) {
-      $('a.nav').css('top', ($(window).scrollTop() + 1) + 'px');
-    }
-  }, 'scroll', 200);
+  lfmOpts = {
+    APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
+    User: 'iBrianAnders',
+    limit: 12, // 1 album - 50 albums
+    period: "3month" //overall|7day|1month|3month|6month|12month
+  };
 
-  function scrollToButtons() {
-    $('html, body').animate({
-      scrollTop: $('#section-buttons button').offset().top
-    }, 500);
+  $('.albums') && $.ajax({
+    type: 'GET',
+    url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
+    dataType: 'json',
+  }).then(function(data){
+    var markup = [];
+
+    data.topalbums.album.forEach(function(album){
+      markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'><div class='back'></div></a>");
+    });
+
+    $('.albums').append(markup.join(''));
+  });
+
+})(jQuery);
+  
+(function($){
+  /*
+    LastFM api call and dom loads
+  */
+  lfmOpts = {
+    APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
+    User: 'iBrianAnders',
+    limit: 12, // 1 album - 50 albums
+    period: "3month" //overall|7day|1month|3month|6month|12month
+  };
+
+  $('.artists') && $.ajax({
+    type: 'GET',
+    url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
+    dataType: 'json',
+  }).then(function(data){
+    var markup = [];
+
+    data.topartists.artist.forEach(function(artist){
+      markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><img src='" + artist.image[1]["#text"] + "'><h1>" + artist.name + "</h1><div class='back'></div></a>");
+    });
+
+    $('.artists').append(markup.join(''));
+  });
+})(jQuery);
+
+
+(function($){
+  /*
+    instagram api call and dom load
+  */
+  iOpts = {
+    APIkey: 'f42ca37467bc4296b311a70e1258c88e',
+    User: '196017474'
   }
-});
+
+  $('.instagram') && $.ajax({
+    type: 'GET',
+    url: 'https://api.instagram.com/v1/users/' + iOpts.User + '/media/recent/?client_id=' + iOpts.APIkey,
+    dataType: 'jsonp',
+  }).then(function(response){
+    var markup = [];
+
+    response.data.forEach(function(photo, index){
+      if(index >= 12) return;
+      markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'><div class='back'></div></a>");
+    });
+
+    $('.instagram').append(markup.join(''));
+  });
+})(jQuery);

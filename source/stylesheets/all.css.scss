@@ -7,60 +7,23 @@ html {
   background: $gray;
 }
 body {
-  @include font-size(24);
+  @include font-size(30);
 
   h1, h2, h3 {
     font-family: $Raleway;
     font-weight: 100;
-    @include text-shadow(0px 1px 0px $bottom-border,
-                         0px 2px 0px $bottom-border);
+    @include text-shadow(0px 1px 0px $text-border,
+                         0px 2px 0px $text-border);
     color: $Neon-Orange;
   }
   h1 {
     @include font-size(40);
   }
   h2 {
-    @include font-size(30);
+    @include font-size(34);
   }
   h3 {
-    @include font-size(24);
-  }
-
-  aside.links {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background: $gray;
-    z-index: 0;
-    bottom: 0;
-    overflow-y: scroll;
-
-    a {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 20px 0;
-      border-top: 1px solid $light-gray;
-      border-bottom: 1px solid $darker-gray;
-      background: #F1F1F1;
-      background: $gray;
-      @include text-shadow(0 1.5px #000000);
-      text-decoration: none;
-      color: $Neon-Orange;
-      @include font-size(20);
-      font-family: $Raleway;
-      font-weight: 100;
-
-      &:hover {
-        background: $grayer;
-      }
-    }
-    div {
-      width: 100%;
-      border-top: 1px solid $gray;
-    }
+    @include font-size(30);
   }
 
   .container {
@@ -74,14 +37,8 @@ body {
     @include box-sizing(border-box);
     overflow: hidden;
 
-    &.loaded {
-      @include transition(margin-left 1s ease);
-    }
-    &.open {
-      margin-left: -250px;
-    }
     nav {
-      font-size: 20px;
+      @include font-size(30);
       font-family: $Raleway;
       font-weight: 100;
       overflow: hidden;
@@ -124,8 +81,8 @@ body {
       font-family: $Raleway;
       font-weight: 100;
       background: $dark-gray;
-      border-bottom: 1px solid #555;
-      // @include box-shadow(inset 0 -4px 10px rgba(20, 20, 20, 0.4));
+      border-bottom: 1px solid $border-color;
+      border-top: 1px solid $gray;
       @include transition(height .2s ease);
 
       .profile {
@@ -162,36 +119,12 @@ body {
       }
     }
 
-    a.nav {
-      width: 48px;
-      height: 48px;
-      position: absolute;
-      right: 10px;
-      border-radius: 48px;
-      z-index: 3;
-      @include transition(top .2s ease);
-
-      &:hover {
-        cursor: default;
-
-        > div {
-          cursor: pointer;
-        }
-      }
-
-      > div {
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    }
-
     .content {
       width: 100%;
       max-width: 1040px;
       display: block;
       overflow: hidden;
-      margin: 20px auto 0;
+      margin: 20px auto;
       font-family: $Raleway;
       font-weight: 100;
       color: $text-gray;
@@ -199,19 +132,63 @@ body {
       @include box-sizing(border-box);
       min-height: 400px;
 
-      .foot {
-        text-align: center;
-        font-family: $Raleway;
+      p {
         @include font-size(20);
-        font-weight: 100;
-        float: left;
-        width: 100%;
-        padding: 20px 0 5px;
+      }
+    }
 
-        a {
+    .links {
+      width: 100%;
+      background: $dark-gray;
+      border-top: 1px solid $border-color;
+      border-bottom: 1px solid $border-color;
+
+      .links-container {
+        width: 100%;
+        max-width: 1000px;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px 0 0;
+
+        .link {
           display: block;
-          @include font-size(12);
+          float: left;
+          height: 48px;
+          width: 25%;
+          text-align: center;
+          padding-bottom: 20px;
+
+          a {
+            height: 48px;
+            width: 48px;
+            display: inline-block;
+            border-radius: 24px;
+            border: 1px solid $dark-gray;
+            @include transition(border .2s ease);
+
+            &:hover {
+              border: 1px solid $text-gray;
+            }
+          }
         }
+      }
+    }
+
+    .foot {
+      text-align: center;
+      font-family: $Raleway;
+      @include font-size(20);
+      font-weight: 100;
+      float: left;
+      width: 100%;
+      padding: 10px;
+      color: $text-gray;
+
+      a {
+        @include font-size(12);
+      }
+      span {
+        display: block;
       }
     }
   }
@@ -237,6 +214,16 @@ body {
           }
         }
       }
+      .content p {
+        @include font-size(30);
+      }
+      .links {
+        .links-container {
+          .link {
+            width: 12.5%;
+          }
+        }
+      }
     }
   }
 }
@@ -244,11 +231,29 @@ body {
   body {
     .container {
       #header {
+        .brian-anders {
+          @include font-size(50);
+        }
         .profile {
           .profile-link {
             background-size: 550px;
           }
         }
+      }
+    }
+  }
+}
+@include mq(1040px) {
+  body {
+    .container {
+      #header {
+        .brian-anders {
+          padding: 30px 0 0;
+          @include font-size(70);
+        }
+      }
+      .content {
+        padding: 0;
       }
     }
   }

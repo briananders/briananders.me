@@ -22,16 +22,6 @@
   </head>
 
   <body class="<%= page_classes %> <%= data.page.classes %>">
-    <aside class="links">
-      <a class="twitter" target="blank" href="https://twitter.com/imBrianAnders">@imBrianAnders</a>
-      <a class="google-plus" target="blank" href="https://plus.google.com/103609977209431639131/posts">Google+</a>
-      <a class="facebook" target="blank" href="https://www.facebook.com/anders.brian">Facebook</a>
-      <a class="linkedin" target="blank" href="http://www.linkedin.com/in/andersbrian">LinkedIn</a>
-      <a class="imdb" target="blank" href="http://www.imdb.com/user/ur23740510/">IMDb Profile</a>
-      <a class="github" target="blank" href="https://github.com/briananders">Github</a>
-      <a class="lastfm" target="blank" href="http://www.last.fm/user/iBrianAnders">Last.FM</a>
-      <div></div>
-    </aside>
     <div class="container">
       <nav>
         <a class="index" href="/">Media</a>
@@ -1427,37 +1417,42 @@
         </div>
       </header>
       <div class="content">
-        <a class="nav">
-          <div>
-            <%= image_tag "/images/social/twitter.png", :alt=>'twitter image'%>
-          </div>
-          <div>
-            <%= image_tag "/images/social/google+.png", :alt=>'google+ image'%>
-          </div>
-          <div>
-            <%= image_tag "/images/social/fb.png", :alt=>'fb image'%>
-          </div>
-          <div>
-            <%= image_tag "/images/social/linkedin.png", :alt=>'linkedin image'%>
-          </div>
-          <div>
-            <%= image_tag "/images/social/imdb.png", :alt=>'imdb image'%>
-          </div>
-          <div>
-            <%= image_tag "/images/social/github.png", :alt=>'github image'%>
-          </div>
-          <div>
-            <%= image_tag "/images/social/lastfm.png", :alt=>'lastfm image'%>
-          </div>
-        </a>
 
         <%= yield %>
 
-        <footer class="foot">
-          <a href="/about/">See how the site works.</a>
-          &#169; 2013 - Brian Anders
-        </footer>
       </div>
+      <div class="links">
+        <div class="links-container">
+          <div class="link">
+            <a class="twitter" target="blank" href="https://twitter.com/imBrianAnders"><%= image_tag "/images/social/twitter.png", :alt=>'twitter image'%></a>
+          </div>
+          <div class="link">
+            <a class="google-plus" target="blank" href="https://plus.google.com/103609977209431639131/posts"><%= image_tag "/images/social/google+.png", :alt=>'google+ image'%></a>
+          </div>
+          <div class="link">
+            <a class="facebook" target="blank" href="https://www.facebook.com/anders.brian"><%= image_tag "/images/social/fb.png", :alt=>'fb image'%></a>
+          </div>
+          <div class="link">
+            <a class="linkedin" target="blank" href="http://www.linkedin.com/profile/view?id=55731958"><%= image_tag "/images/social/linkedin.png", :alt=>'linkedin image'%></a>
+          </div>
+          <div class="link">
+            <a class="imdb" target="blank" href="http://www.imdb.com/user/ur23740510/"><%= image_tag "/images/social/imdb.png", :alt=>'imdb image'%></a>
+          </div>
+          <div class="link">
+            <a class="github" target="blank" href="https://github.com/briananders"><%= image_tag "/images/social/github.png", :alt=>'github image'%></a>
+          </div>
+          <div class="link">
+            <a class="lastfm" target="blank" href="http://www.last.fm/user/iBrianAnders"><%= image_tag "/images/social/lastfm.png", :alt=>'lastfm image'%></a>
+          </div>
+          <div class="link">
+            <a class="instagramLink" target="blank" href="http://instagram.com/briananders"><%= image_tag "/images/social/instagram.png", :alt=>'instagram image'%></a>
+          </div>
+        </div>
+      </div>
+      <footer class="foot">
+        <a href="/about/">See how the site works.</a>
+        <span>&copy; 2013 - Brian Anders</span>
+      </footer>
     </div>
 
     <%= javascript_include_tag "all" %>
