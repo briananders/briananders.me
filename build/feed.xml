@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Brian Anders Blog</title>
+  <subtitle>Thoughts, Rants and Research</subtitle>
+  <id>http://briananders.me/blog</id>
+  <link href="http://briananders.me/blog"/>
+  <link href="http://briananders.me/feed.xml" rel="self"/>
+  <updated>2014-02-14T00:00:00Z</updated>
+  <author>
+    <name>Brian Anders</name>
+  </author>
+  <entry>
+    <title>How I Think Elipsis Work</title>
+    <link rel="alternate" href="http://briananders.me/blog/2014/02/14/How-Elipsis-Work/"/>
+    <id>http://briananders.me/blog/2014/02/14/How-Elipsis-Work/</id>
+    <published>2014-02-14T00:00:00Z</published>
+    <updated>2014-03-18T13:52:14-07:00</updated>
+    <author>
+      <name>Brian Anders</name>
+    </author>
+    <content type="html">&lt;h1 id="elipsishellip-how-do-they-workhellip-to-mehellip"&gt;Elipsis… How do they work… to me…&lt;/h1&gt;
+
+&lt;p&gt;I am one of those crazy guys that gets annoyed when someone uses the wrong there (there, their, they're) or its (it's, its). So, it only makes sense that when people use ellipsis wrong.&lt;/p&gt;
+
+&lt;p&gt;I should first cover what an ellipsis is. According to &lt;a href="http://www.thepunctuationguide.com/ellipses.html"&gt;The Punctuation Guide&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;An ellipsis is a set of three periods (…) indicating an omission. Each period should have a single space on either side, except when adjacent to a quotation mark, in which case there should be no space.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Boom. Now we're on the same page. I'm sure you've seen an ellipsis used but may not have know the name, or that a name for that exists. Also, who knew that there had to be spaces? I didn't until researching for this blogpost.&lt;/p&gt;
+
+&lt;p&gt;So, an ellipsis is used in many different ways. Showing that the sentence has been left unfinished or unstarted:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…the universe is mysterious.&lt;/p&gt;
+
+  &lt;p&gt;He's a funny guy in the way that…&lt;/p&gt;
+
+  &lt;p&gt;I wasn’t really… well, what I mean… see, the thing is… I didn’t mean it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Also they are commonly used like this to show that for the quoted, you didn't want to show the whole text, just the area that was needed for your work.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…and then they quoted me as saying…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are many other ways to use ellipsis.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;a … f, g … m, n … s, t … z&lt;/p&gt;
+
+  &lt;p&gt;Users/Home/Applica… /file.txt&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Etc.&lt;/p&gt;
+
+&lt;p&gt;I often an ellipsis to show sarcasm in emails or text messages. This is actually seen as a correct usage of an ellipsis. Like in poetry or informal writing.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;So… That was fun…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now here's how it's used incorrectly. You do not use ellipsis as a substitute for a period. It drives me totally crazy. I have gotten emails that at the end say:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Sincerely,&lt;/p&gt;
+
+  &lt;p&gt;Bob…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;or texts like this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;They were really impressed… Thanks for your help…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;These emails/texts are really confusing to me. Are you unsure about your last name? Do you really go by Robert but I accidentally called you Bob? Were they unimpressed? Should I not have helped?&lt;/p&gt;
+
+&lt;p&gt;It turns out that these people just don't know how to use an ellipsis. It's very confusing. Hopefully they read this post sometime and learn the correct way to do it.&lt;/p&gt;
+
+&lt;p&gt;If you're still unconvinced, here are some links to other resources on ellipsis usage.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.slate.com/articles/life/the_good_word/2013/07/ellipses_why_so_common_what_are_they_really_for.html"&gt;Why everyone and your mother started using ellipses… everywhere.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Ellipsis"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.thepunctuationguide.com/ellipses.html"&gt;The Punctuation Guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.quickanddirtytips.com/education/grammar/ellipses"&gt;Quick and Dirty Tips: Grammar Girl&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+</feed>

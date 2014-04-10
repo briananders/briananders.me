@@ -5,6 +5,17 @@
 html {
   font-size: 62.5%;
   background: $gray;
+
+  ::selection {
+    background: $Neon-Orange; /* Safari */
+    color: $dark-gray;
+    @include text-shadow(none);
+  }
+  ::-moz-selection {
+    background: $Neon-Orange; /* Firefox */
+    color: $dark-gray;
+    @include text-shadow(none);
+  }
 }
 body {
   @include font-size(30);
@@ -102,6 +113,11 @@ body {
           margin-left: -217.5px;
 
           @include transition(height .2s ease);
+
+          > path {
+            stroke: 0;
+            stroke-width: 4px;
+          }
         }
       }
 

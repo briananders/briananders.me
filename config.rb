@@ -28,8 +28,6 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", :layout => false
-page "/", :layout => "home_layout"
-page "/about.html", :layout => "home_layout"
 
 activate :directory_indexes
 page "/404.html", :directory_index => false

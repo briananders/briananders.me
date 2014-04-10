@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= data.page.title || "Brian Anders" %></title>
+    <title><%= data.page.title ? "#{data.page.title} | Brian Anders" : "Brian Anders" %></title>
 
     <%= stylesheet_link_tag "all" %>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -28,43 +28,21 @@
         <a class="work" href="/work/">Work</a>
         <a class="blog" href="/blog/">Blog</a>
       </nav>
+      <% if data.page.type == "profile" %>
+        <header id="header">
+          <h1 class="brian-anders">Brian Anders</h1>
+          <div class="profile">
+            <%= partial "partials/profile-svg" %>
+          </div>
+        </header>
+      <% end %>
       <div class="content">
 
         <%= yield %>
 
       </div>
-      <div class="links">
-        <div class="links-container">
-          <div class="link">
-            <a class="twitter" target="blank" href="https://twitter.com/imBrianAnders"><%= image_tag "/images/social/twitter.png", :alt=>'twitter image'%></a>
-          </div>
-          <div class="link">
-            <a class="google-plus" target="blank" href="https://plus.google.com/103609977209431639131/posts"><%= image_tag "/images/social/google+.png", :alt=>'google+ image'%></a>
-          </div>
-          <div class="link">
-            <a class="facebook" target="blank" href="https://www.facebook.com/anders.brian"><%= image_tag "/images/social/fb.png", :alt=>'fb image'%></a>
-          </div>
-          <div class="link">
-            <a class="linkedin" target="blank" href="http://www.linkedin.com/profile/view?id=55731958"><%= image_tag "/images/social/linkedin.png", :alt=>'linkedin image'%></a>
-          </div>
-          <div class="link">
-            <a class="imdb" target="blank" href="http://www.imdb.com/user/ur23740510/"><%= image_tag "/images/social/imdb.png", :alt=>'imdb image'%></a>
-          </div>
-          <div class="link">
-            <a class="github" target="blank" href="https://github.com/briananders"><%= image_tag "/images/social/github.png", :alt=>'github image'%></a>
-          </div>
-          <div class="link">
-            <a class="lastfm" target="blank" href="http://www.last.fm/user/iBrianAnders"><%= image_tag "/images/social/lastfm.png", :alt=>'lastfm image'%></a>
-          </div>
-          <div class="link">
-            <a class="instagramLink" target="blank" href="http://instagram.com/briananders"><%= image_tag "/images/social/instagram.png", :alt=>'instagram image'%></a>
-          </div>
-        </div>
-      </div>
-      <footer class="foot">
-        <a href="/about/">See how the site works.</a>
-        <span>&copy; 2013 - Brian Anders</span>
-      </footer>
+      <%= partial "partials/links" %>
+      <%= partial "partials/footer" %>
     </div>
 
     <%= javascript_include_tag "all" %>
