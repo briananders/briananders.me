@@ -54,42 +54,11 @@ body.index {
         left: 0;
         right: 0;
         bottom: 0;
-        display: block;
-        text-align: center;
-        background: rgba(50,50,50,0.8);
-        padding: 10px 10px;
+        background: rgba(50,50,50,0.6);
         opacity: 0;
-        font-family: $Raleway;
-        font-weight: 100;
 
         @include transition(opacity 0.2s ease);
         @include box-sizing(border-box);
-
-
-        h1 {
-          @include font-size(20);
-        }
-        h2 {
-          @include font-size(20);
-        }
-        h3 {
-          @include font-size(20);
-        }
-        h4 {
-          @include font-size(16);
-        }
-        h5 {
-          @include font-size(12);
-        }
-
-        h1, h2, h3 {
-          padding: 0;
-          margin: 0;
-
-          -webkit-hyphens: auto;
-             -moz-hyphens: auto;
-                  hyphens: auto;
-        }
       }
     }
   }
@@ -111,27 +80,7 @@ body.index {
     }
   }
 }
-body.index .container section.instagram {
-  width: 100%;
-  float: left;
-
-  a {
-    width: 50%;
-    display: block;
-    float: left;
-    position: relative;
-
-    img {
-      float: left;
-      width: 100%;
-    }
-    &:hover {
-      .back {
-        opacity: 1;
-      }
-    }
-  }
-}
+body.index .container section.instagram,
 body.index .container section.albums {
   width: 100%;
   float: left;
@@ -141,18 +90,47 @@ body.index .container section.albums {
     display: block;
     float: left;
     position: relative;
+    opacity: 1;
+    @include transition(opacity 0.2s ease);
 
     img {
       float: left;
       width: 100%;
     }
     &:hover {
-      .back {
-        opacity: 1;
-      }
+      opacity: 0.5;
+
+      // .back {
+      //   opacity: 1;
+      // }
     }
   }
 }
+// body.index .container section.albums {
+//   width: 100%;
+//   float: left;
+
+//   a {
+//     width: 50%;
+//     display: block;
+//     float: left;
+//     position: relative;
+//     opacity: 1;
+//     @include transition(opacity 0.2s ease);
+
+//     img {
+//       float: left;
+//       width: 100%;
+//     }
+//     &:hover {
+//       opacity: 0.8;
+
+//       // .back {
+//       //   opacity: 1;
+//       // }
+//     }
+//   }
+// }
 body.index .container section.artists {
   float: left;
 
@@ -164,6 +142,8 @@ body.index .container section.artists {
     height: 83px;
     border-bottom: 1px solid $text-border;
     @include box-sizing(border-box);
+    opacity: 1;
+    @include transition(opacity 0.2s ease);
 
     img {
       float: right;
@@ -176,9 +156,11 @@ body.index .container section.artists {
       @include font-size(20);
     }
     &:hover {
-      .back {
-        opacity: 1;
-      }
+      opacity: 0.8;
+
+      // .back {
+      //   opacity: 1;
+      // }
     }
   }
 }

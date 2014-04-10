@@ -5,7 +5,10 @@
   /*
     makes the image_tag helper retina images work.
   */
+  window.isRetina = false;
+
   if(window.devicePixelRatio >= 1.2){
+    window.isRetina = true;
     $("[data-src-2x]").each(function(){
       if(this.tagName === "IMG"){
         $(this).attr("src",$(this).attr("data-src-2x"));
@@ -37,6 +40,7 @@
     //$('.profile').css('display','block');
     //$('#animated-profile').css('display','none');
     $("#animated-profile path").each(function(){
+      this.style.stroke = '#EEEEEE';
       $(this).attr('fill', $(this).data('fill'));
     });
   } else {
@@ -57,6 +61,7 @@
         'stroke-dashoffset 10s ease-in-out, fill 5s ease, height .2s ease';
       // Go!
       this.style.strokeDashoffset = '0';
+      this.style.stroke = '#EEEEEE';
 
       if(this.classList.contains('glasses')){
         setTimeout(function(path){
@@ -90,7 +95,7 @@
     });
   }
 })(jQuery);
-  
+
 (function($){
   /*
     LastFM api call and dom loads
@@ -98,7 +103,7 @@
   lfmOpts = {
     APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
     User: 'iBrianAnders',
-    limit: 12, // 1 album - 50 albums
+    limit: 24, // 1 album - 50 albums
     period: "3month" //overall|7day|1month|3month|6month|12month
   };
 
@@ -107,17 +112,22 @@
     url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
     dataType: 'json',
   }).then(function(data){
-    var markup = [];
+    var markup = [],
+        count = 0,
+        max = 12;
 
     data.topalbums.album.forEach(function(album){
-      markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'><div class='back'></div></a>");
+      if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
+        markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'><div class='back'></div></a>");
+        count++;
+      }
     });
 
     $('.albums').append(markup.join(''));
   });
 
 })(jQuery);
-  
+
 (function($){
   /*
     LastFM api call and dom loads
@@ -125,7 +135,7 @@
   lfmOpts = {
     APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
     User: 'iBrianAnders',
-    limit: 12, // 1 album - 50 albums
+    limit: 12, // 1 artist - 50 artists
     period: "3month" //overall|7day|1month|3month|6month|12month
   };
 
@@ -137,7 +147,11 @@
     var markup = [];
 
     data.topartists.artist.forEach(function(artist){
-      markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><img src='" + artist.image[1]["#text"] + "'><h1>" + artist.name + "</h1><div class='back'></div></a>");
+      if(artist.image[artist.image.length-1]["#text"].indexOf("default") === -1) {
+        markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><img src='" + artist.image[1]["#text"] + "'><h1>" + artist.name + "</h1><div class='back'></div></a>");
+      } else {
+        markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><h1>" + artist.name + "</h1><div class='back'></div></a>");
+      }
     });
 
     $('.artists').append(markup.join(''));
@@ -163,7 +177,11 @@
 
     response.data.forEach(function(photo, index){
       if(index >= 12) return;
-      markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'><div class='back'></div></a>");
+      if(window.isRetina) {
+        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'><div class='back'></div></a>");
+      } else {
+        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'><div class='back'></div></a>");
+      }
     });
 
     $('.instagram').append(markup.join(''));
