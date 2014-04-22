@@ -1,6 +1,16 @@
 //= require_tree .
 
 
+//ie8 doesn't have a forEach method. This fixes that.
+if ( !Array.prototype.forEach ) {
+  Array.prototype.forEach = function(fn, scope) {
+    for(var i = 0, len = this.length; i < len; ++i) {
+      fn.call(scope, this[i], i, this);
+    }
+  }
+}
+
+
 (function($){
   /*
     makes the image_tag helper retina images work.
@@ -36,13 +46,14 @@
   /*
     animates the SVG profile image.
   */
-  if((navigator.userAgent === undefined) || !((navigator.userAgent.indexOf("Chrome") != -1) || (navigator.userAgent.indexOf("Safari") != -1))) {
-    //$('.profile').css('display','block');
-    //$('#animated-profile').css('display','none');
-    $("#animated-profile path").each(function(){
-      this.style.stroke = '#EEEEEE';
-      $(this).attr('fill', $(this).data('fill'));
-    });
+  if((navigator.userAgent === undefined) ||
+    !((navigator.userAgent.indexOf("Chrome") != -1) ||
+    (navigator.userAgent.indexOf("Safari") != -1)) ||
+    $(window).width() < 800) {
+      $("#animated-profile path").each(function(){
+        this.style.stroke = '#EEEEEE';
+        $(this).attr('fill', $(this).data('fill'));
+      });
   } else {
     $('#animated-profile path').each(function(){
       var length = this.getTotalLength();
@@ -118,7 +129,7 @@
 
     data.topalbums.album.forEach(function(album){
       if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
-        markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'><div class='back'></div></a>");
+        markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
         count++;
       }
     });
@@ -147,11 +158,7 @@
     var markup = [];
 
     data.topartists.artist.forEach(function(artist){
-      if(artist.image[artist.image.length-1]["#text"].indexOf("default") === -1) {
-        markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><img src='" + artist.image[1]["#text"] + "'><h1>" + artist.name + "</h1><div class='back'></div></a>");
-      } else {
-        markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><h1>" + artist.name + "</h1><div class='back'></div></a>");
-      }
+      markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><h1>" + artist.name + "</h1></a>");
     });
 
     $('.artists').append(markup.join(''));
@@ -178,9 +185,9 @@
     response.data.forEach(function(photo, index){
       if(index >= 12) return;
       if(window.isRetina) {
-        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'><div class='back'></div></a>");
+        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'></a>");
       } else {
-        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'><div class='back'></div></a>");
+        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'></a>");
       }
     });
 

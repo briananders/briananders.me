@@ -117,6 +117,7 @@ body {
           > path {
             stroke: 0;
             stroke-width: 4px;
+            @include transition(stroke-dashoffset 10s ease-in-out, fill 5s ease, height .2s ease);
           }
         }
       }

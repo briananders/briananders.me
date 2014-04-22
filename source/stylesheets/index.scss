@@ -47,19 +47,6 @@ body.index {
         border-bottom: 2px solid $Neon-Orange;
         background: $gray;
       }
-
-      // .back {
-      //   position: absolute;
-      //   top: 0;
-      //   left: 0;
-      //   right: 0;
-      //   bottom: 0;
-      //   background: rgba(50,50,50,0.6);
-      //   opacity: 0;
-
-      //   @include transition(opacity 0.2s ease);
-      //   @include box-sizing(border-box);
-      // }
     }
   }
 }
@@ -82,14 +69,12 @@ body.index {
 }
 body.index .container section.instagram,
 body.index .container section.albums {
-  width: 100%;
+  @include columns(12);
   float: left;
 
   a {
     width: 50%;
-    // display: block;
     float: left;
-    // position: relative;
     opacity: 1;
     @include transition(opacity 0.2s ease);
 
@@ -99,39 +84,11 @@ body.index .container section.albums {
     }
     &:hover {
       opacity: 0.5;
-
-      // .back {
-      //   opacity: 1;
-      // }
     }
   }
 }
-// body.index .container section.albums {
-//   width: 100%;
-//   float: left;
-
-//   a {
-//     width: 50%;
-//     display: block;
-//     float: left;
-//     position: relative;
-//     opacity: 1;
-//     @include transition(opacity 0.2s ease);
-
-//     img {
-//       float: left;
-//       width: 100%;
-//     }
-//     &:hover {
-//       opacity: 0.8;
-
-//       // .back {
-//       //   opacity: 1;
-//       // }
-//     }
-//   }
-// }
 body.index .container section.artists {
+  @include columns(12);
   float: left;
 
   a {
@@ -152,15 +109,13 @@ body.index .container section.artists {
     h1 {
       position: absolute;
       left: 10px;
+      right: 10px;
+      text-align: center;
       top: 13px;
       @include font-size(20);
     }
     &:hover {
       opacity: 0.8;
-
-      // .back {
-      //   opacity: 1;
-      // }
     }
   }
 }
@@ -178,7 +133,7 @@ body.index .container section.top-movies {
 
     .movies {
       height: 300px;
-      width: 16*200px;
+      width: 32*200px;
 
       .movie {
         margin: 0;
@@ -211,26 +166,32 @@ body.index .container section.top-movies {
         width: 33.3%;
       }
     }
+    &.artists {
+      @include columns(12);
+
+      a {
+        width: 50%;
+
+        &:nth-child(2n+1) {
+          border-left: 1px solid $text-border;
+        }
+      }
+    }
   }
 }
 
 @include mq(768px) {
   body.index .container section {
     &.instagram, &.albums {
-      width: 49%;
-
-      a {
-        width: 33.3%;
-      }
-    }
-    &.instagram {
-      margin-right: 1%;
+      @include columns(6);
     }
     &.albums {
-      margin-left: 1%;
+      margin-left: $gutter;
     }
-    &.artists {
-      display: none;
+    &.instagram, &.albums {
+      a {
+        width: 50%;
+      }
     }
   }
 }
@@ -238,23 +199,29 @@ body.index .container section.top-movies {
 @include mq(1040px) {
   body.index .container section {
     &.instagram, &.albums {
-      width: 32%;
-
       a {
         width: 50%;
       }
     }
-    &.instagram {
-      margin-right: 1%;
+    &.instagram, &.albums, &.artists {
+      @include columns(4);
     }
-    &.albums {
-      margin-left: 1%;
-      margin-right: 1%;
+    &.albums, &.artists {
+      margin-left: $gutter;
+    }
+    &.instagram, &.albums {
+      a {
+        width: 50%;
+      }
     }
     &.artists {
-      width: 32%;
-      margin-left: 1%;
-      display: block;
+      a {
+        width: 100%;
+
+        &:nth-child(2n+1) {
+          border-left: none;
+        }
+      }
     }
   }
 }
