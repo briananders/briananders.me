@@ -1,6 +1,3 @@
-//= require_tree .
-
-
 //ie8 doesn't have a forEach method. This fixes that.
 if ( !Array.prototype.forEach ) {
   Array.prototype.forEach = function(fn, scope) {

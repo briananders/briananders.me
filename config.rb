@@ -7,79 +7,15 @@ require "middleman-smusher"
 # Time.zone = "UTC"
 
 activate :blog do |blog|
-  # blog.prefix = "blog"
-  blog.permalink = "/blog/:year/:month/:day/:title.html"
-  blog.sources = "/blog/:year-:month-:day-:title.html"
-  blog.taglink = "/blog/tags/:tag.html"
+  blog.permalink = "/blog/:title"
+  blog.sources = "/blog/:title.html"
   blog.layout = "blog_layout"
-  # blog.summary_separator = /(READMORE)/
-  # blog.summary_length = 250
-  blog.year_link = "/blog/:year.html"
-  blog.month_link = "/blog/:year/:month.html"
-  blog.day_link = "/blog/:year/:month/:day.html"
-  # blog.default_extension = ".markdown"
-
-  blog.tag_template = "/blog/tag.html"
-  blog.calendar_template = "/blog/calendar.html"
-
-  # blog.paginate = true
-  # blog.per_page = 10
-  # blog.page_link = "page/:num"
 end
 
 page "/feed.xml", :layout => false
 
 activate :directory_indexes
 page "/404.html", :directory_index => false
-
-###
-# Compass
-###
-
-# Susy grids in Compass
-# First: gem install susy
-# require 'susy'
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
-
-###
-# Page options, layouts, aliases and proxies
-###
-
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
-
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
-
-###
-# Helpers
-###
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
 
 set :css_dir, 'stylesheets'
 
@@ -98,11 +34,7 @@ configure :build do
   # Enable Asset Hashing
   activate :asset_hash
 
-  # Use relative URLs
-  # activate :relative_assets
-
   # Compress PNGs after build
-  # First: gem install middleman-smusher
   activate :smusher
 
   # Activate GZipping

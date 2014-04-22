@@ -16,13 +16,20 @@ body.blog {
         }
       }
     }
-    a.blog_back:hover {
-      text-decoration: underline;
+    a.blog-back {
+      background: $dark-gray;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
     }
     blockquote {
       border-left: 5px solid $Neon-Orange;
       margin: 0;
-      padding: 1rem 40px
+      padding: 40px;
+
+      p {
+        margin: 0;
+      }
     }
   }
 }

@@ -1,7 +1,13 @@
 <% wrap_layout :layout do %>
-  <a href="/blog/" class="blog_back">
+  <a href="/blog/" class="blog-back">
     Back to Blogs
   </a>
 
   <%= yield %>
+
+  <% if data.page.tags == "Story" %>
+    <div clas="disclaimer">
+      &ast;&nbsp;Not all of these stories are mine, some are from family members.
+    </div>
+  <% end %>
 <% end %>

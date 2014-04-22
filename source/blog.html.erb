@@ -1,0 +1,11 @@
+---
+title: Blog
+---
+
+<h1>Articles</h1>
+<ol>
+  <% blog.articles.each do |article| %>
+    <li><%= link_to article.title, article %> <span>(<%= article.date.strftime('%m/%d/%Y') %>)</span></li>
+  <% end %>
+</ol>
+

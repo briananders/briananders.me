@@ -16,6 +16,18 @@ html {
     color: $dark-gray;
     @include text-shadow(none);
   }
+
+  &.lt-ie9 {
+    #header .brian-anders {
+      z-index: 1;
+      position: relative;
+    }
+    #animated-profile {
+      background-image: url('/images/profile.jpg');
+      background-position: center bottom;
+      background-repeat: no-repeat;
+    }
+  }
 }
 body {
   @include font-size(30);

@@ -1,9 +1,0 @@
----
-title: Does Privacy Still Exist?
-date: 2014-02-15
-tags: Thoughts
-author: Brian Anders
-published: false
----
-
-#Does Privacy Still Exist?
