@@ -112,7 +112,7 @@ if ( !Array.prototype.forEach ) {
     APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
     User: 'iBrianAnders',
     limit: 24, // 1 album - 50 albums
-    period: "3month" //overall|7day|1month|3month|6month|12month
+    period: "1month" //overall|7day|1month|3month|6month|12month
   };
 
   $('.albums') && $.ajax({
@@ -144,7 +144,7 @@ if ( !Array.prototype.forEach ) {
     APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
     User: 'iBrianAnders',
     limit: 12, // 1 artist - 50 artists
-    period: "3month" //overall|7day|1month|3month|6month|12month
+    period: "1month" //overall|7day|1month|3month|6month|12month
   };
 
   $('.artists') && $.ajax({
