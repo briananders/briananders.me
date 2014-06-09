@@ -1,5 +1,6 @@
 ---
 title: How I Think Elipsis Work
+description: I am one of those crazy guys that gets annoyed when someone uses the wrong there (there, their, they're) or its (it's, its). So, it only makes sense that when people use ellipsis wrong.
 date: 2014-02-14
 tags: Thoughts
 author: Brian Anders
