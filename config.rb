@@ -35,7 +35,7 @@ configure :build do
   activate :asset_hash
 
   # Compress PNGs after build
-  activate :smusher
+  # activate :smusher
 
   # Activate GZipping
   activate :gzip

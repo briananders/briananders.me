@@ -1,7 +1,7 @@
 ---
 title: Apple Campus II Construction
 description: If you've been in Cupertino lately, you'll know that traffic is nuts, especially on Wolfe and Homestead. Apple is building a new campus.
-image: http://briananders.me/images/blog/AppleCampus2/1x/IMG_1792.jpg
+image: http://briananders.me/images/blog/AppleCampus2/1x/IMG_1792-7efd0e50.jpg
 date: 2014-06-07
 tags: Pictures
 author: Brian Anders
