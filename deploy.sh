@@ -9,3 +9,5 @@ echo "moving nginx config"
 rsync -avz default.conf briananders.me:/home/ec2-user
 echo "restarting nginx"
 ssh -t briananders.me 'sudo /etc/init.d/nginx restart'
+
+# /bin/zsh deploy.sh
