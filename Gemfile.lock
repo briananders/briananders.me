@@ -131,6 +131,6 @@ DEPENDENCIES
   compass
   middleman (~> 3.3.3)
   middleman-blog (>= 3.3.0)
-  middleman-favicon-maker
+  middleman-favicon-maker (~> 3.7)
   middleman-smusher (>= 3.0.0)
   mini_magick (~> 3.4)
