@@ -8,8 +8,6 @@ author: Brian Anders
 published: true
 ---
 
-#Apple Campus II Construction
-
 If you've been in Cupertino, CA lately, you'll know that traffic is nuts, especially on Wolfe and Homestead. There's been a lot of construction and you might be like "what is going on?" Well, here's what's up:
 
 Apple is building a <a href="http://www.cupertino.org/index.aspx?page=1107" target="_blank">new campus</a>. Below is a rendering of the building; included is a map showing the building in its place to give a rough idea of scale. The surrouding roads, clockwise, starting from the north are: Homestead, Tantau, Pruneridge, and Wolfe. See it on <a href="https://www.google.com/maps/@37.3323794,-122.0103602,16z" target="_blank">Google Maps</a>.

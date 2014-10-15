@@ -102,7 +102,7 @@ if ( !Array.prototype.forEach ) {
       }
     });
   }
-})(jQuery);
+})($);
 
 (function($){
   /*
@@ -134,33 +134,8 @@ if ( !Array.prototype.forEach ) {
     $('.albums').append(markup.join(''));
   });
 
-})(jQuery);
+})($);
 
-(function($){
-  /*
-    LastFM api call and dom loads
-  */
-  lfmOpts = {
-    APIkey: '6a77d69fd4f528fe5101f0e2e4912e8c',
-    User: 'iBrianAnders',
-    limit: 12, // 1 artist - 50 artists
-    period: "1month" //overall|7day|1month|3month|6month|12month
-  };
-
-  $('.artists') && $.ajax({
-    type: 'GET',
-    url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
-    dataType: 'json',
-  }).then(function(data){
-    var markup = [];
-
-    data.topartists.artist.forEach(function(artist){
-      markup.push("<a target='_blank' href='" + artist.url + "' class='artist'><h1>" + artist.name + "</h1></a>");
-    });
-
-    $('.artists').append(markup.join(''));
-  });
-})(jQuery);
 
 
 (function($){
@@ -190,4 +165,4 @@ if ( !Array.prototype.forEach ) {
 
     $('.instagram').append(markup.join(''));
   });
-})(jQuery);
+})($);

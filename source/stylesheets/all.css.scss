@@ -2,6 +2,10 @@
 
 @import "../styles";
 
+.center {
+  text-align: center;
+}
+
 html {
   font-size: 62.5%;
   background: $gray;
@@ -31,276 +35,287 @@ html {
 }
 body {
   @include font-size(30);
+}
 
-  h1, h2, h3 {
-    font-family: $Raleway;
-    font-weight: 100;
-    @include text-shadow(0px 1px 0px $text-border,
-                         0px 2px 0px $text-border);
-    color: $Neon-Orange;
-  }
-  h1 {
-    @include font-size(40);
-  }
-  h2 {
-    @include font-size(34);
-  }
-  h3 {
-    @include font-size(30);
-  }
+h1, h2, h3 {
+  font-family: $Raleway;
+  font-weight: 100;
+  @include text-shadow(0px 1px 0px $text-border,
+                       0px 2px 0px $text-border);
+  color: $Neon-Orange;
+}
+h1 {
+  @include font-size(40);
+}
+h2 {
+  @include font-size(34);
+}
+h3 {
+  @include font-size(30);
+}
 
-  .container {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: $gray;
-    z-index: 1;
+nav {
+  @include font-size(30);
+  font-family: $Raleway;
+  font-weight: 100;
+  overflow: hidden;
+  border-bottom: 1px solid $dark-gray;
+
+  a {
+    width: 33.3333333%;
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 13px 0;
     @include box-sizing(border-box);
-    overflow: hidden;
+    border-left: 1px solid $dark-gray;
 
-    nav {
-      @include font-size(30);
-      font-family: $Raleway;
-      font-weight: 100;
-      overflow: hidden;
-      border-bottom: 1px solid $dark-gray;
-
-      a {
-        width: 33.3333333%;
-        display: block;
-        float: left;
-        text-align: center;
-        padding: 13px 0;
-        @include box-sizing(border-box);
-        border-left: 1px solid $dark-gray;
-
-        &:hover {
-          color: $Neon-Orange;
-          background: $dark-gray;
-        }
-      }
-    }
-    a {
-      text-decoration: none;
+    &:hover {
       color: $Neon-Orange;
-
-      &:hover {
-        color: inherit;
-      }
-    }
-    p, blockquote {
-      a {
-        color: $Neon-Orange;
-      }
-    }
-
-    #header {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      display: block;
-      font-family: $Raleway;
-      font-weight: 100;
       background: $dark-gray;
-      border-bottom: 1px solid $border-color;
-      border-top: 1px solid $gray;
-      @include transition(height .2s ease);
-
-      .profile {
-        display: block;
-        width: 100%;
-        height: 100%;
-        margin-top: -50px;
-
-        #animated-profile {
-          display: block;
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          bottom: 0;
-          height: 350px;
-          width: 435px;
-          left: 50%;
-          margin-left: -217.5px;
-
-          @include transition(height .2s ease);
-
-          > path {
-            stroke: 0;
-            stroke-width: 4px;
-            @include transition(stroke-dashoffset 10s ease-in-out, fill 5s ease, height .2s ease);
-          }
-        }
-      }
-
-      .brian-anders {
-        margin: 0 auto;
-        padding: 30px 20px 0;
-        width: 100%;
-        max-width: 1040px;
-        @include font-size(40);
-        font-weight: 100;
-        color: $Neon-Orange;
-        text-align: center;
-        @include box-sizing(border-box);
-      }
-    }
-
-    .content {
-      width: 100%;
-      max-width: 1040px;
-      display: block;
-      overflow: hidden;
-      margin: 20px auto;
-      font-family: $Raleway;
-      font-weight: 100;
-      color: $text-gray;
-      padding: 0 20px;
-      @include box-sizing(border-box);
-      min-height: 400px;
-
-      p {
-        @include font-size(20);
-        line-height: 1.5;
-        font-family: $Raleway;
-        font-weight: 100;
-        -webkit-hyphens: auto;
-             -moz-hyphens: auto;
-                  hyphens: auto;
-
-        span {
-          font-family: Helvetica;
-        }
-      }
-    }
-
-    .links {
-      width: 100%;
-      background: $dark-gray;
-      border-top: 1px solid $border-color;
-      border-bottom: 1px solid $border-color;
-
-      .links-container {
-        width: 100%;
-        max-width: 1000px;
-        margin: auto;
-        overflow: hidden;
-        padding: 20px 0 0;
-
-        .link {
-          display: block;
-          float: left;
-          height: 48px;
-          width: 25%;
-          text-align: center;
-          padding-bottom: 20px;
-
-          a {
-            height: 48px;
-            width: 48px;
-            display: inline-block;
-            border-radius: 24px;
-            border: 1px solid $dark-gray;
-            @include transition(border .2s ease);
-
-            &:hover {
-              border: 1px solid $text-gray;
-            }
-          }
-        }
-      }
-    }
-
-    .foot {
-      text-align: center;
-      font-family: $Raleway;
-      @include font-size(20);
-      font-weight: 100;
-      float: left;
-      width: 100%;
-      padding: 10px;
-      color: $text-gray;
-
-      a {
-        @include font-size(12);
-      }
-      span {
-        display: block;
-      }
     }
   }
 }
-@include mq(600px) {
-  body {
-    .container {
-      a.nav {
-        top: 1px;
-      }
-      #header {
-        height: 500px;
+.container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $gray;
+  z-index: 1;
+  @include box-sizing(border-box);
+  overflow: hidden;
+}
 
-        .brian-anders {
-          text-align: left;
-        }
-        .profile {
-          #animated-profile {
-            left: auto;
-            margin-left: auto;
-            height: auto;
-            width: auto;
-            height: 100%;
-            width: 100%;
-          }
-        }
+a {
+  text-decoration: none;
+  color: $Neon-Orange;
+
+  &:hover {
+    color: inherit;
+  }
+}
+p, blockquote {
+  a {
+    color: $Neon-Orange;
+  }
+}
+
+#header {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: block;
+  font-family: $Raleway;
+  font-weight: 100;
+  background: $dark-gray;
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $gray;
+  @include transition(height .2s ease);
+
+  .profile {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-top: -50px;
+  }
+}
+#animated-profile {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 350px;
+  width: 435px;
+  left: 50%;
+  margin-left: -217.5px;
+
+  @include transition(height .2s ease);
+
+  > path {
+    stroke: 0;
+    stroke-width: 4px;
+    @include transition(stroke-dashoffset 10s ease-in-out, fill 5s ease, height .2s ease);
+  }
+}
+
+.brian-anders {
+  margin: 0 auto;
+  padding: 30px 20px 0;
+  width: 100%;
+  max-width: 1040px;
+  @include font-size(40);
+  font-weight: 100;
+  color: $Neon-Orange;
+  text-align: center;
+  @include box-sizing(border-box);
+}
+
+.content {
+  width: 100%;
+  max-width: 1040px;
+  display: block;
+  overflow: hidden;
+  margin: 20px auto;
+  font-family: $Raleway;
+  font-weight: 100;
+  color: $text-gray;
+  padding: 0 20px;
+  @include box-sizing(border-box);
+  min-height: 400px;
+}
+p {
+  @include font-size(20);
+  line-height: 1.5;
+  font-family: $Raleway;
+  font-weight: 100;
+  -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+            hyphens: auto;
+
+  span {
+    font-family: Helvetica;
+  }
+}
+
+.links {
+  background: $dark-gray;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  text-align: center;
+  overflow: hidden;
+  padding: 10px 0;
+
+  .link-container {
+    width: 100%;
+    max-width: 1130px;
+    height: 100%;
+    pading: 0 10px;
+    margin: auto;
+    @include box-sizing(border-box);
+  }
+
+  .link {
+    width: 25%;
+    height: 70px;
+    float: left;
+  }
+
+  a {
+    line-height: normal;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 50%;
+    color: $text-gray;
+    @include box-sizing(border-box);
+    @include transform(translateY(-50%));
+
+    &:hover {
+      img {
+        @include transform(translateY(-10px));
       }
-      .content p {
-        @include font-size(30);
+      span {
+        opacity: 1;
+        @include transform(translateY(-10px) translateX(-50%));
       }
-      .links {
-        .links-container {
-          .link {
-            width: 12.5%;
-          }
-        }
+    }
+  }
+  img {
+    display: block;
+    margin: auto;
+    z-index: 1;
+    position: relative;
+    @include transform(translateY(0px));
+    @include transition(transform .5s ease);
+  }
+  span {
+    position: relative;
+    @include font-size(12);
+    display: block;
+    padding-top: 7px;
+    opacity: 0;
+    left: 50%;
+    @include transform(translateY(-26px) translateX(-50%));
+    @include transition(transform .5s ease, opacity .5s ease);
+  }
+}
+
+.foot {
+  text-align: center;
+  font-family: $Raleway;
+  @include font-size(20);
+  font-weight: 100;
+  float: left;
+  width: 100%;
+  padding: 10px;
+  color: $text-gray;
+
+  a {
+    @include font-size(12);
+  }
+  span {
+    display: block;
+  }
+}
+
+@include mq(600px) {
+  a.nav {
+    top: 1px;
+  }
+  #header {
+    height: 500px;
+
+    .brian-anders {
+      text-align: left;
+    }
+    .profile {
+      #animated-profile {
+        left: auto;
+        margin-left: auto;
+        height: auto;
+        width: auto;
+        height: 98%;
+        width: 100%;
       }
+    }
+  }
+  .content p {
+    @include font-size(30);
+  }
+  .links {
+    .link {
+      width: 12.5%;
     }
   }
 }
 @include mq(768px) {
-  body {
-    .container {
-      #header {
-        .brian-anders {
-          @include font-size(50);
-        }
-        .profile {
-          .profile-link {
-            background-size: 550px;
-          }
-        }
+  #header {
+    .brian-anders {
+      @include font-size(50);
+    }
+    .profile {
+      .profile-link {
+        background-size: 550px;
       }
     }
   }
 }
 @include mq(1040px) {
-  body {
-    .container {
-      #header {
-        .brian-anders {
-          padding: 30px 0 0;
-          @include font-size(70);
-        }
-      }
-      .content {
-        padding: 0;
-      }
+  #header {
+    .brian-anders {
+      padding: 30px 0 0;
+      @include font-size(70);
     }
+  }
+  .content {
+    padding: 0;
   }
 }
 
 @import "index";
 @import "work";
 @import "four-oh-four";
-@import "about";
 @import "blog";

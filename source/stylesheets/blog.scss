@@ -1,6 +1,11 @@
 @import "../styles";
 
 body.blog {
+  .blog-date {
+    color: $text-gray;
+    @include font-size(20);
+    margin-top: 10px;
+  }
   nav {
     a.blog {
       background: $dark-gray;
@@ -12,6 +17,13 @@ body.blog {
         color: $Neon-Orange;
         cursor: default;
       }
+    }
+  }
+  li {
+    line-height: 1.5;
+
+    span {
+      @include font-size(13);
     }
   }
   a.blog-back {

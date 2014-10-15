@@ -72,11 +72,9 @@
 
   <body class="<%= page_classes %> <%= data.page.classes %>">
     <div class="container">
-      <nav>
-        <a class="index" href="/">Media</a>
-        <a class="work" href="/work/">Work</a>
-        <a class="blog" href="/blog/">Blog</a>
-      </nav>
+
+      <%= partial "partials/nav" %>
+
       <% if data.page.type == "profile" %>
         <header id="header">
           <h1 class="brian-anders">Brian Anders</h1>

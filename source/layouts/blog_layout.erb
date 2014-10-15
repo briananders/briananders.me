@@ -1,5 +1,12 @@
 <% wrap_layout :layout do %>
 
+  <h1>
+    <%= data.page.title %>
+    <div class="blog-date">
+      (<%= data.page.date %>)
+    </div>
+  </h1>
+
   <%= yield %>
 
   <% if data.page.tags == "Story" %>

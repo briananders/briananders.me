@@ -1,140 +1,113 @@
 @import "../styles";
 
 body.index {
-  .container {
-    .content {
-      min-height: 300px;
-    }
-    nav {
-      border-bottom: none;
+  .content {
+    min-height: 300px;
+  }
+  nav {
+    border-bottom: none;
 
-      a.index {
-        color: $Neon-Orange;
-        background: $dark-gray;
-        border-right: 1px solid $gray;
-
-        &:hover {
-          background: $dark-gray;
-          color: $Neon-Orange;
-          cursor: default;
-        }
-      }
-      a.work {
-        border-left: none;
-      }
-    }
-    section {
-      @include columns(12);
-      margin-bottom: 30px;
-      @include box-sizing(border-box);
-      position: relative;
-      overflow: hidden;
-      @include transition(height 0.5s ease);
-      height: auto;
+    a.index {
+      color: $Neon-Orange;
       background: $dark-gray;
+      border-right: 1px solid $gray;
 
-      > h2 {
-        @include columns(12);
-        margin: 0;
-        @include font-size(50);
-        font-family: $Raleway;
-        font-weight: 100;
-        @include text-shadow(0px 1px 0px $text-border,
-                             0px 2px 0px $text-border);
+      &:hover {
+        background: $dark-gray;
         color: $Neon-Orange;
-        @include box-sizing(border-box);
-        @include transition(font-size .5s ease);
-        border-bottom: 2px solid $Neon-Orange;
-        background: $gray;
+        cursor: default;
+      }
+    }
+    a.work {
+      border-left: none;
+    }
+  }
+  section {
+    @include columns(12);
+    margin-bottom: 30px;
+    @include box-sizing(border-box);
+    position: relative;
+    overflow: hidden;
+    @include transition(height 0.5s ease);
+    height: auto;
+    background: $dark-gray;
+
+    > h2 {
+      @include columns(12);
+      margin: 0;
+      @include font-size(50);
+      font-family: $Raleway;
+      font-weight: 100;
+      @include text-shadow(0px 1px 0px $text-border,
+                           0px 2px 0px $text-border);
+      color: $Neon-Orange;
+      @include box-sizing(border-box);
+      @include transition(font-size .5s ease);
+      border-bottom: 2px solid $Neon-Orange;
+      background: $gray;
+
+      a {
+        width: auto;
+        float: none;
       }
     }
   }
 }
 body.index {
-  .container {
-    section.about-me {
-      @include columns(12);
-      height: auto;
-      background: $gray;
-
-      > h2 {
-        @include font-size(40);
-        display: block;
-      }
-      p {
-        margin: 0 0 10px;
-      }
-    }
-  }
-}
-body.index .container section.instagram,
-body.index .container section.albums {
-  @include columns(12);
-  float: left;
-
-  a {
-    width: 50%;
-    float: left;
-    opacity: 1;
-    @include transition(opacity 0.2s ease);
-
-    img {
-      float: left;
-      width: 100%;
-    }
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-}
-body.index .container section.artists {
-  @include columns(12);
-  float: left;
-
-  a {
-    width: 100%;
-    display: block;
-    float: left;
-    position: relative;
-    height: 83px;
-    border-bottom: 1px solid $text-border;
-    @include box-sizing(border-box);
-    opacity: 1;
-    @include transition(opacity 0.2s ease);
-
-    img {
-      float: right;
-      height: 100%;
-    }
-    h1 {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      text-align: center;
-      top: 13px;
-      @include font-size(20);
-    }
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-body.index .container section.top-movies {
-  .movies-container {
+  section.about-me {
     @include columns(12);
-    height: 300px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    display: block;
-    @include transition(height 0.5s ease);
-    background: $dark-gray;
-    margin: 0;
+    height: auto;
+    background: $gray;
 
-    .movies {
+    > h2 {
+      @include font-size(40);
+      display: block;
+    }
+  }
+  p {
+    margin: 0 0 10px;
+  }
+}
+body.index section {
+  @include columns(12);
+  float: left;
+
+  &.instagram, &.albums {
+    h2 a {
+      float: none;
+      width: auto;
+    }
+    a {
+      width: 50%;
+      float: left;
+      opacity: 1;
+      @include transition(opacity 0.2s ease);
+
+      img {
+        float: left;
+        width: 100%;
+      }
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+  &.top-movies {
+    .movies-container {
+      @include columns(12);
       height: 300px;
-      width: 32*200px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      display: block;
+      @include transition(height 0.5s ease);
+      background: $dark-gray;
+      margin: 0;
 
+      .movies {
+        height: 300px;
+        width: 26*200px;
+      }
       .movie {
         margin: 0;
         padding: 0;
@@ -145,19 +118,18 @@ body.index .container section.top-movies {
         z-index: 0;
         width: 200px;
         overflow: hidden;
-
-        img {
-          width: auto;
-          height: 300px;
-          position: relative;
-        }
+      }
+      img {
+        width: auto;
+        height: 300px;
+        position: relative;
       }
     }
   }
 }
 
 @include mq(600px) {
-  body.index .container section {
+  body.index section {
     &.about-me {
       @include font-size(30);
     }
@@ -166,22 +138,11 @@ body.index .container section.top-movies {
         width: 33.3%;
       }
     }
-    &.artists {
-      @include columns(12);
-
-      a {
-        width: 50%;
-
-        &:nth-child(2n+1) {
-          border-left: 1px solid $text-border;
-        }
-      }
-    }
   }
 }
 
 @include mq(768px) {
-  body.index .container section {
+  body.index section {
     &.instagram, &.albums {
       @include columns(6);
     }
@@ -191,36 +152,6 @@ body.index .container section.top-movies {
     &.instagram, &.albums {
       a {
         width: 50%;
-      }
-    }
-  }
-}
-
-@include mq(1040px) {
-  body.index .container section {
-    &.instagram, &.albums {
-      a {
-        width: 50%;
-      }
-    }
-    &.instagram, &.albums, &.artists {
-      @include columns(4);
-    }
-    &.albums, &.artists {
-      margin-left: $gutter;
-    }
-    &.instagram, &.albums {
-      a {
-        width: 50%;
-      }
-    }
-    &.artists {
-      a {
-        width: 100%;
-
-        &:nth-child(2n+1) {
-          border-left: none;
-        }
       }
     }
   }
