@@ -6,9 +6,9 @@
 <!--[if gt IE 9]><!--> <html itemscope itemtype="http://schema.org/WebPage" class="no-js" lang=en> <!--<![endif]-->
   <head>
     <meta http-equiv="content-type"    content="text/html; charset=UTF-8">
-    <meta name="keywords"              content="<%= data.page.keywords ? "#{data.page.keywords}, Brian, Anders, Brian Anders" : "Brian, Anders, Brian Anders" %>">
+    <meta name="keywords"              content="<%= current_page.data.keywords ? "#{current_page.data.keywords}, Brian, Anders, Brian Anders" : "Brian, Anders, Brian Anders" %>">
     <meta charset="UTF-8">
-    <meta name="description"           content="<%= data.page.description ? "#{data.page.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
+    <meta name="description"           content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
     <meta name="author"                content="Brian Anders">
     <meta name="viewport"              content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0" />
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
@@ -18,25 +18,25 @@
     <link rel="author" href="https://plus.google.com/103609977209431639131/posts"/>
 
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name"              content="<%= data.page.title ? "#{data.page.title} | Brian Anders" : "Brian Anders" %>">
-    <meta itemprop="description"       content="<%= data.page.description ? "#{data.page.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
-    <meta itemprop="image"             content="<%= data.page.image ? "#{data.page.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
+    <meta itemprop="name"              content="<%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %>">
+    <meta itemprop="description"       content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
+    <meta itemprop="image"             content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
 
     <!-- Twitter Card data -->
-    <meta name="twitter:card"          content="<%= data.page.image ? "#{data.page.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
+    <meta name="twitter:card"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
     <meta name="twitter:site"          content="@imBrianAnders">
-    <meta name="twitter:title"         content="<%= data.page.title ? "#{data.page.title} | Brian Anders" : "Brian Anders" %>">
-    <meta name="twitter:description"   content="<%= data.page.description ? "#{data.page.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
+    <meta name="twitter:title"         content="<%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %>">
+    <meta name="twitter:description"   content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
     <meta name="twitter:creator"       content="@imBrianAnders">
     <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src"     content="<%= data.page.image ? "#{data.page.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
+    <meta name="twitter:image:src"     content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
 
     <!-- Open Graph data -->
-    <meta property="og:title"          content="<%= data.page.title ? "#{data.page.title} | Brian Anders" : "Brian Anders" %>" />
+    <meta property="og:title"          content="<%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %>" />
     <meta property="og:type"           content="profile" />
     <meta property="og:url"            content="http://briananders.me<%= current_page.url %>" />
-    <meta property="og:image"          content="<%= data.page.image ? "#{data.page.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>" />
-    <meta property="og:description"    content="<%= data.page.description ? "#{data.page.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>" />
+    <meta property="og:image"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>" />
+    <meta property="og:description"    content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>" />
     <meta property="og:site_name"      content="Brian Anders's personal website" />
 
 
@@ -51,7 +51,7 @@
 
 
 
-    <title><%= data.page.title ? "#{data.page.title} | Brian Anders" : "Brian Anders" %></title>
+    <title><%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %></title>
 
 
     <%= stylesheet_link_tag "all" %>
@@ -70,12 +70,12 @@
     </script>
   </head>
 
-  <body class="<%= page_classes %> <%= data.page.classes %>">
+  <body class="<%= page_classes %> <%= current_page.data.classes %>">
     <div class="container">
 
       <%= partial "partials/nav" %>
 
-      <% if data.page.type == "profile" %>
+      <% if current_page.data.type == "profile" %>
         <header id="header">
           <h1 class="brian-anders">Brian Anders</h1>
           <div class="profile">

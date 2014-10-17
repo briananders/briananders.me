@@ -8,9 +8,9 @@ author: Brian Anders
 published: true
 ---
 
-If you've been in Cupertino, CA lately, you'll know that traffic is nuts, especially on Wolfe and Homestead. There's been a lot of construction and you might be like "what is going on?" Well, here's what's up:
+If you've been in Cupertino, CA lately, you'll know that traffic is nuts, especially on Wolfe and Homestead[READMORE]. There's been a lot of construction and you might be like "what is going on?" Well, here's what's up:
 
-Apple is building a <a href="http://www.cupertino.org/index.aspx?page=1107" target="_blank">new campus</a>. Below is a rendering of the building; included is a map showing the building in its place to give a rough idea of scale. The surrouding roads, clockwise, starting from the north are: Homestead, Tantau, Pruneridge, and Wolfe. See it on <a href="https://www.google.com/maps/@37.3323794,-122.0103602,16z" target="_blank">Google Maps</a>.
+Apple is building a [new campus](http://www.cupertino.org/index.aspx?page=1107). Below is a rendering of the building; included is a map showing the building in its place to give a rough idea of scale. The surrouding roads, clockwise, starting from the north are: Homestead, Tantau, Pruneridge, and Wolfe. See it on [Google Maps](https://www.google.com/maps/@37.3323794,-122.0103602,16z).
 
 <div class="row">
 <div class="apple-rendering"></div>
@@ -54,4 +54,4 @@ Look at how deep it's getting!
 
 They're about to close Pruneridge permanently, which is the vantage point where I have taken these fine photographs. So, I may not be able to take pictures for a while. Also, the security is getting pretty annoying. Apparently, you can't step off of the sidewalk to look at the progress. It's a super cool thing to check out and I know lots of people have enjoyed watching it change. I don't see where the liability is in viewing something from afar.
 
-Whether or not I can continue taking pictures, there will continue to be <a href="http://www.cupertino.org/index.aspx?page=1223" target="_blank">Cupertino city updates</a>, so check those out to see what's going on in a much more boring fashion.
+Whether or not I can continue taking pictures, there will continue to be [Cupertino city updates](http://www.cupertino.org/index.aspx?page=1223), so check those out to see what's going on in a much more boring fashion.

@@ -10,6 +10,7 @@ activate :blog do |blog|
   blog.permalink = "/blog/:title"
   blog.sources = "/blog/:title.html"
   blog.layout = "blog_layout"
+  blog.summary_separator = /\[READMORE\]/
 end
 
 page "/feed.xml", :layout => false

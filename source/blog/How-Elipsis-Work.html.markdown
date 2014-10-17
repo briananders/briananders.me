@@ -7,9 +7,7 @@ author: Brian Anders
 published: true
 ---
 
-#Elipsis&hellip; How do they work&hellip; to me&hellip;
-
-I am one of those crazy guys that gets annoyed when someone uses the wrong there (there, their, they're) or its (it's, its). So, it only makes sense that when people use ellipsis wrong.
+I am one of those crazy guys that gets annoyed when someone uses the wrong there (there, their, they're) or its (it's, its). So, it only makes sense that[READMORE] when people use ellipsis wrong.
 
 I should first cover what an ellipsis is. According to [The Punctuation Guide](http://www.thepunctuationguide.com/ellipses.html):
 

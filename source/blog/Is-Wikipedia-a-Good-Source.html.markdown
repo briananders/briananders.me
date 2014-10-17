@@ -6,6 +6,4 @@ author: Brian Anders
 published: false
 ---
 
-#Is Wikipedia a Good Source?
-
-Short answer: yes.
+Short answer: yes[READMORE].

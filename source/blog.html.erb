@@ -3,10 +3,18 @@ title: Blog
 description: Brian Anders's Blog
 ---
 
-<h1>Blogs</h1>
-<ol>
-  <% blog.articles.each do |article| %>
-    <li><%= link_to article.title, article %> <span>(<%= article.date.strftime('%m/%d/%Y') %>)</span></li>
+<h1>Blog</h1>
+<div>
+  <% blog.articles.each_with_index do |article, index| %>
+    <% if (index > 0 and index % 2 == 0) %>
+      <div class="clearfix"></div>
+    <% end %>
+
+    <div class="blog_tile">
+      <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
+      <time>(<%= article.date.strftime('%m/%d/%Y') %>)</time>
+      <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>">...</a>
+    </div>
   <% end %>
-</ol>
+</div>
 
