@@ -1,5 +1,10 @@
 @import "../styles";
 
+.blog_container {
+  max-width: 800px;
+  margin: auto;
+}
+
 body.blog {
   .blog-date {
     color: $text-gray;
