@@ -5,9 +5,23 @@
 .center {
   text-align: center;
 }
+
 .clearfix {
   overflow: auto;
   clear: both;
+}
+
+a {
+  img {
+    @include transform(scaleX(1) scaleY(1));
+    @include transition(transform .2s ease, z-index .2s ease);
+    z-index: 0;
+
+    &:hover {
+      @include transform(scaleX(.98) scaleY(.98));
+      z-index: 1;
+    }
+  }
 }
 
 html {
@@ -37,6 +51,7 @@ html {
     }
   }
 }
+
 body {
   @include font-size(24);
 }
@@ -48,12 +63,16 @@ h1, h2, h3 {
                        0px 2px 0px $text-border);
   color: $Neon-Orange;
 }
+
 h1 {
   @include font-size(40);
+  margin: 20px 0;
 }
+
 h2 {
   @include font-size(34);
 }
+
 h3 {
   @include font-size(30);
 }
@@ -65,8 +84,13 @@ nav {
   overflow: hidden;
   border-bottom: 1px solid $dark-gray;
 
+  .nav-container {
+    max-width: 1040px;
+    margin: auto;
+  }
+
   a {
-    width: 33.3333333%;
+    width: 50%;
     display: block;
     float: left;
     text-align: center;
@@ -80,6 +104,7 @@ nav {
     }
   }
 }
+
 .container {
   width: 100%;
   position: absolute;
@@ -99,6 +124,7 @@ a {
     color: inherit;
   }
 }
+
 p, blockquote {
   a {
     color: $Neon-Orange;
@@ -124,6 +150,7 @@ p, blockquote {
     margin-top: -50px;
   }
 }
+
 #animated-profile {
   display: block;
   width: 100%;
@@ -158,7 +185,7 @@ p, blockquote {
 
 .content {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1080px;
   display: block;
   overflow: hidden;
   margin: 20px auto;
@@ -169,6 +196,13 @@ p, blockquote {
   @include box-sizing(border-box);
   min-height: 400px;
 }
+
+.blog-date {
+  color: $text-gray;
+  @include font-size(20);
+  margin-top: 10px;
+}
+
 p {
   @include font-size(20);
   line-height: 1.5;
@@ -183,53 +217,90 @@ p {
   }
 }
 
+#back {
+  line-height: 40px;
+  width: 120px;
+  color: $text-gray;
+  height: 40px;
+  display: inline-block;
+
+  span {
+    display: inline-block;
+  }
+  .chevron {
+    text-align: center;
+    width: 40px;
+    border-radius: 40px;
+    background: #3a3a3a;
+    @include transition(background .2s ease);
+
+    b {
+      position: relative;
+      top: -2px;
+    }
+  }
+  .button {
+    opacity: 0;
+    @include transition(opacity .2s ease);
+  }
+
+  &:hover {
+    .chevron {
+      background: $dark-gray;
+    }
+    .button {
+      opacity: 1;
+    }
+  }
+}
+
 .links {
   background: $dark-gray;
-  border-top: 1px solid $border-color;
-  border-bottom: 1px solid $border-color;
   text-align: center;
   overflow: hidden;
-  padding: 10px 0;
 
   .link-container {
     width: 100%;
-    max-width: 1130px;
+    max-width: 1040px;
     height: 100%;
-    pading: 0 10px;
     margin: auto;
     @include box-sizing(border-box);
   }
 
   .link {
-    width: 25%;
-    height: 70px;
+    width: 20%;
+    height: 60px;
     float: left;
+
+    &.instagram {
+      background: #517FA4;
+    }
+    &.twitter {
+      background: #3cf;
+    }
+    &.lastfm {
+      background: #E02F2F;
+    }
+    &.linkedin {
+      background: #328FF1;
+    }
+    &.github {
+
+    }
   }
 
   a {
     line-height: normal;
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     position: relative;
-    top: 50%;
-    color: $text-gray;
+    color: #FFF;
     @include box-sizing(border-box);
-    @include transform(translateY(-50%));
-
-    &:hover {
-      img {
-        @include transform(translateY(-10px));
-      }
-      span {
-        opacity: 1;
-        @include transform(translateY(-10px) translateX(-50%));
-      }
-    }
   }
   img {
     display: block;
-    margin: auto;
+    margin: 5px auto;
     z-index: 1;
     position: relative;
     @include transform(translateY(0px));
@@ -239,10 +310,10 @@ p {
     position: relative;
     @include font-size(12);
     display: block;
+    margin-top: -20px;
     padding-top: 7px;
     opacity: 0;
-    left: 50%;
-    @include transform(translateY(-26px) translateX(-50%));
+    @include transform(translateY(-26px));
     @include transition(transform .5s ease, opacity .5s ease);
   }
 }
@@ -290,8 +361,22 @@ p {
     @include font-size(24);
   }
   .links {
+    a {
+      &:hover {
+        img {
+          @include transform(translateY(-10px));
+        }
+        span {
+          opacity: 1;
+          @include transform(translateY(-10px));
+        }
+      }
+    }
     .link {
-      width: 12.5%;
+      height: 90px;
+    }
+    img {
+      margin: 20px auto;
     }
   }
 }
@@ -307,23 +392,21 @@ p {
     }
   }
 }
-@include mq(1040px) {
+@include mq(1080px) {
   #header {
     .brian-anders {
       padding: 30px 0 0;
       @include font-size(70);
     }
   }
-  .content {
-    padding: 0;
-  }
 }
 
 html.lt-ie9.nr {
+  .content {
+    max-width: 1040px;
+  }
   .links {
     a {
-      top: 10px;
-
       &:hover {
         span {
           -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -331,18 +414,12 @@ html.lt-ie9.nr {
       }
     }
     span {
-      left: 0;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      width: 70px;
-      margin-left: -10px;
+      width: 100%;
     }
-  }
-  body.work section {
-    width: 100%;
   }
 }
 
 @import "index";
 @import "work";
 @import "four-oh-four";
-@import "blog";
