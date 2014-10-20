@@ -51,80 +51,135 @@ body.index {
         float: none;
       }
     }
-  }
-}
-body.index {
-  section.about-me {
-    @include columns(12);
-    height: auto;
-    background: $gray;
-
-    > h2 {
-      @include font-size(40);
-      display: block;
-    }
-  }
-  p {
-    margin: 0 0 10px;
-  }
-}
-body.index section {
-  @include columns(12);
-  float: left;
-
-  &.instagram, &.albums {
-    h2 a {
-      float: none;
-      width: auto;
-    }
-    a {
-      width: 50%;
-      float: left;
-      opacity: 1;
-      @include transition(opacity 0.2s ease);
-
-      img {
-        float: left;
-        width: 100%;
-      }
-      &:hover {
-        opacity: 0.5;
-      }
-    }
-  }
-  &.top-movies {
-    .movies-container {
+    &.about-me {
       @include columns(12);
-      height: 300px;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      display: block;
-      @include transition(height 0.5s ease);
-      background: $dark-gray;
-      margin: 0;
+      height: auto;
+      background: $gray;
 
-      .movies {
-        height: 300px;
-        width: 26*200px;
-      }
-      .movie {
-        margin: 0;
-        padding: 0;
-        float: left;
-        height: 100%;
-        margin-bottom: -4px;
-        position: relative;
-        z-index: 0;
-        width: 200px;
-        overflow: hidden;
-      }
-      img {
-        width: auto;
-        height: 300px;
-        position: relative;
+      > h2 {
+        @include font-size(40);
+        display: block;
       }
     }
+    p {
+      margin: 0 0 10px;
+    }
+    @include columns(12);
+    float: left;
+
+    &.instagram, &.albums {
+      h2 a {
+        float: none;
+        width: auto;
+      }
+      a {
+        width: 50%;
+        float: left;
+        opacity: 1;
+
+        img {
+          float: left;
+          width: 100%;
+        }
+      }
+    }
+    &.blog {
+      background: $gray;
+
+      > div {
+        padding-top: 1em;
+      }
+      .dot-dot-dot {
+        @include font-size(60);
+        line-height: 10px;
+      }
+      .blog_tile {
+        line-height: 1.5;
+        width: 100%;
+        display: block;
+        float: left;
+        padding-right: 30px;
+        overflow: hidden;
+        border-radius: 4px;
+        @include box-sizing(border-box);
+        color: $text-gray;
+        margin-bottom: 30px;
+        position: relative;
+
+        h2 {
+          margin: 0;
+          line-height: 1;
+        }
+        time {
+          @include font-size(16);
+          line-height: 1;
+        }
+
+        a {
+          color: $Neon-Orange;
+
+          &:hover {
+            color: $text-gray;
+          }
+        }
+      }
+
+      a.image-holder {
+        width: 100%;
+        display: block;
+        margin-bottom: .5em;
+        img {
+          width: 100%;
+          display: block;
+        }
+        &.panorama {
+          img {
+          }
+        }
+        &.last {
+          margin-bottom: 0;
+        }
+      }
+      div {
+        &.row {
+          overflow: hidden;
+        }
+        &.apple-map {
+          @include columns(4);
+          @include image-2x('/images/blog/AppleCampus2/1x/apple-campus-2-map.jpg', '/images/blog/AppleCampus2/2x/apple-campus-2-map.jpg');
+          background-position: center center;
+          background-repeat: no-repeat;
+          padding-top: 49.549718023%;
+          float: left;
+          background-size: auto 100%;
+          margin-left: 0;
+        }
+        &.apple-rendering {
+          @include columns(8);
+          @include image-2x('/images/blog/AppleCampus2/1x/Apple_Campus_2_rendering.jpg', '/images/blog/AppleCampus2/2x/Apple_Campus_2_rendering.jpg');
+          background-position: center center;
+          background-repeat: no-repeat;
+          padding-top: 49.549718023%;
+          float: left;
+          background-size: auto 100%;
+          margin-right: $gutter;
+        }
+      }
+      blockquote {
+        border-left: 5px solid $Neon-Orange;
+        margin: 0;
+        padding: 40px;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .blog_container {
+    max-width: 800px;
+    margin: auto;
   }
 }
 
@@ -151,6 +206,11 @@ body.index section {
     }
     &.instagram, &.albums {
       a {
+        width: 50%;
+      }
+    }
+    &.blog {
+      .blog_tile {
         width: 50%;
       }
     }

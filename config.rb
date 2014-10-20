@@ -7,7 +7,7 @@ require "middleman-smusher"
 # Time.zone = "UTC"
 
 activate :blog do |blog|
-  blog.permalink = "/blog/:title"
+  blog.permalink = "/:title"
   blog.sources = "/blog/:title.html"
   blog.layout = "blog_layout"
   blog.summary_separator = /\[READMORE\]/

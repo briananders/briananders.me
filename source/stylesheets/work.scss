@@ -26,8 +26,8 @@ body.work {
     height: 0;
     padding-top: 100%;
     z-index: 0;
-    @include transform(scaleX(1) scaleY(1) translateY(0px));
-    @include transition(opacity 0.2s ease, transform .2s ease, z-index .2s ease);
+    @include transform(scale(1));
+    @include transition(transform .2s ease, z-index .2s ease);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 70%;
@@ -55,7 +55,7 @@ body.work {
       background-image: url('/images/work/anders.png');
     }
     &:hover {
-      @include transform(scaleX(1.02) scaleY(1.02) translateY(-10px));
+      @include transform(scale(.98));
       z-index: 1;
     }
   }
@@ -75,8 +75,25 @@ body.work {
 }
 @include mq(768px) {
   body.work {
-    section.nest {
-      background-size: auto 100px;
+    section {
+      padding-top: 25%;
+      width: 25%;
+      float: left;
+
+      &.nest {
+        width: 50%;
+        padding-top: 50%;
+        background-size: auto 100px;
+      }
+    }
+  }
+}
+
+html.lt-ie9 {
+  body.work {
+    section, section.nest {
+      width: 100%;
+      padding-top: 40%;
     }
   }
 }

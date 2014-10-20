@@ -24,88 +24,19 @@ type: "profile"
   <h2><a target="_blank" href="http://www.last.fm/user/iBrianAnders">Last.fm</a></h2>
 </section>
 
-<section class="top-movies">
-  <h2><a target="blank" href="http://www.imdb.com/user/ur23740510/">Movies</a></h2>
-  <div class="movies-container">
-    <div class="movies">
-      <div class="movie">
-        <%= image_tag "/images/movies/lastcrusade.jpg", :alt=>"lastcrusade movie poster" %>
+<section class="blog" id="blog">
+  <h2>Blog</h2>
+  <div>
+    <% blog.articles.each_with_index do |article, index| %>
+      <% if (index > 0 and index % 2 == 0) %>
+        <div class="clearfix"></div>
+      <% end %>
+
+      <div class="blog_tile">
+        <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
+        <time>(<%= article.date.strftime('%m/%d/%Y') %>)</time>
+        <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>">...</a>
       </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/limitless.jpg", :alt=>"limitless movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/minorityreport.jpg", :alt=>"minorityreport movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/catchme.jpg", :alt=>"catchme movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/tintin.jpg", :alt=>"tintin movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/green.jpg", :alt=> "green movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/jurassic.jpg", :alt=> "jurassic movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/jaws.jpg", :alt=> "jaws movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/goodfellas.jpg", :alt=> "goodfellas movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/starwars.jpg", :alt=>"starwars movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/empire.jpg", :alt=>"empirestrikesback movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/return.jpg", :alt=>"returnofthejedi movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/raiders.jpg", :alt=>"raiders movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/fightclub.jpg", :alt=>"fightclub movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/dragontattoo.jpg", :alt=>"dragontattoo movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/inception.jpg", :alt=>"inception movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/drive.jpg", :alt=>"drive movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/snatch.jpg", :alt=>"snatch movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/super8.jpg", :alt=>"super8 movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/vanillasky.jpg", :alt=>"vanillasky movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/game.jpg", :alt=> "game movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/range.jpg", :alt=> "range movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/hunting.jpg", :alt=> "hunting movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/darkness.jpg", :alt=> "darkness movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/shutter.jpg", :alt=> "shutter movie poster" %>
-      </div>
-      <div class="movie">
-        <%= image_tag "/images/movies/samuari.jpg", :alt=> "samuari movie poster" %>
-      </div>
-    </div>
+    <% end %>
   </div>
 </section>
