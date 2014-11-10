@@ -13,3 +13,6 @@ Have you ever been in a situation where you are asked a question and you genuine
 If I said, "People that don't know answers are weak." would you agree? That seems a bit outrageous to me.
 
 I don't know.
+
+
+http://freakonomics.com/2014/05/15/the-three-hardest-words-in-the-english-language-a-new-freakonomics-radio-podcast/
