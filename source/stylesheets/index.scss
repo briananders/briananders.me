@@ -1,6 +1,11 @@
 @import "../styles";
 
 body.index {
+  spinner {
+    width: 100%;
+    padding-top: 100%;
+    display: block;
+  }
   .content {
     min-height: 300px;
   }
@@ -200,13 +205,24 @@ body.index {
   body.index section {
     &.instagram, &.albums {
       @include columns(6);
+      &.full {
+        @include columns(12);
+      }
     }
     &.albums {
       margin-left: $gutter;
+      &.full {
+        margin-left: 0;
+      }
     }
     &.instagram, &.albums {
       a {
         width: 50%;
+      }
+      &.full {
+        a {
+          width: 25%;
+        }
       }
     }
     &.blog {

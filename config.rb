@@ -63,7 +63,7 @@ configure :build do
   }
 
   # Compress PNGs after build
-  activate :smusher
+  # activate :smusher
 
   # Activate GZipping
   activate :gzip

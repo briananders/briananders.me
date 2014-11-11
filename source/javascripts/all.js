@@ -1,3 +1,5 @@
+//= require spin
+
 //ie8 doesn't have a forEach method. This fixes that.
 if ( !Array.prototype.forEach ) {
   Array.prototype.forEach = function(fn, scope) {
@@ -104,6 +106,25 @@ if ( !Array.prototype.forEach ) {
   }
 })($);
 
+var opts = {
+  lines: 13, // The number of lines to draw
+  length: 20, // The length of each line
+  width: 10, // The line thickness
+  radius: 30, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#FFA700', // #rgb or #rrggbb or array of colors
+  speed: 1, // Rounds per second
+  trail: 60, // Afterglow percentage
+  shadow: false, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: '50%', // Top position relative to parent
+  left: '50%' // Left position relative to parent
+};
+
 (function($){
   /*
     LastFM api call and dom loads
@@ -115,23 +136,37 @@ if ( !Array.prototype.forEach ) {
     period: "1month" //overall|7day|1month|3month|6month|12month
   };
 
+  var target = document.getElementById('albums-spinner');
+  var spinner = new Spinner(opts).spin(target);
+
   $('.albums') && $.ajax({
     type: 'GET',
     url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
     dataType: 'json',
-  }).then(function(data){
-    var markup = [],
-        count = 0,
-        max = 12;
-
-    data.topalbums.album.forEach(function(album){
-      if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
-        markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
-        count++;
+    success: function(data){
+      if(data.topalbums === undefined) {
+        $('.albums').hide();
+        $('.instagram').addClass('full');
+        return;
       }
-    });
+      var markup = [],
+          count = 0,
+          max = 12;
 
-    $('.albums').append(markup.join(''));
+      data.topalbums.album.forEach(function(album){
+        if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
+          markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
+          count++;
+        }
+      });
+
+      $(target).hide();
+      $('.albums').append(markup.join(''));
+    },
+    error: function(){
+      $('.albums').hide();
+      $('.instagram').addClass('full');
+    }
   });
 
 })($);
@@ -147,22 +182,36 @@ if ( !Array.prototype.forEach ) {
     User: '196017474'
   }
 
+  var target = document.getElementById('instagram-spinner');
+  var spinner = new Spinner(opts).spin(target);
+
   $('.instagram') && $.ajax({
     type: 'GET',
     url: 'https://api.instagram.com/v1/users/' + iOpts.User + '/media/recent/?client_id=' + iOpts.APIkey,
     dataType: 'jsonp',
-  }).then(function(response){
-    var markup = [];
-
-    response.data.forEach(function(photo, index){
-      if(index >= 12) return;
-      if(window.isRetina) {
-        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'></a>");
-      } else {
-        markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'></a>");
+    success: function(response) {
+      if(response.data === undefined) {
+        $('.instagram').hide();
+        $('.albums').addClass('full');
+        return;
       }
-    });
+      var markup = [];
 
-    $('.instagram').append(markup.join(''));
+      response.data.forEach(function(photo, index){
+        if(index >= 12) return;
+        if(window.isRetina) {
+          markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'></a>");
+        } else {
+          markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'></a>");
+        }
+      });
+
+      $(target).hide();
+      $('.instagram').append(markup.join(''));
+    },
+    error: function() {
+      $('.instagram').hide();
+      $('.albums').addClass('full');
+    }
   });
 })($);
