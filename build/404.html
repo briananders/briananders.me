@@ -1,7 +1,6 @@
+
 <!DOCTYPE html>
-<!--[if lt IE 7]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 lt-ie8 lt-ie7 nr" lang=en><![endif]-->
-<!--[if IE 7]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 lt-ie8 nr" lang=en><![endif]-->
-<!--[if IE 8]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 nr" lang=en><![endif]-->
+<!--[if lt IE 9]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 nr" lang=en><![endif]-->
 <!--[if IE 9]><html itemscope itemtype="http://schema.org/Article" class="no-js ie9 nr" lang=en><![endif]-->
 <!--[if gt IE 9]><!--> <html itemscope itemtype="http://schema.org/WebPage" class="no-js" lang=en> <!--<![endif]-->
   <head>
@@ -24,10 +23,10 @@
 
     <!-- Twitter Card data -->
     <meta name="twitter:card"          content="http://briananders.me/favicon_base-7322c5d3.png">
-    <meta name="twitter:site"          content="@imBrianAnders">
+    <meta name="twitter:site"          content="@brnandrs">
     <meta name="twitter:title"         content="You are lost | Brian Anders">
     <meta name="twitter:description"   content="This is the 404 page.">
-    <meta name="twitter:creator"       content="@imBrianAnders">
+    <meta name="twitter:creator"       content="@brnandrs">
     <!-- Twitter summary card with large image must be at least 280x150px -->
     <meta name="twitter:image:src"     content="http://briananders.me/favicon_base-7322c5d3.png">
 
@@ -40,6 +39,7 @@
     <meta property="og:site_name"      content="Brian Anders's personal website" />
 
 
+    <!-- Favicon -->
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png" />
@@ -50,13 +50,18 @@
     <link rel="shortcut icon" href="/favicon.ico" />
 
 
-
     <title>You are lost | Brian Anders</title>
 
 
-    <link href="/stylesheets/all-dc66dbd6.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/all-20b1a6a6.css" rel="stylesheet" type="text/css" />
 
-    <script src="/javascripts/modernizr-08382559.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="/javascripts/modernizr-08382559.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        document.createElement("chevron");
+        document.createElement("spinner");
+      </script>
+    <![endif]-->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
@@ -74,11 +79,12 @@
     <div class="container">
 
       <nav>
-  <div class="nav-container">
-    <a class="index" href="/">Not Work</a>
-    <a class="work" href="/work/">Work</a>
+  <div class="nav-container" role="menu">
+    <a class="index" href="/" role="menuitem">Not Work</a>
+    <a class="work" href="/work/" role="menuitem">Work</a>
   </div>
 </nav>
+
 
       <div class="content">
 
@@ -106,9 +112,10 @@
 </section>
 
       </div>
-      <div class="links">
+
+      <div class="links" role="menu">
   <div class="link-container">
-    <div class="link twitter">
+    <div class="link twitter" role="menuitem">
       <a class="twitter" target="blank" href="https://twitter.com/imBrianAnders">
         <img alt="twitter image" width="50" height="50" class="responsive-img" data-src="/images/social/Twitter_logo_white-9325e90b.png" data-src-2x="/images/social/Twitter_logo_white_2x-7d2e3125.png" src="/images/social/Twitter_logo_white-9325e90b.png" />
         <span>
@@ -116,7 +123,7 @@
         </span>
       </a>
     </div>
-    <div class="link linkedin">
+    <div class="link linkedin" role="menuitem">
       <a class="linkedin" target="blank" href="http://www.linkedin.com/profile/view?id=55731958">
         <img alt="linkedin image" width="50" height="50" class="responsive-img" data-src="/images/social/Linkedin_logo_white-5e1fcaec.png" data-src-2x="/images/social/Linkedin_logo_white_2x-0a81db95.png" src="/images/social/Linkedin_logo_white-5e1fcaec.png" />
         <span>
@@ -124,7 +131,7 @@
         </span>
       </a>
     </div>
-    <div class="link github">
+    <div class="link github" role="menuitem">
       <a class="github" target="blank" href="https://github.com/briananders">
         <img alt="github image" width="50" height="50" class="responsive-img" data-src="/images/social/Github_logo_white-8c35fdbc.png" data-src-2x="/images/social/Github_logo_white_2x-22d2936b.png" src="/images/social/Github_logo_white-8c35fdbc.png" />
         <span>
@@ -132,7 +139,7 @@
         </span>
       </a>
     </div>
-    <div class="link lastfm">
+    <div class="link lastfm" role="menuitem">
       <a class="lastfm" target="blank" href="http://www.last.fm/user/iBrianAnders">
         <img alt="lastfm image" width="50" height="50" class="responsive-img" data-src="/images/social/Last_fm_logo_white-748280d0.png" data-src-2x="/images/social/Last_fm_logo_white_2x-cfbf3379.png" src="/images/social/Last_fm_logo_white-748280d0.png" />
         <span>
@@ -140,7 +147,7 @@
         </span>
       </a>
     </div>
-    <div class="link instagram">
+    <div class="link instagram" role="menuitem">
       <a class="instagramLink" target="blank" href="http://instagram.com/briananders">
         <img alt="instagram image" width="50" height="50" class="responsive-img" data-src="/images/social/Instagram_logo_white-e0267813.png" data-src-2x="/images/social/Instagram_logo_white_2x-f113f3d3.png" src="/images/social/Instagram_logo_white-e0267813.png" />
         <span>
@@ -155,6 +162,6 @@
 </footer>
     </div>
 
-    <script src="/javascripts/all-199c6597.js" type="text/javascript"></script>
+    <script src="/javascripts/all-caa7aa98.js" type="text/javascript"></script>
   </body>
 </html>

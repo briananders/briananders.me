@@ -5,9 +5,7 @@ type: "profile"
 ---
 
 <section class="about-me">
-  <p>
-    Thanks for swinging by.
-  </p>
+  <h2>Thanks for swinging by</h2>
   <p>
     I am a User Experience Engineer/Web Developer at <a href="http://www.google.com">Google</a> via <a href="https://www.nest.com" target="_Blank">Nest</a>. I spend my days building the future of technology and my nights dreaming about it.
   </p>
@@ -36,7 +34,7 @@ type: "profile"
 
       <div class="blog_tile">
         <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
-        <time>(<%= article.date.strftime('%m/%d/%Y') %>)</time>
+        <time datetime="<%= article.date.strftime('%Y-%m-%d') %>">(<%= article.date.strftime('%m/%d/%Y') %>)</time>
         <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>">...</a>
       </div>
     <% end %>

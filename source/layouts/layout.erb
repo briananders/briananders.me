@@ -1,15 +1,20 @@
+<%
+  $my_name = "Brian Anders"
+  $twitter_handle = "@brnandrs"
+  $default_image = "http://briananders.me/favicon_base-7322c5d3.png"
+  $description = "Brian Anders's personal website, a UX Engineer at Google."
+%>
+
 <!DOCTYPE html>
-<!--[if lt IE 7]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 lt-ie8 lt-ie7 nr" lang=en><![endif]-->
-<!--[if IE 7]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 lt-ie8 nr" lang=en><![endif]-->
-<!--[if IE 8]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 nr" lang=en><![endif]-->
+<!--[if lt IE 9]><html itemscope itemtype="http://schema.org/Article" class="no-js lt-ie9 nr" lang=en><![endif]-->
 <!--[if IE 9]><html itemscope itemtype="http://schema.org/Article" class="no-js ie9 nr" lang=en><![endif]-->
 <!--[if gt IE 9]><!--> <html itemscope itemtype="http://schema.org/WebPage" class="no-js" lang=en> <!--<![endif]-->
   <head>
     <meta http-equiv="content-type"    content="text/html; charset=UTF-8">
-    <meta name="keywords"              content="<%= current_page.data.keywords ? "#{current_page.data.keywords}, Brian, Anders, Brian Anders" : "Brian, Anders, Brian Anders" %>">
+    <meta name="keywords"              content="<%= current_page.data.keywords ? "#{current_page.data.keywords}, Brian, Anders, #{$my_name}" : "Brian, Anders, #{$my_name}" %>">
     <meta charset="UTF-8">
-    <meta name="description"           content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
-    <meta name="author"                content="Brian Anders">
+    <meta name="description"           content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>">
+    <meta name="author"                content="<%= $my_name %>">
     <meta name="viewport"              content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0" />
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,28 +23,29 @@
     <link rel="author" href="https://plus.google.com/103609977209431639131/posts"/>
 
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name"              content="<%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %>">
-    <meta itemprop="description"       content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
-    <meta itemprop="image"             content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
+    <meta itemprop="name"              content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>">
+    <meta itemprop="description"       content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>">
+    <meta itemprop="image"             content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
 
     <!-- Twitter Card data -->
-    <meta name="twitter:card"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
-    <meta name="twitter:site"          content="@imBrianAnders">
-    <meta name="twitter:title"         content="<%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %>">
-    <meta name="twitter:description"   content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>">
-    <meta name="twitter:creator"       content="@imBrianAnders">
+    <meta name="twitter:card"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
+    <meta name="twitter:site"          content="<%= $twitter_handle %>">
+    <meta name="twitter:title"         content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>">
+    <meta name="twitter:description"   content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>">
+    <meta name="twitter:creator"       content="<%= $twitter_handle %>">
     <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src"     content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>">
+    <meta name="twitter:image:src"     content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
 
     <!-- Open Graph data -->
-    <meta property="og:title"          content="<%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %>" />
+    <meta property="og:title"          content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>" />
     <meta property="og:type"           content="profile" />
     <meta property="og:url"            content="http://briananders.me<%= current_page.url %>" />
-    <meta property="og:image"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "http://briananders.me/favicon_base-7322c5d3.png" %>" />
-    <meta property="og:description"    content="<%= current_page.data.description ? "#{current_page.data.description}" : "Brian Anders's personal website, a web developer at Nest Labs." %>" />
-    <meta property="og:site_name"      content="Brian Anders's personal website" />
+    <meta property="og:image"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>" />
+    <meta property="og:description"    content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>" />
+    <meta property="og:site_name"      content="<%= $my_name %>'s personal website" />
 
 
+    <!-- Favicon -->
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png" />
@@ -50,13 +56,18 @@
     <link rel="shortcut icon" href="/favicon.ico" />
 
 
-
-    <title><%= current_page.data.title ? "#{current_page.data.title} | Brian Anders" : "Brian Anders" %></title>
+    <title><%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %></title>
 
 
     <%= stylesheet_link_tag "all" %>
 
-    <%= javascript_include_tag "modernizr" %>
+    <!--[if lt IE 9]>
+      <%= javascript_include_tag "modernizr" %>
+      <script type="text/javascript">
+        document.createElement("chevron");
+        document.createElement("spinner");
+      </script>
+    <![endif]-->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
@@ -77,17 +88,19 @@
 
       <% if current_page.data.type == "profile" %>
         <header id="header">
-          <h1 class="brian-anders">Brian Anders</h1>
+          <h1 class="brian-anders"><%= $my_name %></h1>
           <div class="profile">
             <%= partial "partials/profile-svg" %>
           </div>
         </header>
       <% end %>
+
       <div class="content">
 
         <%= yield %>
 
       </div>
+
       <%= partial "partials/links" %>
       <%= partial "partials/footer" %>
     </div>

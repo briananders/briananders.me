@@ -161,13 +161,43 @@ p, blockquote {
   width: 435px;
   left: 50%;
   margin-left: -217.5px;
-
   @include transition(height .2s ease);
+
+  &.animated {
+    opacity: 0;
+  }
 
   > path {
     stroke: 0;
     stroke-width: 4px;
-    @include transition(stroke-dashoffset 10s ease-in-out, fill 5s ease, height .2s ease);
+    @include transition(fill 5s ease, height .2s ease);
+
+    fill: #2F2F2F;
+    stroke: #EEEEEE;
+    &.glasses {
+      fill: #CCC;
+
+      &.animate {
+        fill: #2F2F2F;
+      }
+    }
+    &.animate {
+      &.e-f {
+        fill: #E5BC61;
+      }
+      &.one-d {
+        fill: #1D372F;
+      }
+      &.zero {
+        fill: #0E2A24;
+      }
+      &.four {
+        fill: #413F3E;
+      }
+      &.seven {
+        fill: #7D5746;
+      }
+    }
   }
 }
 
@@ -223,18 +253,33 @@ p {
   color: $text-gray;
   height: 40px;
   display: inline-block;
+  cursor: pointer;
 
   span {
     display: inline-block;
+    cursor: pointer;
+  }
+  .posts-container {
+    overflow: hidden;
+    margin-left: -25px;
+    padding-left: 25px;
+  }
+  .posts {
+    position: relative;
+    left: -100px;
+    @include transition(left .3s ease);
   }
   .chevron {
+    overflow: hidden;
     text-align: center;
     width: 40px;
     border-radius: 40px;
     background: #3a3a3a;
+    z-index: 1;
+    position: relative;
     @include transition(background .2s ease);
 
-    b {
+    chevron {
       position: relative;
       top: -2px;
     }
@@ -250,6 +295,9 @@ p {
     }
     .button {
       opacity: 1;
+    }
+    .posts {
+      left: 0;
     }
   }
 }
@@ -340,21 +388,19 @@ p {
   a.nav {
     top: 1px;
   }
+  #animated-profile {
+    left: auto;
+    margin-left: auto;
+    height: auto;
+    width: auto;
+    height: 98%;
+    width: 100%;
+  }
   #header {
     height: 500px;
 
     .brian-anders {
       text-align: left;
-    }
-    .profile {
-      #animated-profile {
-        left: auto;
-        margin-left: auto;
-        height: auto;
-        width: auto;
-        height: 98%;
-        width: 100%;
-      }
     }
   }
   .content p {

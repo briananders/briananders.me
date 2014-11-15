@@ -12,3 +12,7 @@ gem "compass"
 
 # For feed.xml.builder
 gem "builder"
+
+group :development do
+  gem "pry"
+end

@@ -9,6 +9,29 @@ if ( !Array.prototype.forEach ) {
   }
 }
 
+/*
+ * .addClassSVG(className)
+ * Adds the specified class(es) to each of the set of matched SVG elements.
+ */
+$.fn.addClassSVG = function(className){
+    $(this).attr('class', function(index, existingClassNames) {
+        return existingClassNames + ' ' + className;
+    });
+    return this;
+};
+
+/*
+ * .removeClassSVG(className)
+ * Removes the specified class to each of the set of matched SVG elements.
+ */
+$.fn.removeClassSVG = function(className){
+    $(this).attr('class', function(index, existingClassNames) {
+        var re = new RegExp(className, 'g');
+        return existingClassNames.replace(re, '');
+    });
+    return this;
+};
+
 
 (function($){
   /*
@@ -41,69 +64,81 @@ if ( !Array.prototype.forEach ) {
 
 
 
+  // var TRANSITION = function(s) {
+  //   return  'WebkitTransition' in s ||
+  //           'MozTransition' in s ||
+  //           'msTransition' in s ||
+  //           'OTransition' in s ||
+  //           'Transition' in s;
+  // }(document.body.style);
+  // // if(!TRANSITION || $(window).width() < 800) {
+  // //   console.log('no transition');
+  // //     $("#animated-profile path").adClassSVG('animate');
+  // // } else {
 
   /*
     animates the SVG profile image.
   */
-  if((navigator.userAgent === undefined) ||
-    !((navigator.userAgent.indexOf("Chrome") != -1) ||
-    (navigator.userAgent.indexOf("Safari") != -1)) ||
-    $(window).width() < 800) {
-      $("#animated-profile path").each(function(){
-        this.style.stroke = '#EEEEEE';
-        $(this).attr('fill', $(this).data('fill'));
-      });
-  } else {
-    $('#animated-profile path').each(function(){
-      var length = this.getTotalLength();
-      // Clear any previous transition
-      this.style.transition = this.style.WebkitTransition =
-        'none';
-      // Set up the starting positions
-      this.style.strokeDasharray = length + ' ' + length;
-      this.style.strokeDashoffset = length;
-      // Trigger a layout so styles are calculated & the browser
-      // picks up the starting position before animating
-      this.getBoundingClientRect();
-      // Define our transition
+  var elements = [];
+  $('#animated-profile path').each(function(index, path) {
+    var length = path.getTotalLength();
+    // Set up the starting positions
+    path.style.strokeDasharray = length + ' ' + length;
+    path.style.strokeDashoffset = length;
 
-      this.style.transition = this.style.WebkitTransition =
-        'stroke-dashoffset 10s ease-in-out, fill 5s ease, height .2s ease';
-      // Go!
-      this.style.strokeDashoffset = '0';
-      this.style.stroke = '#EEEEEE';
+    elements[index] = {
+      path: path,
+      length: length
+    }
+  });
+  $("#animated-profile").removeClassSVG("invisible");
 
-      if(this.classList.contains('glasses')){
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 10000, [this]);
-      } else if(this.classList.contains('seven')){
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 5000, [this]);
-      } else if(this.classList.contains('one-d')){
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 5500, [this]);
-      } else if(this.classList.contains('four')){
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 7500, [this]);
-      } else if(this.classList.contains('zero')){
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 6000, [this]);
-      } else if(this.classList.contains('e-f')){
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 6500, [this]);
-      } else {
-        setTimeout(function(path){
-          $(path).attr('fill', $(path).data('fill'));
-        }, 7000, [this]);
-      }
+  var animation_time = 60*5,
+      count = animation_time;
+
+  // shim layer with setTimeout fallback
+  window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            function( callback ){
+              window.setTimeout(callback, 1000 / 60);
+            };
+  })();
+
+  (function animloop(){
+
+    if(count > 0) requestAnimFrame(animloop);
+
+    elements.forEach(function(obj){
+      obj.path.style.strokeDashoffset = obj.length * count / animation_time;
     });
-  }
+
+    count--;
+
+  })();
+
+  setTimeout(function(){
+    $("#animated-profile path.glasses").addClassSVG('animate');
+  }, 10000);
+  setTimeout(function(){
+    $("#animated-profile path.seven").addClassSVG('animate');
+  }, 5000);
+  setTimeout(function(){
+    $("#animated-profile path.one-d").addClassSVG('animate');
+  }, 5500);
+  setTimeout(function(){
+    $("#animated-profile path.four").addClassSVG('animate');
+  }, 7500);
+  setTimeout(function(){
+    $("#animated-profile path.zero").addClassSVG('animate');
+  }, 6000);
+  setTimeout(function(){
+    $("#animated-profile path.e-f").addClassSVG('animate');
+  }, 6500);
+  setTimeout(function(){
+    $("#animated-profile path:not(glasses)").addClassSVG('animate');
+  }, 7000);
 })($);
 
 var opts = {
