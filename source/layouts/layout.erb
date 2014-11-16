@@ -28,21 +28,21 @@
     <meta itemprop="image"             content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
 
     <!-- Twitter Card data -->
-    <meta name="twitter:card"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
+    <meta name="twitter:card"          content="summary">
+    <meta name="twitter:url"           content="http://briananders.me<%= current_page.url %>"
     <meta name="twitter:site"          content="<%= $twitter_handle %>">
+    <meta name="twitter:creator"       content="<%= $twitter_handle %>">
     <meta name="twitter:title"         content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>">
     <meta name="twitter:description"   content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>">
-    <meta name="twitter:creator"       content="<%= $twitter_handle %>">
-    <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src"     content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
+    <meta name="twitter:image"         content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>">
 
     <!-- Open Graph data -->
-    <meta property="og:title"          content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>" />
     <meta property="og:type"           content="profile" />
     <meta property="og:url"            content="http://briananders.me<%= current_page.url %>" />
+    <meta property="og:title"          content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>" />
     <meta property="og:image"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>" />
     <meta property="og:description"    content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>" />
-    <meta property="og:site_name"      content="<%= $my_name %>'s personal website" />
+    <meta property="og:site_name"      content="<%= "#{$my_name}'s personal website" %>" />
 
 
     <!-- Favicon -->
