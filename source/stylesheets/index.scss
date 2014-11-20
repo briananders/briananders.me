@@ -206,6 +206,7 @@ body.index {
   body.index section {
     &.instagram, &.albums {
       @include columns(6);
+
       &.full {
         @include columns(12);
       }

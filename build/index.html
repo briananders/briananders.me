@@ -53,7 +53,7 @@
     <title>Brian Anders</title>
 
 
-    <link href="/stylesheets/all-20b1a6a6.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/all-1e66cdd5.css" rel="stylesheet" type="text/css" />
 
     <!--[if lt IE 9]>
       <script src="/javascripts/modernizr-08382559.js" type="text/javascript"></script>
@@ -180,17 +180,61 @@
   <div>
 
       <div class="blog_tile">
+        <h2><a href="/how-to-match-the-height-of-sibling-elements/">How to Match the Height of Sibling Elements</a></h2>
+        <time datetime="2014-11-18">(11/18/2014)</time>
+        <style>
+  .example-container {
+    overflow: hidden;
+    margin-top: 1em;
+  }
+  .tall {
+    border-top: 5px solid #FFA700;
+  }
+  .column-1 {
+    background: #2C2C2C;
+  }
+  .column-2 {
+    background: #2F2F2F;
+  }
+  .column-3 {
+    background: #3A3A3A;
+  }
+  .column-1, .column-2, .column-3 {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+    float: left;
+  }
+  .example-1 .column-1, .example-1 .column-2 {
+    width: 50%;
+  }
+  .example-2 .column-1, .example-2 .column-2, .example-2 .column-3 {
+    width: 33.33333%;
+  }
+  ul {
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+  }
+</style>
+
+<p>This is a very common CSS problem. How do you get an element to match the height of its sibling element? There is one solution <a class="dot-dot-dot" href="/how-to-match-the-height-of-sibling-elements/">...</a>
+      </div>
+
+      <div class="blog_tile">
         <h2><a href="/its-okay-to-be-wrong/">It's Okay to be Wrong</a></h2>
         <time datetime="2014-11-07">(11/07/2014)</time>
         <p>We've all been in that situation: you have said something that you're dead certain about and it has just been revealed that you are wrong. You heart rate begins to quicken; sweat begins to form on your brow <a class="dot-dot-dot" href="/its-okay-to-be-wrong/">...</a>
       </div>
+        <div class="clearfix"></div>
 
       <div class="blog_tile">
         <h2><a href="/Apple-Campus-2-Construction/">Apple Campus II Construction</a></h2>
         <time datetime="2014-06-07">(06/07/2014)</time>
         <p>If you've been in Cupertino, CA lately, you'll know that traffic is nuts, especially on Wolfe and Homestead <a class="dot-dot-dot" href="/Apple-Campus-2-Construction/">...</a>
       </div>
-        <div class="clearfix"></div>
 
       <div class="blog_tile">
         <h2><a href="/How-Elipsis-Work/">How I Think Elipsis Work</a></h2>
@@ -205,7 +249,7 @@
       <div class="links" role="menu">
   <div class="link-container">
     <div class="link twitter" role="menuitem">
-      <a class="twitter" target="blank" href="https://twitter.com/imBrianAnders">
+      <a class="twitter" target="blank" href="https://twitter.com/brnandrs">
         <img alt="twitter image" width="50" height="50" class="responsive-img" data-src="/images/social/Twitter_logo_white-9325e90b.png" data-src-2x="/images/social/Twitter_logo_white_2x-7d2e3125.png" src="/images/social/Twitter_logo_white-9325e90b.png" />
         <span>
           Twitter
@@ -251,6 +295,6 @@
 </footer>
     </div>
 
-    <script src="/javascripts/all-caa7aa98.js" type="text/javascript"></script>
+    <script src="/javascripts/all-7f99c5d0.js" type="text/javascript"></script>
   </body>
 </html>

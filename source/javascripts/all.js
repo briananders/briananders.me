@@ -174,35 +174,37 @@ var opts = {
   var target = document.getElementById('albums-spinner');
   var spinner = new Spinner(opts).spin(target);
 
-  $('.albums') && $.ajax({
-    type: 'GET',
-    url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
-    dataType: 'json',
-    success: function(data){
-      if(data.topalbums === undefined) {
+  if($('.albums').length) {
+    $.ajax({
+      type: 'GET',
+      url: ("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=" + lfmOpts.User + "&period=" + lfmOpts.period + "&api_key=" + lfmOpts.APIkey + "&format=json&limit=" + lfmOpts.limit +"&callback=?"),
+      dataType: 'json',
+      success: function(data){
+        if(data.topalbums === undefined) {
+          $('.albums').hide();
+          $('.instagram').addClass('full');
+          return;
+        }
+        var markup = [],
+            count = 0,
+            max = 12;
+
+        data.topalbums.album.forEach(function(album){
+          if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
+            markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
+            count++;
+          }
+        });
+
+        $(target).hide();
+        $('.albums').append(markup.join(''));
+      },
+      error: function(){
         $('.albums').hide();
         $('.instagram').addClass('full');
-        return;
       }
-      var markup = [],
-          count = 0,
-          max = 12;
-
-      data.topalbums.album.forEach(function(album){
-        if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
-          markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
-          count++;
-        }
-      });
-
-      $(target).hide();
-      $('.albums').append(markup.join(''));
-    },
-    error: function(){
-      $('.albums').hide();
-      $('.instagram').addClass('full');
-    }
-  });
+    });
+  }
 
 })($);
 
@@ -220,33 +222,36 @@ var opts = {
   var target = document.getElementById('instagram-spinner');
   var spinner = new Spinner(opts).spin(target);
 
-  $('.instagram') && $.ajax({
-    type: 'GET',
-    url: 'https://api.instagram.com/v1/users/' + iOpts.User + '/media/recent/?client_id=' + iOpts.APIkey,
-    dataType: 'jsonp',
-    success: function(response) {
-      if(response.data === undefined) {
+  if($('.instagram').length) {
+    $.ajax({
+      type: 'GET',
+      url: 'https://api.instagram.com/v1/users/' + iOpts.User + '/media/recent/?client_id=' + iOpts.APIkey,
+      dataType: 'jsonp',
+      success: function(response) {
+        if(response.data === undefined) {
+          $('.instagram').hide();
+          $('.albums').addClass('full');
+          return;
+        }
+        var markup = [];
+
+        response.data.forEach(function(photo, index){
+          if(index >= 12) return;
+          if(window.isRetina) {
+            markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'></a>");
+          } else {
+            markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'></a>");
+          }
+        });
+
+        $(target).hide();
+        $('.instagram').append(markup.join(''));
+      },
+      error: function() {
         $('.instagram').hide();
         $('.albums').addClass('full');
-        return;
       }
-      var markup = [];
+    });
+  }
 
-      response.data.forEach(function(photo, index){
-        if(index >= 12) return;
-        if(window.isRetina) {
-          markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'></a>");
-        } else {
-          markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'></a>");
-        }
-      });
-
-      $(target).hide();
-      $('.instagram').append(markup.join(''));
-    },
-    error: function() {
-      $('.instagram').hide();
-      $('.albums').addClass('full');
-    }
-  });
 })($);
