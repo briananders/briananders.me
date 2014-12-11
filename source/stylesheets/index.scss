@@ -82,10 +82,15 @@ body.index {
         width: 50%;
         float: left;
         opacity: 1;
+        position: relative;
+        padding-top: 50%;
+        height: 0;
 
         img {
-          float: left;
+          position: absolute;
           width: 100%;
+          top: 0;
+          left: 0;
         }
       }
     }
@@ -189,7 +194,7 @@ body.index {
   }
 }
 
-@include mq(600px) {
+@include mq(450px) {
   body.index section {
     &.about-me {
       @include font-size(30);
@@ -197,12 +202,13 @@ body.index {
     &.instagram, &.albums {
       a {
         width: 33.3%;
+        padding-top: 33.3%;
       }
     }
   }
 }
 
-@include mq(768px) {
+@include mq(600px) {
   body.index section {
     &.instagram, &.albums {
       @include columns(6);
@@ -220,11 +226,24 @@ body.index {
     &.instagram, &.albums {
       a {
         width: 50%;
+        padding-top: 50%;
       }
       &.full {
         a {
           width: 25%;
+        padding-top: 25%;
         }
+      }
+    }
+  }
+}
+
+@include mq(768px) {
+  body.index section {
+    &.instagram, &.albums {
+      a {
+        width: 33.3%;
+        padding-top: 33.3%;
       }
     }
     &.blog {
