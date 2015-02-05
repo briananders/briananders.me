@@ -4,7 +4,7 @@
 
 /* ME */
   Engineer: Brian Anders
-  Contact: @imBrianAnders
+  Contact: @brnandrs
 
 /* SITE */
   Doctype: HTML5
