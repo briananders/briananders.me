@@ -1,9 +1,14 @@
 <% wrap_layout :layout do %>
-  <div class="blog_container">
-    <a id="back" href="/#blog">
+  <div class="blog_container" itemscope itemtype="http://schema.org/BlogPosting">
+    <a id="back" href="/#blog" title="Back to posts">
       <span class="chevron"><chevron>&lt;</chevron></span>
       <span class="posts-container"><span class="posts">Posts</span></span>
     </a>
+
+    <meta itemprop="author" content="<%= $my_name %>">
+    <meta itemprop="url" content="http://briananders.me<%= current_page.url %>">
+    <meta itemprop="name" content="<%= data.page.title %>">
+    <meta itemprop="datePublished" content="<%= data.page.date.strftime('%m/%d/%Y') %>">
 
     <h1>
       <%= data.page.title %>

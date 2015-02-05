@@ -21,7 +21,7 @@ body.four-oh-four {
       clear: both;
     }
     h2.key {
-      @include font-size(35);
+      @include font-size(25);
       display: inline-block;
       @include box-sizing(border-box);
       float: left;
@@ -43,7 +43,7 @@ body.four-oh-four {
       h2.key {
         width: 25%;
         text-align: right;
-        margin: 30px 0;
+        margin: 40px 0;
       }
       p.def {
         width: 75%;

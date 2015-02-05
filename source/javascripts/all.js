@@ -52,6 +52,19 @@ $.fn.removeClassSVG = function(className){
 
 
 
+  //add title attribute
+  (function($){
+    var links = $('a').filter(function(){
+      return !$(this).attr('title') || $(this).attr('title') === "";
+    });
+
+    links.each(function() {
+      $(this).attr('title', $(this).text().trim());
+    });
+  })($);
+
+
+
 
   /*
     scroll down if on the 404 page.
@@ -63,18 +76,6 @@ $.fn.removeClassSVG = function(className){
   }
 
 
-
-  // var TRANSITION = function(s) {
-  //   return  'WebkitTransition' in s ||
-  //           'MozTransition' in s ||
-  //           'msTransition' in s ||
-  //           'OTransition' in s ||
-  //           'Transition' in s;
-  // }(document.body.style);
-  // // if(!TRANSITION || $(window).width() < 800) {
-  // //   console.log('no transition');
-  // //     $("#animated-profile path").adClassSVG('animate');
-  // // } else {
 
   /*
     animates the SVG profile image.
@@ -93,7 +94,7 @@ $.fn.removeClassSVG = function(className){
   });
   $("#animated-profile").removeClassSVG("invisible");
 
-  var animation_time = 60*5,
+  var animation_time = 60*4,
       count = animation_time;
 
   // shim layer with setTimeout fallback
@@ -191,7 +192,7 @@ var opts = {
 
         data.topalbums.album.forEach(function(album){
           if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
-            markup.push("<a target='_blank' href='" + album.url + "' class='album'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
+            markup.push("<a target='_blank' href='" + album.url + "' class='album' title='" + album.name + "'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
             count++;
           }
         });
@@ -237,11 +238,11 @@ var opts = {
 
         response.data.forEach(function(photo, index){
           if(index >= 12) return;
+          var imageUrl = photo.images.thumbnail.url;
           if(window.isRetina) {
-            markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.low_resolution.url + "'></a>");
-          } else {
-            markup.push("<a target='_blank' href='" + photo.link + "'><img src='" + photo.images.thumbnail.url + "'></a>");
+            imageUrl = photo.images.low_resolution.url;
           }
+          markup.push("<a target='_blank' href='" + photo.link + "' title='" + photo.caption.text + "'><img src='" + imageUrl + "'></a>");
         });
 
         $(target).hide();

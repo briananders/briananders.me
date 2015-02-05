@@ -32,10 +32,12 @@ type: "profile"
         <div class="clearfix"></div>
       <% end %>
 
-      <div class="blog_tile">
-        <h2><a href="<%= article.url %>"><%= article.title %></a></h2>
-        <time datetime="<%= article.date.strftime('%Y-%m-%d') %>">(<%= article.date.strftime('%m/%d/%Y') %>)</time>
-        <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>">...</a>
+      <div class="blog_tile" itemscope itemtype="http://schema.org/BlogPosting">
+        <meta itemprop="author" content="<%= $my_name %>">
+        <meta itemprop="url" content="http://briananders.me<%= article.url %>">
+        <h2><a href="<%= article.url %>" itemprop="name"><%= article.title %></a></h2>
+        <time datetime="<%= article.date.strftime('%Y-%m-%d') %>" itemprop="datePublished">(<%= article.date.strftime('%m/%d/%Y') %>)</time>
+        <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>" title="<%= article.title %>">...</a>
       </div>
     <% end %>
   </div>

@@ -55,10 +55,10 @@ It turns out that these people just don't know how to use an ellipsis. It's very
 
 If you're still unconvinced, here are some links to other resources on ellipsis usage.
 
-[Why everyone and your mother started using ellipses&hellip; everywhere.](http://www.slate.com/articles/life/the_good_word/2013/07/ellipses_why_so_common_what_are_they_really_for.html)
+<a href="http://www.slate.com/articles/life/the_good_word/2013/07/ellipses_why_so_common_what_are_they_really_for.html" content="http://www.slate.com/articles/life/the_good_word/2013/07/ellipses_why_so_common_what_are_they_really_for.html" itemProp="citation">Why everyone and your mother started using ellipses&hellip; everywhere.</a>
 
-[Wikipedia](http://en.wikipedia.org/wiki/Ellipsis)
+<a href="http://en.wikipedia.org/wiki/Ellipsis" content="http://en.wikipedia.org/wiki/Ellipsis" itemProp="citation">Wikipedia</a>
 
-[The Punctuation Guide](http://www.thepunctuationguide.com/ellipses.html)
+<a href="http://www.thepunctuationguide.com/ellipses.html" content="http://www.thepunctuationguide.com/ellipses.html" itemProp="citation">The Punctuation Guide</a>
 
-[Quick and Dirty Tips: Grammar Girl](http://www.quickanddirtytips.com/education/grammar/ellipses)
+<a href="http://www.quickanddirtytips.com/education/grammar/ellipses" content="http://www.quickanddirtytips.com/education/grammar/ellipses" itemProp="citation">Quick and Dirty Tips: Grammar Girl</a>
