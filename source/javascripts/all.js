@@ -238,11 +238,14 @@ var opts = {
 
         response.data.forEach(function(photo, index){
           if(index >= 12) return;
-          var imageUrl = photo.images.thumbnail.url;
-          if(window.isRetina) {
-            imageUrl = photo.images.low_resolution.url;
-          }
-          markup.push("<a target='_blank' href='" + photo.link + "' title='" + photo.caption.text + "'><img src='" + imageUrl + "'></a>");
+
+          markup.push("<a target='_blank' href='" +
+                       photo.link +
+                       "' title='" +
+                       (photo.caption == null ? "no caption" : photo.caption.text) +
+                       "'><img src='" +
+                       (window.isRetina ? photo.images.low_resolution.url : photo.images.thumbnail.url) +
+                       "'></a>");
         });
 
         $(target).hide();
