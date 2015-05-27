@@ -1,6 +1,49 @@
 @import "normalize";
-
 @import "../styles";
+
+@import "index";
+@import "work";
+@import "blog";
+@import "four-oh-four";
+
+
+
+
+#svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: $darker-gray;
+  opacity: 0;
+  @include transform(translateZ(0));
+  @include transition(opacity 5s ease);
+
+  &.on-deck {
+    display: block;
+    visibility: visible;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  circle {
+    opacity: 1;
+    @include transform(translateZ(0));
+    @include transition(opacity 2s ease);
+
+    &.invisible {
+      opacity: 0;
+    }
+  }
+}
+
+
+
 
 .center {
   text-align: center;
@@ -12,6 +55,8 @@
 }
 
 a {
+  @include transform(translateZ(0));
+
   img {
     @include transform(scaleX(1) scaleY(1));
     @include transition(transform .2s ease, z-index .2s ease);
@@ -26,7 +71,8 @@ a {
 
 html {
   font-size: 62.5%;
-  background: $gray;
+  background: $darker-gray;
+  font-family: "Times New Roman", Times, serif;
 
   ::selection {
     background: $Neon-Orange; /* Safari */
@@ -38,22 +84,11 @@ html {
     color: $dark-gray;
     @include text-shadow(none);
   }
-
-  &.lt-ie9 {
-    #header .brian-anders {
-      z-index: 1;
-      position: relative;
-    }
-    #animated-profile {
-      background-image: url('/images/profile.jpg');
-      background-position: center bottom;
-      background-repeat: no-repeat;
-    }
-  }
 }
 
 body {
   @include font-size(24);
+  position: relative;
 }
 
 * {
@@ -61,11 +96,11 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: $Raleway;
-  font-weight: 100;
+  font-weight: 700;
   @include text-shadow(0px 1px 0px $text-border,
                        0px 2px 0px $text-border);
   color: $Neon-Orange;
+  text-align: center;
 }
 
 h1 {
@@ -83,46 +118,42 @@ h3 {
 
 nav {
   @include font-size(30);
-  font-family: $Raleway;
   font-weight: 100;
   overflow: hidden;
-  border-bottom: 1px solid $dark-gray;
-
-  .nav-container {
-    max-width: 1040px;
-    margin: auto;
-  }
+  padding: 20px;
+  margin: 0 20px;
+  color: $text-gray;
+  line-height: .9;
+  text-align: center;
+  border-bottom: 2px solid $Neon-Orange;
 
   a {
-    width: 50%;
-    display: block;
-    float: left;
-    text-align: center;
-    padding: 13px 0;
+    color: $Neon-Orange;
+    display: inline-block;
     @include box-sizing(border-box);
-    border-left: 1px solid $dark-gray;
+    // @include font-size(40);
 
     &:hover {
-      color: $Neon-Orange;
-      background: $dark-gray;
+      color: inherit;
     }
   }
 }
 
 .container {
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: $gray;
-  z-index: 1;
-  @include box-sizing(border-box);
+  max-width: 700px;
+  margin: auto;
+  // background: $gray;
   overflow: hidden;
+  @include box-sizing(border-box);
+  position: relative;
+  z-index: 1;
 }
 
 a {
   text-decoration: none;
   color: $Neon-Orange;
+  @include transition(color .2s ease);
 
   &:hover {
     color: inherit;
@@ -135,100 +166,40 @@ p, blockquote {
   }
 }
 
-#header {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  display: block;
-  font-family: $Raleway;
-  font-weight: 100;
-  background: $dark-gray;
-  border-bottom: 1px solid $border-color;
-  border-top: 1px solid $gray;
-  @include transition(height .2s ease);
+// #animated-profile {
+//   display: block;
+//   width: 100%;
+//   max-width: 700px;
+//   @include transition(height .2s ease);
 
-  .profile {
-    display: block;
-    width: 100%;
-    height: 100%;
-    margin-top: -50px;
-  }
-}
+//   &.animated {
+//     opacity: 0;
+//   }
 
-#animated-profile {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  bottom: 0;
-  height: 350px;
-  width: 435px;
-  left: 50%;
-  margin-left: -217.5px;
-  @include transition(height .2s ease);
+//   > path {
+//     stroke: 0;
+//     stroke-width: 2px;
+//     @include transition(fill 2s ease, height .2s ease);
 
-  &.animated {
-    opacity: 0;
-  }
+//     fill: #2F3133;
+//     stroke: #EEF1F3;
 
-  > path {
-    stroke: 0;
-    stroke-width: 4px;
-    @include transition(fill 5s ease, height .2s ease);
-
-    fill: #2F2F2F;
-    stroke: #EEEEEE;
-    &.glasses {
-      fill: #CCC;
-
-      &.animate {
-        fill: #2F2F2F;
-      }
-    }
-    &.animate {
-      &.e-f {
-        fill: #E5BC61;
-      }
-      &.one-d {
-        fill: #1D372F;
-      }
-      &.zero {
-        fill: #0E2A24;
-      }
-      &.four {
-        fill: #413F3E;
-      }
-      &.seven {
-        fill: #7D5746;
-      }
-    }
-  }
-}
-
-.brian-anders {
-  margin: 0 auto;
-  padding: 30px 20px 0;
-  width: 100%;
-  max-width: 1040px;
-  @include font-size(40);
-  font-weight: 100;
-  color: $Neon-Orange;
-  text-align: center;
-  @include box-sizing(border-box);
-}
+//     &:hover {
+//       fill: #fff;
+//       @include transition(fill 0s ease, height .2s ease);
+//     }
+//   }
+// }
 
 .content {
   width: 100%;
-  max-width: 1080px;
   display: block;
   overflow: hidden;
-  margin: 20px auto;
-  font-family: $Raleway;
   font-weight: 100;
   color: $text-gray;
   padding: 0 20px;
-  @include box-sizing(border-box);
   min-height: 400px;
+  @include box-sizing(border-box);
 }
 
 .blog-date {
@@ -240,12 +211,7 @@ p, blockquote {
 p {
   @include font-size(20);
   line-height: 1.5;
-  font-family: $Raleway;
   font-weight: 100;
-
-  span {
-    font-family: Helvetica;
-  }
 }
 
 #back {
@@ -275,7 +241,7 @@ p {
     text-align: center;
     width: 40px;
     border-radius: 40px;
-    background: #3a3a3a;
+    background: #3A3C3E;
     z-index: 1;
     position: relative;
     @include transition(background .2s ease);
@@ -304,13 +270,12 @@ p {
 }
 
 .links {
-  background: $dark-gray;
   text-align: center;
   overflow: hidden;
 
   .link-container {
     width: 100%;
-    max-width: 1040px;
+    max-width: 660px;
     height: 100%;
     margin: auto;
     @include box-sizing(border-box);
@@ -322,19 +287,19 @@ p {
     float: left;
 
     &.instagram {
-      background: #517FA4;
+      background-color: #517FA4;
     }
     &.twitter {
-      background: #3cf;
+      background-color: #3cf;
     }
     &.lastfm {
-      background: #E02F2F;
+      background-color: #E02F2F;
     }
     &.linkedin {
-      background: #328FF1;
+      background-color: #328FF1;
     }
     &.github {
-
+      background-color: $dark-gray;
     }
   }
 
@@ -353,7 +318,7 @@ p {
     z-index: 1;
     position: relative;
     @include transform(translateY(0px));
-    @include transition(transform .5s ease);
+    @include transition(transform .25s ease);
   }
   span {
     position: relative;
@@ -363,13 +328,12 @@ p {
     padding-top: 7px;
     opacity: 0;
     @include transform(translateY(-26px));
-    @include transition(transform .5s ease, opacity .5s ease);
+    @include transition(transform .25s ease, opacity .25s ease);
   }
 }
 
 .foot {
   text-align: center;
-  font-family: $Raleway;
   @include font-size(20);
   font-weight: 100;
   float: left;
@@ -385,26 +349,18 @@ p {
   }
 }
 
+
+
+
+
+
+
+
 @include mq(600px) {
   a.nav {
     top: 1px;
   }
-  #animated-profile {
-    left: auto;
-    margin-left: auto;
-    height: auto;
-    width: auto;
-    height: 98%;
-    width: 100%;
-  }
-  #header {
-    height: 500px;
-
-    .brian-anders {
-      text-align: left;
-    }
-  }
-  .content p {
+  p {
     @include font-size(24);
   }
   .links {
@@ -427,31 +383,15 @@ p {
     }
   }
 }
-@include mq(768px) {
-  #header {
-    .brian-anders {
-      @include font-size(50);
-    }
-    .profile {
-      .profile-link {
-        background-size: 550px;
-      }
-    }
-  }
-}
-@include mq(1080px) {
-  #header {
-    .brian-anders {
-      padding: 30px 0 0;
-      @include font-size(70);
-    }
-  }
-}
+
+
+
+
+
+
+
 
 html.lt-ie9.nr {
-  .content {
-    max-width: 1040px;
-  }
   .links {
     a {
       &:hover {
@@ -466,7 +406,3 @@ html.lt-ie9.nr {
     }
   }
 }
-
-@import "index";
-@import "work";
-@import "four-oh-four";

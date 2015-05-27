@@ -60,6 +60,7 @@
     <title><%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %></title>
 
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400|Raleway:100,400' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "all" %>
 
     <!--[if lt IE 9]>
@@ -83,18 +84,20 @@
   </head>
 
   <body class="<%= page_classes %> <%= current_page.data.classes %>">
+
+    <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" ></svg>
+
     <div class="container">
 
       <%= partial "partials/nav" %>
 
       <% if current_page.data.type == "profile" %>
         <header id="header" itemscope itemtype="http://schema.org/Person">
-          <h1 class="brian-anders" itemprop="name"><%= $my_name %></h1>
+          <%#= partial "partials/name-svg" %>
+          <h1><%= $my_name %></h1>
+          <meta itemprop="name" content="<%= $my_name %>">
           <meta itemprop="url" content="http://briananders.me">
           <meta itemprop="jobTitle" content="UX Engineer">
-          <div class="profile">
-            <%= partial "partials/profile-svg" %>
-          </div>
         </header>
       <% end %>
 
@@ -105,7 +108,7 @@
       </div>
 
       <%= partial "partials/links" %>
-      <%= partial "partials/footer" %>
+      <%#= partial "partials/footer" %>
     </div>
 
     <%= javascript_include_tag "all" %>

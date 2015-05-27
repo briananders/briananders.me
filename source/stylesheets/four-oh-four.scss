@@ -1,5 +1,12 @@
 @import "../styles";
 
+
+
+
+
+
+
+
 body.four-oh-four {
   section {
     overflow: hidden;
@@ -37,6 +44,14 @@ body.four-oh-four {
     }
   }
 }
+
+
+
+
+
+
+
+
 @include mq(700px) {
   body.four-oh-four {
     section {

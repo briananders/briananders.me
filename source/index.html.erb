@@ -4,33 +4,69 @@ description:
 type: "profile"
 ---
 
+
+
+
+
+
+
+
+
+
 <section class="about-me">
-  <h2>Thanks for swinging by</h2>
+  <h2>Hi</h2>
   <p>
-    I am a User Experience Engineer/Web Developer at <a href="http://www.google.com">Google</a> via <a href="https://www.nest.com" target="_Blank">Nest</a>. I spend my days building the future of technology and my nights dreaming about it.
+    I am a UX Engineer/Front-End Engineer at <a href="http://www.google.com" target="_Blank">Google</a> via <a href="https://www.nest.com" target="_Blank">Nest</a>. I spend my days building the future of technology and my nights dreaming about it.
   </p>
   <p>
     I am a lover of the arts: design, music, and film. Below you can see my current interests in these areas. Enjoy!
   </p>
 </section>
 
+
+
+
+
+
+
+
+
+
 <section class="instagram">
   <h2><a target="_blank" href="http://instagram.com/briananders">Instagram</a></h2>
   <spinner id="instagram-spinner"></spinner>
 </section>
+
+
+
+
+
+
+
+
+
 
 <section class="albums">
   <h2><a target="_blank" href="http://www.last.fm/user/iBrianAnders">Last.fm</a></h2>
   <spinner id="albums-spinner"></spinner>
 </section>
 
+
+
+
+
+
+
+
+
+
 <section class="blog" id="blog">
   <h2>Blog</h2>
   <div>
     <% blog.articles.each_with_index do |article, index| %>
-      <% if (index > 0 and index % 2 == 0) %>
-        <div class="clearfix"></div>
-      <% end %>
+      <%# if (index > 0 and index % 2 == 0) %>
+        <!-- <div class="clearfix"></div> -->
+      <%# end %>
 
       <div class="blog_tile" itemscope itemtype="http://schema.org/BlogPosting">
         <meta itemprop="author" content="<%= $my_name %>">
@@ -41,4 +77,45 @@ type: "profile"
       </div>
     <% end %>
   </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="work">
+
+  <h2>Blog</h2>
+  <p>
+    I'm a UX Engineer/Front-End Engineer at <a href="http://www.nest.com" title="Nest Labs">Nest</a>. I graduated in May of 2013 from <a href="http://www.graceland.edu/">Graceland University</a> in <a href="http://www.lamoni-iowa.com/">Lamoni, IA</a>. My majors were Computer Science/<span>&shy;</span>Infor<span>&shy;</span>mation Tech<span>&shy;</span>nology and Math<span>&shy;</span>ematics with a minor in Web Design. While at Graceland I competed in several prog<span>&shy;</span>ram<span>&shy;</span>ming compet<span>&shy;</span>itions. Also, I competed in three robotics compet<span>&shy;</span>itions, placing second at two of them.
+  </p>
+
+
+
+  <a href="http://www.nest.com" title="Nest Labs">
+    <div class="work-tile nest">
+    </div>
+  </a>
+  <a href="http://www.principal.com/index.shtm" title="Principal Financial Group">
+    <div class="work-tile principal">
+    </div>
+  </a>
+  <a href="http://www.smithweb.com/" title="Smith and Associates">
+    <div class="work-tile smith">
+    </div>
+  </a>
+  <a href="https://www.facebook.com/pages/Anders-Crane-Service/240049426876" title="Anders Crane Service">
+    <div class="work-tile anders">
+    </div>
+  </a>
+  <a href="http://www.graceland.edu/" title="Graceland University">
+    <div class="work-tile graceland">
+    </div>
+  </a>
+
 </section>

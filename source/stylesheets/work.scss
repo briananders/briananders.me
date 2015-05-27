@@ -1,27 +1,14 @@
 @import "../styles";
 
-body.work {
 
-  nav {
 
-    a.work {
-      background: $dark-gray;
-      color: $Neon-Orange;
-      border-left: 1px solid $gray;
-      border-right: 1px solid $gray;
 
-      &:hover {
-        background: $dark-gray;
-        color: $Neon-Orange;
-        cursor: default;
-      }
-    }
-    a.blog {
-      border-left: none;
-    }
-  }
 
-  section {
+
+
+
+.work {
+  .work-tile {
     width: 100%;
     height: 0;
     padding-top: 100%;
@@ -59,10 +46,22 @@ body.work {
       z-index: 1;
     }
   }
+  .links {
+    margin: 20px;
+    margin-bottom: 0;
+  }
 }
+
+
+
+
+
+
+
+
 @include mq(440px) {
-  body.work {
-    section {
+  .work {
+    .work-tile {
       padding-top: 50%;
       width: 50%;
       float: left;
@@ -73,25 +72,17 @@ body.work {
     }
   }
 }
-@include mq(768px) {
-  body.work {
-    section {
-      padding-top: 25%;
-      width: 25%;
-      float: left;
 
-      &.nest {
-        width: 50%;
-        padding-top: 50%;
-        background-size: auto 100px;
-      }
-    }
-  }
-}
+
+
+
+
+
+
 
 html.lt-ie9 {
-  body.work {
-    section, section.nest {
+  .work {
+    .work-tile, .work-tile.nest {
       width: 100%;
       padding-top: 40%;
     }

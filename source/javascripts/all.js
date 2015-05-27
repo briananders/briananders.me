@@ -9,6 +9,12 @@ if ( !Array.prototype.forEach ) {
   }
 }
 
+
+
+
+
+
+
 /*
  * .addClassSVG(className)
  * Adds the specified class(es) to each of the set of matched SVG elements.
@@ -19,6 +25,13 @@ $.fn.addClassSVG = function(className){
     });
     return this;
 };
+
+
+
+
+
+
+
 
 /*
  * .removeClassSVG(className)
@@ -31,6 +44,18 @@ $.fn.removeClassSVG = function(className){
     });
     return this;
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 (function($){
@@ -52,6 +77,10 @@ $.fn.removeClassSVG = function(className){
 
 
 
+
+
+
+
   //add title attribute
   (function($){
     var links = $('a').filter(function(){
@@ -66,6 +95,10 @@ $.fn.removeClassSVG = function(className){
 
 
 
+
+
+
+
   /*
     scroll down if on the 404 page.
   */
@@ -75,72 +108,21 @@ $.fn.removeClassSVG = function(className){
     }, 500);
   }
 
-
-
-  /*
-    animates the SVG profile image.
-  */
-  var elements = [];
-  $('#animated-profile path').each(function(index, path) {
-    var length = path.getTotalLength();
-    // Set up the starting positions
-    path.style.strokeDasharray = length + ' ' + length;
-    path.style.strokeDashoffset = length;
-
-    elements[index] = {
-      path: path,
-      length: length
-    }
-  });
-  $("#animated-profile").removeClassSVG("invisible");
-
-  var animation_time = 60*4,
-      count = animation_time;
-
-  // shim layer with setTimeout fallback
-  window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            function( callback ){
-              window.setTimeout(callback, 1000 / 60);
-            };
-  })();
-
-  (function animloop(){
-
-    if(count > 0) requestAnimFrame(animloop);
-
-    elements.forEach(function(obj){
-      obj.path.style.strokeDashoffset = obj.length * count / animation_time;
-    });
-
-    count--;
-
-  })();
-
-  setTimeout(function(){
-    $("#animated-profile path.glasses").addClassSVG('animate');
-  }, 10000);
-  setTimeout(function(){
-    $("#animated-profile path.seven").addClassSVG('animate');
-  }, 5000);
-  setTimeout(function(){
-    $("#animated-profile path.one-d").addClassSVG('animate');
-  }, 5500);
-  setTimeout(function(){
-    $("#animated-profile path.four").addClassSVG('animate');
-  }, 7500);
-  setTimeout(function(){
-    $("#animated-profile path.zero").addClassSVG('animate');
-  }, 6000);
-  setTimeout(function(){
-    $("#animated-profile path.e-f").addClassSVG('animate');
-  }, 6500);
-  setTimeout(function(){
-    $("#animated-profile path:not(glasses)").addClassSVG('animate');
-  }, 7000);
 })($);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var opts = {
   lines: 13, // The number of lines to draw
@@ -160,6 +142,16 @@ var opts = {
   top: '50%', // Top position relative to parent
   left: '50%' // Left position relative to parent
 };
+
+
+
+
+
+
+
+
+
+
 
 (function($){
   /*
@@ -211,6 +203,20 @@ var opts = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function($){
   /*
     instagram api call and dom load
@@ -259,3 +265,70 @@ var opts = {
   }
 
 })($);
+
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+  var svg = $('#svg')[0];
+  var svgns = "http://www.w3.org/2000/svg";
+  var WIDTH = (document.body.clientWidth * 2);
+  var HEIGHT = (document.body.clientHeight * 2);
+  svg.setAttributeNS(null, "viewBox", "0 0 " + WIDTH + " " + HEIGHT);
+
+  var stars = [];
+  var b, m;
+
+  function makeShape() {
+
+    var shape = document.createElementNS(svgns, "circle");
+    shape.setAttributeNS(null, "cx", Math.floor(Math.random() * WIDTH));
+    shape.setAttributeNS(null, "cy", Math.floor(Math.random() * HEIGHT));
+    shape.setAttributeNS(null, "r",  Math.floor(Math.random() * 4));
+    shape.setAttributeNS(null, "fill", "#eef");
+
+    if(Math.random() * 4 < 3) {
+      shape.classList.add('invisible');
+    }
+
+    svg.appendChild(shape);
+
+    stars.push(shape);
+  }
+
+  for(var i = 0; i < ((WIDTH * HEIGHT) / 15000); i++) {
+    makeShape();
+  }
+
+  setTimeout(function(){
+    svg.classList.add('on-deck');
+  }, 200);
+
+
+  setTimeout(function(){
+    svg.classList.add('visible');
+  }, 2000);
+
+  var updateStars = setInterval(function(){
+    //y = mx+b
+
+    b = Math.floor(Math.random() * 10);
+    m = Math.floor(Math.random() * 5) + 5;
+
+    for(var i = b; i < stars.length; i += m) {
+      if(stars[i].classList.contains('invisible')) {
+        stars[i].classList.remove('invisible');
+      } else {
+        stars[i].classList.add('invisible');
+      }
+    }
+
+  }, 1000);
+
+});
