@@ -60,37 +60,9 @@ type: "profile"
 
 
 
-<section class="blog" id="blog">
-  <h2>Blog</h2>
-  <div>
-    <% blog.articles.each_with_index do |article, index| %>
-      <%# if (index > 0 and index % 2 == 0) %>
-        <!-- <div class="clearfix"></div> -->
-      <%# end %>
-
-      <div class="blog_tile" itemscope itemtype="http://schema.org/BlogPosting">
-        <meta itemprop="author" content="<%= $my_name %>">
-        <meta itemprop="url" content="http://briananders.me<%= article.url %>">
-        <h2><a href="<%= article.url %>" itemprop="name"><%= article.title %></a></h2>
-        <time datetime="<%= article.date.strftime('%Y-%m-%d') %>" itemprop="datePublished">(<%= article.date.strftime('%m/%d/%Y') %>)</time>
-        <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>" title="<%= article.title %>">...</a>
-      </div>
-    <% end %>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
 <section class="work">
 
-  <h2>Blog</h2>
+  <h2>Experience</h2>
   <p>
     I'm a UX Engineer/Front-End Engineer at <a href="http://www.nest.com" title="Nest Labs">Nest</a>. I graduated in May of 2013 from <a href="http://www.graceland.edu/">Graceland University</a> in <a href="http://www.lamoni-iowa.com/">Lamoni, IA</a>. My majors were Computer Science/<span>&shy;</span>Infor<span>&shy;</span>mation Tech<span>&shy;</span>nology and Math<span>&shy;</span>ematics with a minor in Web Design. While at Graceland I competed in several prog<span>&shy;</span>ram<span>&shy;</span>ming compet<span>&shy;</span>itions. Also, I competed in three robotics compet<span>&shy;</span>itions, placing second at two of them.
   </p>
@@ -118,4 +90,32 @@ type: "profile"
     </div>
   </a>
 
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="blog" id="blog">
+  <h2>Blog</h2>
+  <div>
+    <% blog.articles.each_with_index do |article, index| %>
+      <%# if (index > 0 and index % 2 == 0) %>
+        <!-- <div class="clearfix"></div> -->
+      <%# end %>
+
+      <div class="blog_tile" itemscope itemtype="http://schema.org/BlogPosting">
+        <meta itemprop="author" content="<%= $my_name %>">
+        <meta itemprop="url" content="http://briananders.me<%= article.url %>">
+        <h2><a href="<%= article.url %>" itemprop="name"><%= article.title %></a></h2>
+        <time datetime="<%= article.date.strftime('%Y-%m-%d') %>" itemprop="datePublished">(<%= article.date.strftime('%m/%d/%Y') %>)</time>
+        <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>" title="<%= article.title %>">...</a>
+      </div>
+    <% end %>
+  </div>
 </section>

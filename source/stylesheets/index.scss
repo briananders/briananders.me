@@ -48,7 +48,6 @@ section {
     height: auto;
 
     > h2 {
-      @include font-size(40);
       display: block;
       margin-bottom: 10px;
     }
