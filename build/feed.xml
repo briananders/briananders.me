@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Brian Anders Blog</title>
   <subtitle>Thoughts, Rants and Research</subtitle>
-  <id>http://briananders.me/blog</id>
-  <link href="http://briananders.me/blog"/>
-  <link href="http://briananders.me/feed.xml" rel="self"/>
+  <id>http://briananders.net/blog</id>
+  <link href="http://briananders.net/blog"/>
+  <link href="http://briananders.net/feed.xml" rel="self"/>
   <updated>2014-11-17T16:00:00-08:00</updated>
   <author>
     <name>Brian Anders</name>
   </author>
   <entry>
     <title>How to Match the Height of Sibling Elements</title>
-    <link rel="alternate" href="http://briananders.me/how-to-match-the-height-of-sibling-elements/"/>
-    <id>http://briananders.me/how-to-match-the-height-of-sibling-elements/</id>
+    <link rel="alternate" href="http://briananders.net/how-to-match-the-height-of-sibling-elements/"/>
+    <id>http://briananders.net/how-to-match-the-height-of-sibling-elements/</id>
     <published>2014-11-17T16:00:00-08:00</published>
     <updated>2014-11-18T00:53:12-08:00</updated>
     <author>
@@ -191,8 +191,8 @@
   </entry>
   <entry>
     <title>It's Okay to be Wrong</title>
-    <link rel="alternate" href="http://briananders.me/its-okay-to-be-wrong/"/>
-    <id>http://briananders.me/its-okay-to-be-wrong/</id>
+    <link rel="alternate" href="http://briananders.net/its-okay-to-be-wrong/"/>
+    <id>http://briananders.net/its-okay-to-be-wrong/</id>
     <published>2014-11-06T16:00:00-08:00</published>
     <updated>2014-11-09T19:27:59-08:00</updated>
     <author>
@@ -229,10 +229,10 @@
   </entry>
   <entry>
     <title>Apple Campus II Construction</title>
-    <link rel="alternate" href="http://briananders.me/Apple-Campus-2-Construction/"/>
-    <id>http://briananders.me/Apple-Campus-2-Construction/</id>
+    <link rel="alternate" href="http://briananders.net/Apple-Campus-2-Construction/"/>
+    <id>http://briananders.net/Apple-Campus-2-Construction/</id>
     <published>2014-06-06T17:00:00-07:00</published>
-    <updated>2014-10-15T23:17:36-07:00</updated>
+    <updated>2015-05-27T12:39:51-07:00</updated>
     <author>
       <name>Brian Anders</name>
     </author>
@@ -287,8 +287,8 @@
   </entry>
   <entry>
     <title>How I Think Elipsis Work</title>
-    <link rel="alternate" href="http://briananders.me/How-Elipsis-Work/"/>
-    <id>http://briananders.me/How-Elipsis-Work/</id>
+    <link rel="alternate" href="http://briananders.net/How-Elipsis-Work/"/>
+    <id>http://briananders.net/How-Elipsis-Work/</id>
     <published>2014-02-13T16:00:00-08:00</published>
     <updated>2015-02-04T22:43:01-08:00</updated>
     <author>

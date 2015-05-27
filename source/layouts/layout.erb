@@ -1,7 +1,7 @@
 <%
   $my_name = "Brian Anders"
   $twitter_handle = "@brnandrs"
-  $default_image = "http://briananders.me/favicon_base-7322c5d3.png"
+  $default_image = "http://briananders.net/favicon_base-7322c5d3.png"
   $description = "Brian Anders's personal website, a UX Engineer at Google."
 %>
 
@@ -30,7 +30,7 @@
 
     <!-- Twitter Card data -->
     <meta name="twitter:card"          content="summary">
-    <meta name="twitter:url"           content="http://briananders.me<%= current_page.url %>"
+    <meta name="twitter:url"           content="http://briananders.net<%= current_page.url %>"
     <meta name="twitter:site"          content="<%= $twitter_handle %>">
     <meta name="twitter:creator"       content="<%= $twitter_handle %>">
     <meta name="twitter:title"         content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>">
@@ -39,7 +39,7 @@
 
     <!-- Open Graph data -->
     <meta property="og:type"           content="profile" />
-    <meta property="og:url"            content="http://briananders.me<%= current_page.url %>" />
+    <meta property="og:url"            content="http://briananders.net<%= current_page.url %>" />
     <meta property="og:title"          content="<%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %>" />
     <meta property="og:image"          content="<%= current_page.data.image ? "#{current_page.data.image}" : "#{$default_image}" %>" />
     <meta property="og:description"    content="<%= current_page.data.description ? "#{current_page.data.description}" : "#{$description}" %>" />
@@ -78,7 +78,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-50229612-1', 'briananders.me');
+      ga('create', 'UA-50229612-1', 'briananders.net');
       ga('send', 'pageview');
     </script>
   </head>
@@ -94,7 +94,7 @@
           <%#= partial "partials/name-svg" %>
           <h1><%= $my_name %></h1>
           <meta itemprop="name" content="<%= $my_name %>">
-          <meta itemprop="url" content="http://briananders.me">
+          <meta itemprop="url" content="http://briananders.net">
           <meta itemprop="jobTitle" content="UX Engineer">
         </header>
       <% end %>

@@ -1,6 +1,6 @@
-##briananders.me
+##briananders.net
 
-This is the code that I use to run my personal website: http://www.briananders.me
+This is the code that I use to run my personal website: http://www.briananders.net
 
 
 ###To run the build:
