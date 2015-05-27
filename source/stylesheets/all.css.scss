@@ -70,7 +70,9 @@ a {
 }
 
 html {
+  min-height: 100%;
   font-size: 62.5%;
+  position: relative;
   background: $darker-gray;
   font-family: "Times New Roman", Times, serif;
 
@@ -88,7 +90,7 @@ html {
 
 body {
   @include font-size(24);
-  position: relative;
+  min-height: 100%;
 }
 
 * {
@@ -131,7 +133,6 @@ nav {
     color: $Neon-Orange;
     display: inline-block;
     @include box-sizing(border-box);
-    // @include font-size(40);
 
     &:hover {
       color: inherit;
@@ -143,7 +144,6 @@ nav {
   width: 100%;
   max-width: 700px;
   margin: auto;
-  // background: $gray;
   overflow: hidden;
   @include box-sizing(border-box);
   position: relative;
@@ -166,30 +166,6 @@ p, blockquote {
   }
 }
 
-// #animated-profile {
-//   display: block;
-//   width: 100%;
-//   max-width: 700px;
-//   @include transition(height .2s ease);
-
-//   &.animated {
-//     opacity: 0;
-//   }
-
-//   > path {
-//     stroke: 0;
-//     stroke-width: 2px;
-//     @include transition(fill 2s ease, height .2s ease);
-
-//     fill: #2F3133;
-//     stroke: #EEF1F3;
-
-//     &:hover {
-//       fill: #fff;
-//       @include transition(fill 0s ease, height .2s ease);
-//     }
-//   }
-// }
 
 .content {
   width: 100%;

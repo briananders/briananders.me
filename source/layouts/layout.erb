@@ -89,8 +89,6 @@
 
     <div class="container">
 
-      <%= partial "partials/nav" %>
-
       <% if current_page.data.type == "profile" %>
         <header id="header" itemscope itemtype="http://schema.org/Person">
           <%#= partial "partials/name-svg" %>
@@ -108,7 +106,7 @@
       </div>
 
       <%= partial "partials/links" %>
-      <%#= partial "partials/footer" %>
+
     </div>
 
     <%= javascript_include_tag "all" %>
