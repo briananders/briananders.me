@@ -2,7 +2,7 @@
   $my_name = "Brian Anders"
   $twitter_handle = "@brnandrs"
   $default_image = "http://briananders.net/favicon_base-7322c5d3.png"
-  $description = "Brian Anders's personal website, a UX Engineer at Google."
+  $description = "Hey, I'm Brian Anders and this is my website. I am a UX Engineer at Nest, a Google company, and I like to tinker. Some of my interests include music, movies, and long walks on the beach..."
 %>
 
 <!DOCTYPE html>
@@ -59,8 +59,6 @@
 
     <title><%= current_page.data.title ? "#{current_page.data.title} | #{$my_name}" : "#{$my_name}" %></title>
 
-
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400|Raleway:100,400' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "all" %>
 
     <!--[if lt IE 9]>
@@ -89,17 +87,17 @@
 
     <div class="container">
 
-      <% if current_page.data.type == "profile" %>
-        <header id="header" itemscope itemtype="http://schema.org/Person">
-          <%#= partial "partials/name-svg" %>
-          <h1><%= $my_name %></h1>
-          <meta itemprop="name" content="<%= $my_name %>">
-          <meta itemprop="url" content="http://briananders.net">
-          <meta itemprop="jobTitle" content="UX Engineer">
-        </header>
-      <% end %>
-
       <div class="content">
+
+        <% if current_page.data.type == "profile" %>
+          <header id="header" itemscope itemtype="http://schema.org/Person">
+            <%#= partial "partials/name-svg" %>
+            <h1><%= $my_name %></h1>
+            <meta itemprop="name" content="<%= $my_name %>">
+            <meta itemprop="url" content="http://briananders.net">
+            <meta itemprop="jobTitle" content="UX Engineer">
+          </header>
+        <% end %>
 
         <%= yield %>
 

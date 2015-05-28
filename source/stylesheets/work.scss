@@ -51,6 +51,11 @@ section.work {
       z-index: 1;
     }
   }
+
+  p {
+    margin: 10px 0 30px;
+  }
+
   .links {
     margin: 20px;
     margin-bottom: 0;
@@ -62,17 +67,72 @@ section.work {
 
 
 
-
-
-@include mq(440px) {
+@include mq(400px) {
   section.work {
     .work-tile {
       padding-top: 50%;
-      width: 50%;
+
+      &.smith {
+        background-size: auto 70%;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+@include mq(700px) {
+  section.work {
+    .work-tile {
+      width: 40%;
       float: left;
 
       &.nest {
         width: 100%;
+      }
+      &.smith {
+        background-size: 70%;
+      }
+    }
+    .nest > a {
+      display: block;
+      overflow: hidden;
+    }
+    .row {
+      overflow: hidden;
+
+      .description-tile {
+        width: 60%;
+        float: right;
+        padding-top: 50%;
+        height: 0;
+        position: relative;
+
+        p {
+          position: absolute;
+          top: 50%;
+          @include transform(translateY(-50%));
+          margin: 0;
+          padding-left: 20px;
+        }
+      }
+
+      &:nth-child(2n) {
+
+        .work-tile {
+          float: right;
+        }
+        .description-tile {
+          float: left;
+
+          p {
+            padding-left: 0;
+            padding-right: 20px;
+          }
+        }
       }
     }
   }

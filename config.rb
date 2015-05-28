@@ -8,7 +8,7 @@ require "middleman-smusher"
 
 activate :blog do |blog|
   blog.permalink = "/:title"
-  blog.sources = "/blog/:title.html"
+  blog.sources = "/blog/:title"
   blog.layout = "blog_layout"
   blog.summary_separator = /\[READMORE\]/
 end
@@ -17,26 +17,19 @@ page "/feed.xml", :layout => false
 
 activate :directory_indexes
 page "/404.html", :directory_index => false
+page "*.xml", :layout => false
 
 set :css_dir, 'stylesheets'
-
 set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
 
 # Build-specific configuration
 configure :build do
-  # For example, change the Compass output style for deployment
+  activate :minify_html
   activate :minify_css
-
-  # Minify Javascript on build
   activate :minify_javascript
-
-  # Enable Asset Hashing
   activate :asset_hash
-
-  # Use relative URLs
-  # activate :relative_assets
+  activate :gzip
 
   # Favicons are great
   activate :favicon_maker, :icons => {
@@ -62,12 +55,6 @@ configure :build do
     ]
   }
 
-  # Compress PNGs after build
   # activate :smusher
 
-  # Activate GZipping
-  activate :gzip
-
-  # Or use a different image path
-  # set :http_path, "/Content/images/"
 end

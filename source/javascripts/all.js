@@ -184,7 +184,7 @@ var opts = {
 
         data.topalbums.album.forEach(function(album){
           if(album.image[album.image.length-1]["#text"].indexOf("default") === -1 && count !== max) {
-            markup.push("<a target='_blank' href='" + album.url + "' class='album' title='" + album.name + "'><img src='" + album.image[album.image.length-1]["#text"] + "'></a>");
+            markup.push("<a target='_blank' href='" + album.url + "' class='album' title='" + album.name + "'><img src='" + album.image[album.image.length-1]["#text"] + "' alt='" + album.name + "'></a>");
             count++;
           }
         });
@@ -251,6 +251,8 @@ var opts = {
                        (photo.caption == null ? "no caption" : photo.caption.text) +
                        "'><img src='" +
                        (window.isRetina ? photo.images.low_resolution.url : photo.images.thumbnail.url) +
+                       "' alt='" +
+                       (photo.caption == null ? "no caption" : photo.caption.text) +
                        "'></a>");
         });
 

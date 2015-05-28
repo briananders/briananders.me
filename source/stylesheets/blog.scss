@@ -105,6 +105,17 @@ section.blog {
 }
 
 
+code {
+  @include font-size(20);
+  color: $Neon-Orange;
+}
+
+
+.author {
+  @include font-size(24);
+}
+
+
 .blog_container {
   max-width: 800px;
   margin: auto;

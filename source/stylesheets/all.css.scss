@@ -166,6 +166,11 @@ p, blockquote {
   }
 }
 
+header {
+  h1 {
+    @include font-size(80);
+  }
+}
 
 .content {
   width: 100%;
@@ -191,57 +196,31 @@ p {
 }
 
 #back {
-  line-height: 40px;
-  width: 120px;
-  color: $text-gray;
-  height: 40px;
-  display: inline-block;
   cursor: pointer;
-
-  span {
-    display: inline-block;
-    cursor: pointer;
-  }
-  .posts-container {
-    overflow: hidden;
-    margin-left: -25px;
-    padding-left: 25px;
-  }
-  .posts {
-    position: relative;
-    left: -100px;
-    @include transition(left .3s ease);
-  }
-  .chevron {
-    overflow: hidden;
-    text-align: center;
-    width: 40px;
-    border-radius: 40px;
-    background: #3A3C3E;
-    z-index: 1;
-    position: relative;
-    @include transition(background .2s ease);
-
-    chevron {
-      position: relative;
-      top: -2px;
-    }
-  }
-  .button {
-    opacity: 0;
-    @include transition(opacity .2s ease);
-  }
+  background-image: url('/images/home.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  margin-bottom: -10px;
+  margin-top: 10px;
+  display: block;
+  height: 29px;
+  width: 35px;
+  opacity: 1;
+  @include transition(opacity .3s ease);
 
   &:hover {
-    .chevron {
-      background: $dark-gray;
-    }
-    .button {
-      opacity: 1;
-    }
-    .posts {
-      left: 0;
-    }
+    opacity: .5;
+  }
+}
+
+.social-likes {
+  text-align: center;
+  padding: 20px 0 40px;
+
+  li {
+    display: inline-block;
+    line-height: 15px;
   }
 }
 
