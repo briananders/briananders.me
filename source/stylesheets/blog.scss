@@ -116,7 +116,12 @@ code {
 }
 
 
+
+
 .blog_container {
-  max-width: 800px;
-  margin: auto;
+  .home {
+    display: block;
+    position: relative;
+    top: 12px;
+  }
 }

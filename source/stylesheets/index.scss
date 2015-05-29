@@ -7,11 +7,6 @@
 
 
 
-spinner {
-  width: 100%;
-  padding-top: 300%;
-  display: block;
-}
 .content {
   min-height: 300px;
 }
@@ -36,7 +31,6 @@ section {
     @include box-sizing(border-box);
     @include transition(font-size .5s ease);
     border-bottom: 2px solid $Neon-Orange;
-    // background: $gray;
 
     a {
       width: auto;
@@ -92,9 +86,6 @@ section {
 
 
 @include mq(450px) {
-  spinner {
-    padding-top: 133.33%
-  }
   section {
     &.about-me {
       @include font-size(30);

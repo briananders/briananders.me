@@ -8,18 +8,26 @@
 
 
 body.four-oh-four {
+
+  .home {
+    display: block;
+  }
+
   section {
     overflow: hidden;
   }
+
   .content {
     min-height: 0;
   }
+
   .container {
     position: absolute;
     top: 50%;
     left: 50%;
     @include transform(translate(-50%, -50%));
   }
+
   h1 {
     @include font-size(50);
     text-align: center;
@@ -33,16 +41,20 @@ body.four-oh-four {
       }
     }
   }
+
   .row {
     clear: both;
     overflow: hidden;
   }
+
   h2.key {
     margin: 0;
     padding-right: 10px;
   }
+
   p.def {
   }
+
   h2.key, p.def {
     display: block;
     float: left;
@@ -50,6 +62,7 @@ body.four-oh-four {
     @include font-size(25);
     @include box-sizing(border-box);
   }
+
   .i {
     font-style: oblique;
   }
@@ -74,6 +87,7 @@ body.four-oh-four {
       width: 25%;
       text-align: right;
     }
+
     p.def {
       width: 75%;
       text-align: left;

@@ -1,0 +1,15 @@
+<section class="blog" id="blog">
+  <h2>Blog</h2>
+  <div>
+    <% blog.articles.each_with_index do |article, index| %>
+
+      <div class="blog_tile" itemscope itemtype="http://schema.org/BlogPosting">
+        <meta itemprop="author" content="<%= $my_name %>">
+        <meta itemprop="url" content="http://briananders.net<%= article.url %>">
+        <h2><a href="<%= article.url %>" itemprop="name" title="<%= article.url %>" ><%= article.title %></a></h2>
+        <time datetime="<%= article.date.strftime('%Y-%m-%d') %>" itemprop="datePublished">(<%= article.date.strftime('%m/%d/%Y') %>)</time>
+        <%= article.summary %> <a class="dot-dot-dot" href="<%= article.url %>" title="<%= article.title %>">...</a>
+      </div>
+    <% end %>
+  </div>
+</section>

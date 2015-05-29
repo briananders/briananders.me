@@ -9,7 +9,7 @@
 
 
 
-#svg {
+#galaxy {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -58,8 +58,6 @@ a {
   @include transform(translateZ(0));
 
   img {
-    @include transform(scaleX(1) scaleY(1));
-    @include transition(transform .2s ease, z-index .2s ease);
     z-index: 0;
 
     &:hover {
@@ -116,6 +114,17 @@ h2 {
 
 h3 {
   @include font-size(30);
+}
+
+img {
+  opacity: 0;
+  @include transform(scale(.5));
+  @include transition(opacity .5s ease, transform .5s ease);
+
+  &.loaded {
+    opacity: 1;
+    @include transform(scale(1));
+  }
 }
 
 nav {
@@ -195,15 +204,13 @@ p {
   font-weight: 100;
 }
 
-#back {
+.home {
   cursor: pointer;
   background-image: url('/images/home.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  margin-bottom: -10px;
-  margin-top: 10px;
-  display: block;
+  display: none;
   height: 29px;
   width: 35px;
   opacity: 1;
@@ -219,33 +226,33 @@ p {
   padding: 20px 0 40px;
 
   li {
-    display: inline-block;
     line-height: 15px;
+    display: inline-block;
   }
 }
 
 .links {
-  text-align: center;
   overflow: hidden;
+  text-align: center;
 
   .link-container {
     width: 100%;
-    max-width: 660px;
     height: 100%;
     margin: auto;
+    max-width: 660px;
     @include box-sizing(border-box);
   }
 
   .link {
     width: 20%;
-    height: 60px;
     float: left;
+    height: 60px;
 
     &.instagram {
       background-color: #517FA4;
     }
     &.twitter {
-      background-color: #3cf;
+      background-color: #33CCFF;
     }
     &.lastfm {
       background-color: #E02F2F;
@@ -259,18 +266,21 @@ p {
   }
 
   a {
-    line-height: normal;
-    display: inline-block;
     width: 100%;
     height: 100%;
+    color: #FFFFFF;
     position: relative;
-    color: #FFF;
+    line-height: normal;
+    display: inline-block;
     @include box-sizing(border-box);
   }
   img {
+    z-index: 1;
+    opacity: 1;
+    width: 50px;
+    height: 50px;
     display: block;
     margin: 5px auto;
-    z-index: 1;
     position: relative;
     @include transform(translateY(0px));
     @include transition(transform .25s ease);
